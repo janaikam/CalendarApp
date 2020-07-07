@@ -45,6 +45,8 @@ This app is designed to find events occuring around the user with data on locati
 * User can respond saying they are going to an event
 * User can share events with friends
 * User can see a map of an event's location if it is in person
+* User can search for events in specific locations
+* User can login as a Guest but that prevents them from creating/adding events to their calendar
 
 ### 2. Screen Archetypes
 
