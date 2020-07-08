@@ -100,7 +100,7 @@ This app is designed to find events occuring around the user with data on locati
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="https://github.com/janaikam/CalendarApp/blob/master/Calendar%20Wireframe.jpeg?raw=trueA" width=600>
+<img src="https://github.com/janaikam/CalendarApp/blob/master/Calendar%20Wireframe.jpeg?raw=true" width=600>
 
 
 ### [BONUS] Digital Wireframes & Mockups
