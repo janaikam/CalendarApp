@@ -102,6 +102,7 @@ This app is designed to find events occuring around the user with data on locati
 [Add picture of your hand sketched wireframes in this section]
 <img src="https://photos.app.goo.gl/ZT2P11VCeJjJ1E6CA" width=600>
 
+
 ### [BONUS] Digital Wireframes & Mockups
 
 ### [BONUS] Interactive Prototype
