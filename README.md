@@ -100,7 +100,7 @@ This app is designed to find events occuring around the user with data on locati
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="https://drive.google.com/file/d/1vaAK2zRZ8mbOQgSfkGs_IpSA-bOC6Dcy/view" width=600>
+<img src="https://photos.app.goo.gl/ZT2P11VCeJjJ1E6CA" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
