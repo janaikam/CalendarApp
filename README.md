@@ -111,7 +111,63 @@ This app is designed to find events occuring around the user with data on locati
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
+
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User| image author |
+   | eventName     | String   | Name of the event a user created |
+   | eventImage    | File     | image that the user posts with an event |
+   | eventDescription | String   | Description of what the event is |
+   | attendeeCount | Number   | number of attendees at an event |
+   | startTime     | DateTime | time and date the event begins |
+   | endTime       | DateTime | time and date the event ends |
+   
 ### Networking
 - [Add list of network requests by screen ]
+
+* Stream Screen
+  * (Read/GET) Query all events from the user's feed
+  * (Read/GET) Location of events in the area
+  * (Create/POST) Confirming that you are going to an event
+* Creation Screen
+  * (Create/POST) Create a new event
+
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+Base URL - https://developers.facebook.com/docs/graph-api/reference/event/
+
+```
+
+// For more complex open graph stories, use `FBSDKShareAPI`
+// with `FBSDKShareOpenGraphContent`
+/* make the API call */
+FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                               initWithGraphPath:@"/{event-id}"
+                                      parameters:params
+                                      HTTPMethod:@"GET"];
+[request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                      id result,
+                                      NSError *error) {
+    // Handle the result
+}];
+
+```
+
+| Property      | Type     | Description | 
+| ------------- | -------- | ------------|
+| id       | numeric string | event id   |
+| attendingCount  | Integer | number of people attending |
+| cover    | File | event photo |
+| description | String      | event description |
+| is_online | Boolean | is the event online or not |
+| end_time | string | time when the event ends if given |
+| name     | String | event name |
+| place    | Place | place where event is occurring (includes name and location) |
+| start_time | string | time when the event starts |
+
+
+
+
+
