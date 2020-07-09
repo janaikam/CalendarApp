@@ -133,6 +133,8 @@ This app is designed to find events occuring around the user with data on locati
   * (Create/POST) Confirming that you are going to an event
 * Creation Screen
   * (Create/POST) Create a new event
+* Calendar 
+  * (Read/GET) User's calendar
 
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
