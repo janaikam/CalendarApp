@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+@import Parse;
 
 @interface AppDelegate ()
 
@@ -17,8 +18,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        
+        configuration.applicationId = @"janaiCalendarFinder";
+        configuration.server = @"https://janai-calendar-finder.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:config];
+    
+    
     return YES;
+    
 }
+
+
+
 
 
 #pragma mark - UISceneSession lifecycle
