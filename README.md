@@ -112,7 +112,7 @@ This app is designed to find events occuring around the user with data on locati
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
-
+Calendar Event
 
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
