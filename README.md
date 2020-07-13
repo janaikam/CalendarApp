@@ -29,8 +29,8 @@ This app is designed to find events occuring around the user with data on locati
 **Required Must-have Stories**
 
 - [X] User can Login/Sign up
-- [ ] User can Logout
-- [ ] User is able to create an account to log in
+- [X] User can Logout
+- [X] User is able to create an account to log in
 - [ ] User can access their calendar in month form
 - [ ] User can see/scroll through events from their Facebook feed
 - [ ] User can add events to their calendar
