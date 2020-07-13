@@ -33,7 +33,22 @@
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
+            NSLog(@"%@", errorMessage);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                   message:errorMessage
+            preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create a cancel action
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                                style:UIAlertActionStyleCancel
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle cancel response here. Doing nothing will dismiss the view.
+                                                              }];
+            
+            // add the cancel action to the alertController
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:^{}];
         } else {
             NSLog(@"User registered successfully");
             
@@ -50,6 +65,22 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
+            NSLog(@"%@", errorMessage);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                   message:errorMessage
+            preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create a cancel action
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                                style:UIAlertActionStyleCancel
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle cancel response here. Doing nothing will dismiss the view.
+                                                              }];
+            
+            // add the cancel action to the alertController
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:^{}];
         } else {
             NSLog(@"User logged in successfully");
             
