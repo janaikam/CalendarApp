@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="1025" y="138"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="TJ9-oe-xwb">
             <objects>
-                <viewController id="4X7-AV-e6D" sceneMemberID="viewController">
+                <viewController id="4X7-AV-e6D" customClass="CalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Far-tP-LGb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="2839.130434782609" y="478.79464285714283"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Feed View Controller-->
         <scene sceneID="25s-9H-Iyy">
             <objects>
-                <viewController id="J2w-7r-jcB" sceneMemberID="viewController">
+                <viewController id="J2w-7r-jcB" customClass="EventFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ixM-dH-fSU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,11 @@
                         <viewLayoutGuide key="safeArea" id="1Va-pd-w5m"/>
                     </view>
                     <navigationItem key="navigationItem" id="IbY-kx-ZiT">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="a1Z-Yc-cye"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="a1Z-Yc-cye">
+                            <connections>
+                                <action selector="didTapLogout:" destination="J2w-7r-jcB" id="996-qY-Xru"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bw-z8-u9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

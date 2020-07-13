@@ -7,6 +7,9 @@
 //
 
 #import "EventFeedViewController.h"
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
+#import "SceneDelegate.h"
 
 @interface EventFeedViewController ()
 
@@ -17,6 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)didTapLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+         SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        myDelegate.window.rootViewController = loginViewController;
+    }];
 }
 
 /*
