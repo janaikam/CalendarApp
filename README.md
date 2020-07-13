@@ -28,26 +28,26 @@ This app is designed to find events occuring around the user with data on locati
 
 **Required Must-have Stories**
 
-* User can Login
-* User can Logout
-* User is able to create an account to log in
-* User can access their calendar in month form
-* User can see/scroll through events from their Facebook feed
-* User can add events to their calendar
-* User can click on an event to see a detailed page with location, number of confirmed attendees, a picture, and a map
-* User can create events
+- [X] User can Login/Sign up
+- [ ] User can Logout
+- [ ] User is able to create an account to log in
+- [ ] User can access their calendar in month form
+- [ ] User can see/scroll through events from their Facebook feed
+- [ ] User can add events to their calendar
+- [ ] User can click on an event to see a detailed page with location, number of confirmed attendees, a picture, and a map
+- [ ] User can create events
 
 **Optional Nice-to-have Stories**
 
-* User can see indicator where there is an activity for the day
-* User can change how the calendar looks
-* User can see events that are near their current location
-* User can respond saying they are going to an event
-* User can share events with friends
-* User can see a map of an event's location if it is in person
-* User can search for events in specific locations
-* User can login as a Guest but that prevents them from creating/adding events to their calendar
-* User can click on the map to expand it
+- [ ] User can see indicator where there is an activity for the day
+- [ ] User can change how the calendar looks
+- [ ] User can see events that are near their current location
+- [ ] User can respond saying they are going to an event
+- [ ] User can share events with friends
+- [ ] User can see a map of an event's location if it is in person
+- [ ] User can search for events in specific locations
+- [ ] User can login as a Guest but that prevents them from creating/adding events to their calendar
+- [ ] User can click on the map to expand it
 
 ### 2. Screen Archetypes
 
