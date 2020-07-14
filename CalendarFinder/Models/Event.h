@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Event : NSObject
+@interface Event : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) NSString *eventID;
 @property (nonatomic, strong) NSString *userID;
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) PFFileObject *eventImage;
-// Add location property
+
 
 + (void) postUserEvent: ( UIImage * _Nullable )image withEventName: ( NSString * _Nullable )eventName withDescription: ( NSString * _Nullable ) eventDescription withStartTime: ( NSDate * _Nullable ) startTime withEndTime: ( NSDate * _Nullable ) endTime withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

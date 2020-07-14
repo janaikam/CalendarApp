@@ -34,6 +34,8 @@
     newEvent.startTime = startTime;
     newEvent.endTime = endTime;
     newEvent.attendeesCount = @(0);
+    
+    [newEvent saveInBackgroundWithBlock:completion];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
