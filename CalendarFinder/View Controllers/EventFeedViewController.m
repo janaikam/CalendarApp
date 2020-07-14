@@ -8,10 +8,13 @@
 
 #import "EventFeedViewController.h"
 #import <Parse/Parse.h>
+#import <MapKit/MapKit.h>
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
 
+
 @interface EventFeedViewController ()
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -20,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+    [self.mapView setRegion:sfRegion animated:false];
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -29,6 +34,10 @@
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
         myDelegate.window.rootViewController = loginViewController;
     }];
+}
+
+- (IBAction)didTapCreate:(id)sender {
+    [self performSegueWithIdentifier:@"createSegue" sender:nil];
 }
 
 /*

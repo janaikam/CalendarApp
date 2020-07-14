@@ -1,31 +1,22 @@
 //
-//  CalendarViewController.m
+//  CreateEventViewController.m
 //  CalendarFinder
 //
 //  Created by Janai Kameka on 7/13/20.
 //  Copyright © 2020 Janai Kameka. All rights reserved.
 //
 
-#import "CalendarViewController.h"
-#import <FSCalendar/FSCalendar.h>
+#import "CreateEventViewController.h"
 
-@interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate>
-@property (weak, nonatomic) FSCalendar *calendar;
+@interface CreateEventViewController ()
 
 @end
 
-@implementation CalendarViewController
+@implementation CreateEventViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    FSCalendar *calendar = [[FSCalendar alloc] init];
-    calendar.dataSource = self;
-    calendar.delegate = self;
-    [self.view addSubview:calendar];
-    self.calendar = calendar;
-    self.calendar.scrollDirection = FSCalendarScrollDirectionVertical;
 }
 
 /*
