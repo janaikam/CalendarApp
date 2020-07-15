@@ -23,6 +23,8 @@
 		1AB2036824BE03C7009171A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB2036724BE03C7009171A6 /* MapKit.framework */; };
 		1AB5493824BE0EDF006EDBCA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5493724BE0EDF006EDBCA /* Event.m */; };
 		1AB5493C24BE3378006EDBCA /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5493B24BE3378006EDBCA /* Location.m */; };
+		1AB5493F24BE3F59006EDBCA /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5493E24BE3F59006EDBCA /* EventCell.m */; };
+		1AB5494224BF53F0006EDBCA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5494124BF53F0006EDBCA /* User.m */; };
 		7CFC1C535963D764BCF974E2 /* Pods_CalendarFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4643E084BDCB6ECA8A00866 /* Pods_CalendarFinder.framework */; };
 		C530B582C3F72C0015631CCC /* Pods_CalendarFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A4329E9FC6CF1D45691D3B /* Pods_CalendarFinderTests.framework */; };
 		ECACE30E759A82F3767D9AE4 /* Pods_CalendarFinder_CalendarFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01708CE7D45DF1F8E7F35B7A /* Pods_CalendarFinder_CalendarFinderUITests.framework */; };
@@ -81,6 +83,10 @@
 		1AB5493724BE0EDF006EDBCA /* Event.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		1AB5493A24BE3378006EDBCA /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		1AB5493B24BE3378006EDBCA /* Location.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		1AB5493D24BE3F59006EDBCA /* EventCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		1AB5493E24BE3F59006EDBCA /* EventCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		1AB5494024BF53F0006EDBCA /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		1AB5494124BF53F0006EDBCA /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6B4EA9BA0666C70B05DD0DF4 /* Pods-CalendarFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarFinderTests.release.xcconfig"; path = "Target Support Files/Pods-CalendarFinderTests/Pods-CalendarFinderTests.release.xcconfig"; sourceTree = "<group>"; };
 		803CAFB521D36B5841A28EC1 /* Pods-CalendarFinder-CalendarFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarFinder-CalendarFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarFinder-CalendarFinderUITests/Pods-CalendarFinder-CalendarFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4643E084BDCB6ECA8A00866 /* Pods_CalendarFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +220,8 @@
 				1AB5493724BE0EDF006EDBCA /* Event.m */,
 				1AB5493A24BE3378006EDBCA /* Location.h */,
 				1AB5493B24BE3378006EDBCA /* Location.m */,
+				1AB5494024BF53F0006EDBCA /* User.h */,
+				1AB5494124BF53F0006EDBCA /* User.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,6 +229,8 @@
 		1AB5493924BE335D006EDBCA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1AB5493D24BE3F59006EDBCA /* EventCell.h */,
+				1AB5493E24BE3F59006EDBCA /* EventCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -480,8 +490,10 @@
 				1AB2035A24BCF731009171A6 /* LoginViewController.m in Sources */,
 				1AB5493824BE0EDF006EDBCA /* Event.m in Sources */,
 				1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */,
+				1AB5493F24BE3F59006EDBCA /* EventCell.m in Sources */,
 				1AB2033524BCEB5A009171A6 /* main.m in Sources */,
 				1AB5493C24BE3378006EDBCA /* Location.m in Sources */,
+				1AB5494224BF53F0006EDBCA /* User.m in Sources */,
 				1AB2036024BCFCBD009171A6 /* CalendarViewController.m in Sources */,
 				1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */,
 				1AB2036624BE00CC009171A6 /* DetailsViewController.m in Sources */,

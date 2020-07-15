@@ -13,9 +13,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UITextField *eventNameField;
 @property (weak, nonatomic) IBOutlet UITextField *eventDescriptionField;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startDatePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *endLabel;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endDatePickerView;
+
+
 
 @end
 
@@ -24,7 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.datePickerView.alpha = 0;
+    self.startDatePickerView.alpha = 0;
+    self.endDatePickerView.alpha = 0;
+    
+    // Setting up the frames for the end time when inputting a date in start date
+    self.endLabel.frame = CGRectMake(self.endLabel.frame.origin.x, self.endLabel.frame.origin.y, self.endLabel.frame.size.width, self.endLabel.frame.size.height);
+    
+    self.endTimeLabel.frame = CGRectMake(self.endTimeLabel.frame.origin.x, self.endTimeLabel.frame.origin.y, self.endTimeLabel.frame.size.width, self.endTimeLabel.frame.size.height);
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -73,9 +83,34 @@
 }
 
 - (IBAction)onTapStartTime:(id)sender {
-    self.datePickerView.alpha = 1;
+    self.startDatePickerView.alpha = 1;
+    
+    CGRect newFrame = self.endLabel.frame;
+    newFrame.origin.y += 216;
+    self.endLabel.frame = newFrame;
+    
+    newFrame = self.endTimeLabel.frame;
+    newFrame.origin.y += 216;
+    self.endTimeLabel.frame = newFrame;
+    
 }
 
+- (IBAction)onTapScreen:(id)sender {
+    self.startDatePickerView.alpha = 0;
+    self.endDatePickerView.alpha = 0;
+    
+    CGRect newFrame = self.endLabel.frame;
+    newFrame.origin.y -= 216;
+    self.endLabel.frame = newFrame;
+    
+    newFrame = self.endTimeLabel.frame;
+    newFrame.origin.y -= 216;
+    self.endTimeLabel.frame = newFrame;
+}
+
+- (IBAction)onTapEndTime:(id)sender {
+    self.endDatePickerView.alpha = 1;
+}
 
 /*
 #pragma mark - Navigation

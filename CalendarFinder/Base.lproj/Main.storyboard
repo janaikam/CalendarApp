@@ -363,8 +363,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWH-uo-Icz">
-                                <rect key="frame" x="0.0" y="516" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="427" width="414" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-TM-zgL">
                                 <rect key="frame" x="43" y="399" width="97" height="20"/>
@@ -394,36 +395,60 @@
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jul 14  7:00PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iW-EX-Pum">
                                 <rect key="frame" x="209" y="452" width="113" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gYQ-Km-L1H" appends="YES" id="bRR-HS-OE6"/>
+                                </connections>
                             </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fMS-Ge-AJ5">
+                                <rect key="frame" x="0.0" y="482" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="yoZ-1q-Ywl"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="grN-0I-CfP" appends="YES" id="sxz-aA-x2v"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="8Ny-5R-ikl">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="J5S-VU-p0p"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="zGz-LT-PST"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="datePickerView" destination="qWH-uo-Icz" id="HTU-Gb-YIg"/>
+                        <outlet property="endDatePickerView" destination="fMS-Ge-AJ5" id="cXH-Oc-DdR"/>
+                        <outlet property="endLabel" destination="pAY-p1-n9f" id="LRg-Gy-ind"/>
                         <outlet property="endTimeLabel" destination="3iW-EX-Pum" id="zHm-W7-dkg"/>
                         <outlet property="eventDescriptionField" destination="CND-dt-jCw" id="ujS-9f-BFM"/>
                         <outlet property="eventImageView" destination="C9t-Do-nKq" id="A5z-qM-DIa"/>
                         <outlet property="eventNameField" destination="eH3-qx-XdC" id="wYR-FB-34F"/>
+                        <outlet property="startDatePickerView" destination="qWH-uo-Icz" id="59r-tT-Cmh"/>
                         <outlet property="startTimeLabel" destination="6te-1K-Tsa" id="rJC-BH-L3k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca3-XW-2Ae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Ked-e1-tBi">
+                <tapGestureRecognizer id="Ked-e1-tBi" userLabel="Picture Tap Gesture Recognizer">
                     <connections>
                         <action selector="onTapPicture:" destination="dIy-Ud-hzu" id="Zs9-3C-Unv"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="Kzk-eu-7Ar">
+                <tapGestureRecognizer id="Kzk-eu-7Ar" userLabel="Start Tap Gesture Recognizer">
                     <connections>
                         <action selector="onTapStartTime:" destination="dIy-Ud-hzu" id="HnT-eS-cXD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="grN-0I-CfP" userLabel="Screen Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="onTapScreen:" destination="dIy-Ud-hzu" id="oIq-fn-kkE"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="gYQ-Km-L1H">
+                    <connections>
+                        <action selector="onTapEndTime:" destination="dIy-Ud-hzu" id="NID-LM-9R1"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
