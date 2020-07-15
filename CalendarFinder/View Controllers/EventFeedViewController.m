@@ -29,10 +29,14 @@
 
 - (IBAction)didTapLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if (error){
+            NSLog(@"There was an error logging out.");
+        } else {
          SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
         myDelegate.window.rootViewController = loginViewController;
+        }
     }];
 }
 
