@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePickerView;
 
-
+//@property (weak, nonatomic) NSDateFormatter *formatter;
 
 @end
 
@@ -31,10 +31,10 @@
     self.startDatePickerView.alpha = 0;
     self.endDatePickerView.alpha = 0;
     
-    // Setting up the frames for the end time when inputting a date in start date
-    self.endLabel.frame = CGRectMake(self.endLabel.frame.origin.x, self.endLabel.frame.origin.y, self.endLabel.frame.size.width, self.endLabel.frame.size.height);
     
-    self.endTimeLabel.frame = CGRectMake(self.endTimeLabel.frame.origin.x, self.endTimeLabel.frame.origin.y, self.endTimeLabel.frame.size.width, self.endTimeLabel.frame.size.height);
+
+
+
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -83,33 +83,53 @@
 }
 
 - (IBAction)onTapStartTime:(id)sender {
-    self.startDatePickerView.alpha = 1;
-    
-    CGRect newFrame = self.endLabel.frame;
-    newFrame.origin.y += 216;
-    self.endLabel.frame = newFrame;
-    
-    newFrame = self.endTimeLabel.frame;
-    newFrame.origin.y += 216;
-    self.endTimeLabel.frame = newFrame;
-    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.startDatePickerView.alpha = 1;
+        self.endDatePickerView.alpha = 0;
+        
+        self.endLabel.alpha = 0;
+        self.endTimeLabel.alpha = 0;
+    }];
 }
 
 - (IBAction)onTapScreen:(id)sender {
-    self.startDatePickerView.alpha = 0;
-    self.endDatePickerView.alpha = 0;
-    
-    CGRect newFrame = self.endLabel.frame;
-    newFrame.origin.y -= 216;
-    self.endLabel.frame = newFrame;
-    
-    newFrame = self.endTimeLabel.frame;
-    newFrame.origin.y -= 216;
-    self.endTimeLabel.frame = newFrame;
+    [UIView  animateWithDuration:0.2 animations:^{
+        self.startDatePickerView.alpha = 0;
+        self.endDatePickerView.alpha = 0;
+        
+        self.endLabel.alpha = 1;
+        self.endTimeLabel.alpha = 1;
+
+    }];
+
 }
 
 - (IBAction)onTapEndTime:(id)sender {
-    self.endDatePickerView.alpha = 1;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.endDatePickerView.alpha = 1;
+        self.startDatePickerView.alpha = 0;
+    }];
+
+}
+
+- (IBAction)startValueChanged:(id)sender {
+    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm";
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+
+    
+    self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
+    
+}
+
+- (IBAction)endValueChanged:(id)sender {
+    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm";
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
 }
 
 /*

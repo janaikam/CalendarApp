@@ -10,4 +10,9 @@
 
 @implementation User
 
+@dynamic username;
++ (nonnull NSString *)parseClassName {
+    return @"User";
+}
+
 @end
