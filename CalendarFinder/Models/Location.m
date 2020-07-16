@@ -10,6 +10,10 @@
 
 @implementation Location
 
+@dynamic latitude;
+@dynamic longitude;
+@dynamic locationName;
+
 + (nonnull NSString *)parseClassName {
     return @"Location";
 }

@@ -19,6 +19,7 @@
 @dynamic startTime;
 @dynamic endTime;
 @dynamic eventImage;
+@dynamic location;
 
 + (nonnull NSString *)parseClassName {
     return @"Event";
