@@ -57,7 +57,7 @@
                     <connections>
                         <outlet property="passwordField" destination="VNq-cf-buz" id="Eex-NT-8gH"/>
                         <outlet property="usernameField" destination="qZT-Fz-I1t" id="BCD-G7-yQY"/>
-                        <segue destination="S3v-py-OEJ" kind="presentation" identifier="loginSegue" id="apG-g3-phl"/>
+                        <segue destination="S3v-py-OEJ" kind="show" identifier="loginSegue" id="apG-g3-phl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,7 +67,8 @@
         <!--Tab Bar Controller-->
         <scene sceneID="uYc-5e-VkZ">
             <objects>
-                <tabBarController storyboardIdentifier="tabViewController" id="S3v-py-OEJ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabViewController" modalPresentationStyle="fullScreen" id="S3v-py-OEJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="I1a-Re-bkx"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bwb-S6-CKQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -85,7 +86,7 @@
         <!--Calendar-->
         <scene sceneID="TJ9-oe-xwb">
             <objects>
-                <viewController id="4X7-AV-e6D" customClass="CalendarViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="4X7-AV-e6D" customClass="CalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Far-tP-LGb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +135,7 @@
         <!--Settings-->
         <scene sceneID="dAz-WW-qxI">
             <objects>
-                <viewController id="aj8-ag-UjZ" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="aj8-ag-UjZ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jmW-OD-0nC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,7 +184,7 @@
         <!--Home-->
         <scene sceneID="25s-9H-Iyy">
             <objects>
-                <viewController id="J2w-7r-jcB" customClass="EventFeedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="J2w-7r-jcB" customClass="EventFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ixM-dH-fSU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +251,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="ctm-iE-z3e">
                             <connections>
                                 <action selector="didTapCreate:" destination="J2w-7r-jcB" id="YiH-Of-46U"/>
-                                <segue destination="qwo-Er-aLr" kind="presentation" identifier="createSegue" id="Osb-Gi-onB"/>
+                                <segue destination="qwo-Er-aLr" kind="presentation" identifier="createSegue" modalTransitionStyle="coverVertical" id="Osb-Gi-onB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -265,7 +266,7 @@
         <!--Details View Controller-->
         <scene sceneID="J4P-ja-hOc">
             <objects>
-                <viewController id="e4X-G6-pRE" customClass="DetailsViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="e4X-G6-pRE" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FSi-Mk-kvV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,7 +429,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Up9-cl-ThS" kind="show" id="g88-VB-REX"/>
+                                    <action selector="didTapLocation:" destination="dIy-Ud-hzu" eventType="touchUpInside" id="Yfk-Z4-DNe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -440,7 +441,11 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="8Ny-5R-ikl">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="J5S-VU-p0p"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="J5S-VU-p0p">
+                            <connections>
+                                <action selector="didTapCancel:" destination="dIy-Ud-hzu" id="7ca-uU-ZWt"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="zGz-LT-PST"/>
                     </navigationItem>
                     <connections>
@@ -454,6 +459,7 @@
                         <outlet property="locationNameLabel" destination="jdq-36-nNT" id="Hka-Dy-e5P"/>
                         <outlet property="startDatePickerView" destination="qWH-uo-Icz" id="59r-tT-Cmh"/>
                         <outlet property="startTimeLabel" destination="6te-1K-Tsa" id="rJC-BH-L3k"/>
+                        <segue destination="Up9-cl-ThS" kind="show" identifier="locationSegue" id="Pxp-Qt-7gR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca3-XW-2Ae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -493,16 +499,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRS-xl-GTw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRS-xl-GTw">
                                 <rect key="frame" x="0.0" y="100" width="414" height="742"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LocationCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="86" id="ls3-AX-0ES" customClass="LocationCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="86"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LocationCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="77" id="ls3-AX-0ES" customClass="LocationCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ls3-AX-0ES" id="HRG-QN-VKQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baS-1f-FcL">
@@ -545,7 +551,7 @@
         <!--Feed-->
         <scene sceneID="70q-VC-pXN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ayo-HE-pmx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ayo-HE-pmx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="house.fill" catalog="system" id="1Bg-e9-rt3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w6A-F6-bp1">
@@ -564,7 +570,7 @@
         <!--Calendar-->
         <scene sceneID="oWh-on-bTT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2YT-Bl-rjq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="2YT-Bl-rjq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="Ikd-Er-Sb7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tZ0-Fa-e2P">

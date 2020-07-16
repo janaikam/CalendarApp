@@ -8,6 +8,7 @@
 
 #import "LocationsViewController.h"
 #import "LocationCell.h"
+#import "CreateEventViewController.h"
 
 static NSString * const clientID = @"UVKZOMUZQJTQWA5UYH5LDOQ5UPL0GNDXBUEMVHQJNDPYENV3";
 static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13UIJS3EUV3V";
@@ -34,9 +35,10 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
     NSDictionary *venue = self.results[indexPath.row];
     NSNumber *lat = [venue valueForKeyPath:@"location.lat"];
     NSNumber *lng = [venue valueForKeyPath:@"location.lng"];
+    NSString *name = [venue valueForKey:@"name"];
     NSLog(@"%@, %@", lat, lng);
      
-    [self.delegate locationsViewController:self didPickLocationWithLatitude:lat longitude:lng];
+    [self.delegate locationsViewController:self didPickLocationWithLatitude:lat longitude:lng name:name];
 }
 
 /*

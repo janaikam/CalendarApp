@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class LocationsViewController;
 @protocol LocationsViewControllerDelegate
 
-- (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
+- (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude name:(NSString *)name;
 
 @end
 
