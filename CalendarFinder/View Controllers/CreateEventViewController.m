@@ -18,8 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePickerView;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *locationButton;
 
-//@property (weak, nonatomic) NSDateFormatter *formatter;
 
 @end
 
@@ -89,6 +90,8 @@
         
         self.endLabel.alpha = 0;
         self.endTimeLabel.alpha = 0;
+        self.locationButton.alpha = 0;
+        self.locationNameLabel.alpha = 0;
     }];
 }
 
@@ -99,6 +102,8 @@
         
         self.endLabel.alpha = 1;
         self.endTimeLabel.alpha = 1;
+        self.locationButton.alpha = 1;
+        self.locationNameLabel.alpha = 1;
 
     }];
 
@@ -108,6 +113,8 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.endDatePickerView.alpha = 1;
         self.startDatePickerView.alpha = 0;
+        self.locationButton.alpha = 0;
+        self.locationNameLabel.alpha = 0;
     }];
 
 }

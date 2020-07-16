@@ -25,6 +25,8 @@
 		1AB5493C24BE3378006EDBCA /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5493B24BE3378006EDBCA /* Location.m */; };
 		1AB5493F24BE3F59006EDBCA /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5493E24BE3F59006EDBCA /* EventCell.m */; };
 		1AB5494224BF53F0006EDBCA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5494124BF53F0006EDBCA /* User.m */; };
+		1AB5494524BF94E0006EDBCA /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5494424BF94E0006EDBCA /* LocationsViewController.m */; };
+		1AB5494824BF94F5006EDBCA /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5494724BF94F5006EDBCA /* LocationCell.m */; };
 		7CFC1C535963D764BCF974E2 /* Pods_CalendarFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4643E084BDCB6ECA8A00866 /* Pods_CalendarFinder.framework */; };
 		C530B582C3F72C0015631CCC /* Pods_CalendarFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A4329E9FC6CF1D45691D3B /* Pods_CalendarFinderTests.framework */; };
 		ECACE30E759A82F3767D9AE4 /* Pods_CalendarFinder_CalendarFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01708CE7D45DF1F8E7F35B7A /* Pods_CalendarFinder_CalendarFinderUITests.framework */; };
@@ -87,6 +89,10 @@
 		1AB5493E24BE3F59006EDBCA /* EventCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		1AB5494024BF53F0006EDBCA /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		1AB5494124BF53F0006EDBCA /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		1AB5494324BF94E0006EDBCA /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
+		1AB5494424BF94E0006EDBCA /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
+		1AB5494624BF94F5006EDBCA /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		1AB5494724BF94F5006EDBCA /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		6B4EA9BA0666C70B05DD0DF4 /* Pods-CalendarFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarFinderTests.release.xcconfig"; path = "Target Support Files/Pods-CalendarFinderTests/Pods-CalendarFinderTests.release.xcconfig"; sourceTree = "<group>"; };
 		803CAFB521D36B5841A28EC1 /* Pods-CalendarFinder-CalendarFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarFinder-CalendarFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarFinder-CalendarFinderUITests/Pods-CalendarFinder-CalendarFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4643E084BDCB6ECA8A00866 /* Pods_CalendarFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +215,8 @@
 				1AB2036224BD0CD5009171A6 /* CreateEventViewController.m */,
 				1AB2036424BE00CC009171A6 /* DetailsViewController.h */,
 				1AB2036524BE00CC009171A6 /* DetailsViewController.m */,
+				1AB5494324BF94E0006EDBCA /* LocationsViewController.h */,
+				1AB5494424BF94E0006EDBCA /* LocationsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -231,6 +239,8 @@
 			children = (
 				1AB5493D24BE3F59006EDBCA /* EventCell.h */,
 				1AB5493E24BE3F59006EDBCA /* EventCell.m */,
+				1AB5494624BF94F5006EDBCA /* LocationCell.h */,
+				1AB5494724BF94F5006EDBCA /* LocationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -487,6 +497,7 @@
 			files = (
 				1AB2036324BD0CD5009171A6 /* CreateEventViewController.m in Sources */,
 				1AB2035D24BCFCA0009171A6 /* EventFeedViewController.m in Sources */,
+				1AB5494824BF94F5006EDBCA /* LocationCell.m in Sources */,
 				1AB2035A24BCF731009171A6 /* LoginViewController.m in Sources */,
 				1AB5493824BE0EDF006EDBCA /* Event.m in Sources */,
 				1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */,
@@ -496,6 +507,7 @@
 				1AB5494224BF53F0006EDBCA /* User.m in Sources */,
 				1AB2036024BCFCBD009171A6 /* CalendarViewController.m in Sources */,
 				1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */,
+				1AB5494524BF94E0006EDBCA /* LocationsViewController.m in Sources */,
 				1AB2036624BE00CC009171A6 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
