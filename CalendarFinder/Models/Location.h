@@ -7,15 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
+@import Parse;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Location : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) NSString *locationName;
-@property (nonatomic, strong) NSString *latitude;
-@property (nonatomic, strong) NSString *longitude;
+@property (nonatomic, copy, readonly) NSString *locationID;
+@property (nonatomic, copy, readonly) NSString *locationName;
+@property (nonatomic, strong, readonly) NSNumber *latitude;
+@property (nonatomic, strong, readonly) NSNumber *longitude;
+
+
+- (instancetype) initWithString: (NSString * _Nullable)name
+                       latitude: (NSNumber * _Nullable)latitude
+                      longitude: (NSNumber * _Nullable) longitude
+                     completion: (PFBooleanResultBlock _Nullable) completion;
+
++ (void) createLocation: ( NSString * _Nullable ) name
+               latitude: ( NSNumber * _Nullable ) latitude
+             longitutde: (NSNumber * _Nullable ) longitude
+             completion: (PFBooleanResultBlock _Nullable)completion;
 
 @end
 

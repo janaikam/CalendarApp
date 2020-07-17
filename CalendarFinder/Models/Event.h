@@ -14,20 +14,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Event : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) NSString *eventID;
-@property (nonatomic, strong) NSString *userID;
-@property (nonatomic, strong) PFUser *author;
+@property (nonatomic, copy, readonly) NSString *eventID;
+@property (nonatomic, copy, readonly) NSString *userID;
+@property (nonatomic, strong, readonly) PFUser *author;
 
-@property (nonatomic, strong) NSString *eventName;
-@property (nonatomic, strong) NSString *eventDescription;
+@property (nonatomic, copy) NSString *eventName;
+@property (nonatomic, copy) NSString *eventDescription;
 @property (nonatomic, strong) NSNumber *attendeesCount;
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) PFFileObject *eventImage;
-@property (nonatomic, strong) Location *location;
+@property (nonatomic, copy) NSString *location;
 
+- (instancetype) initWithImage:(UIImage *)image
+                     eventName:(NSString *)eventName
+                   description:(NSString *)eventDescription
+                     startTime:(NSDate *)startTime
+                       endTime:(NSDate *)endTime
+                      location:(NSString *)location
+                    completion:(PFBooleanResultBlock)completion;
 
-+ (void) postUserEvent: ( UIImage * _Nullable )image withEventName: ( NSString * _Nullable )eventName withDescription: ( NSString * _Nullable ) eventDescription withStartTime: ( NSDate * _Nullable ) startTime withEndTime: ( NSDate * _Nullable ) endTime withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postUserEvent: ( UIImage * _Nullable )image
+             eventName: ( NSString * _Nullable )eventName
+           description: ( NSString * _Nullable ) eventDescription
+             startTime: ( NSDate * _Nullable ) startTime
+               endTime: ( NSDate * _Nullable ) endTime
+              location: (NSString* _Nullable)location
+            completion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

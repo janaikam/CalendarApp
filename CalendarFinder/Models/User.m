@@ -10,7 +10,15 @@
 
 @implementation User
 
-@dynamic username;
+@synthesize username = _username;
+
+- (instancetype)initWithString:(NSString *)userName completion:(PFBooleanResultBlock)completion{
+    if (self = [super init]){
+        _username = userName;
+    }
+    return self;
+}
+
 + (nonnull NSString *)parseClassName {
     return @"User";
 }

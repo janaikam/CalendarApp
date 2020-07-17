@@ -10,33 +10,80 @@
 
 @implementation Event
 
-@dynamic  eventID;
-@dynamic userID;
-@dynamic author;
-@dynamic eventName;
-@dynamic eventDescription;
-@dynamic attendeesCount;
-@dynamic startTime;
-@dynamic endTime;
-@dynamic eventImage;
-@dynamic location;
+//@dynamic  eventID;
+//@dynamic userID;
+//@dynamic author;
+//@dynamic eventDescription;
+//@dynamic attendeesCount;
+//@dynamic startTime;
+//@dynamic endTime;
+//@dynamic eventImage;
+//@dynamic location;
+
+@synthesize eventName = _eventName;
+@synthesize eventID = _eventID;
+@synthesize userID = _userID;
+@synthesize author = _author;
+@synthesize eventDescription = _eventDescription;
+@synthesize attendeesCount = _attendeesCount;
+@synthesize startTime = _startTime;
+@synthesize endTime = _endTime;
+@synthesize eventImage = _eventImage;
+@synthesize location = _location;
+
+- (instancetype) initWithImage:(UIImage *)image
+                 eventName:(NSString *)eventName
+               description:(NSString *)eventDescription
+                 startTime:(NSDate *)startTime
+                   endTime:(NSDate *)endTime
+                  location:(NSString *)location
+        completion:(PFBooleanResultBlock)completion{
+    if (self = [super init]){
+        
+        _eventName = eventName;
+        _author = [PFUser currentUser];
+        _eventImage = [self.class getPFFileFromImage:image];
+        _eventDescription = eventDescription;
+        _startTime = startTime;
+        _endTime = endTime;
+        _location = location;
+    }
+    return self;
+}
 
 + (nonnull NSString *)parseClassName {
     return @"Event";
 }
 
-+ (void) postUserEvent:(UIImage *)image withEventName:(NSString *)eventName withDescription:(NSString *)eventDescription withStartTime:(NSDate *)startTime withEndTime:(NSDate *)endTime withCompletion:(PFBooleanResultBlock)completion{
++ (void) postUserEvent:(UIImage *)image eventName:(NSString *)eventName description:(NSString *)eventDescription startTime:(NSDate *)startTime endTime:(NSDate *)endTime location:(NSString *)location completion:(PFBooleanResultBlock)completion{
     
-    Event *newEvent= [Event new];
-    newEvent.eventImage = [self getPFFileFromImage:image];
-    newEvent.author = [PFUser currentUser];
-    newEvent.eventName = eventName;
-    newEvent.eventDescription = eventDescription;
-    newEvent.startTime = startTime;
-    newEvent.endTime = endTime;
-    newEvent.attendeesCount = @(0);
+    Event *newEvent= [[Event alloc] initWithImage:image eventName:eventName description:eventDescription startTime:startTime endTime:endTime location:location completion:completion];
     
-    [newEvent saveInBackgroundWithBlock:completion];
+    [newEvent saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error){
+            [newEvent connectEventLocation:newEvent withLocation:location withCompletion:completion];
+        }
+    }];
+}
+
+- (void) connectEventLocation: ( Event * _Nullable)event withLocation: ( NSString * _Nullable) locationName withCompletion: (PFBooleanResultBlock)completion{
+    PFQuery *locationQuery = [Location query];
+    [locationQuery whereKey:@"locationName" equalTo:locationName];
+    locationQuery.limit = 1;
+    
+    [locationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error){
+            Location *location = objects[0];
+            PFRelation *relation = [location relationForKey:@"location"];
+            [relation addObject:event];
+            [location saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded){
+                    [event saveInBackgroundWithBlock:completion];
+                }
+            }];
+            
+        }
+    }];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
