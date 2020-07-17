@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateEventViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-
+@property NSNumber *lat;
+@property NSNumber *lon;
 
 @end
 

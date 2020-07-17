@@ -11,6 +11,8 @@
 #import "SceneDelegate.h"
 #import "EventFeedViewController.h"
 #import "LocationsViewController.h"
+#import "Event.h"
+#import "Location.h"
 
 
 @interface CreateEventViewController () <LocationsViewControllerDelegate>
@@ -43,6 +45,8 @@
 - (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude name:(NSString *) name{
     NSLog(@"%@", name);
     self.locationNameLabel.text = name;
+    self.lat = latitude;
+    self.lon = longitude;
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     
@@ -162,6 +166,35 @@
     [self performSegueWithIdentifier:@"locationSegue" sender:nil];
 }
 
+- (IBAction)didTapAdd:(id)sender {
+    self.view.backgroundColor = UIColor.systemGray2Color;
+    [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded){
+            NSLog(@"Location Successfully created!");
+            
+            NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
+            formatter.dateFormat = @"E MMM d HH:mm";
+            formatter.dateStyle = NSDateFormatterShortStyle;
+            formatter.timeStyle = NSDateFormatterShortStyle;
+            NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
+            NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
+            
+            [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionField.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    NSLog(@"Successfully Created Event");
+                    
+                    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    EventFeedViewController *eventViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
+                    myDelegate.window.rootViewController = eventViewController;
+                }
+            }];
+        } else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+    
+}
 
 #pragma mark - Navigation
 
