@@ -59,6 +59,13 @@
     
     Event *newEvent= [[Event alloc] initWithImage:image eventName:eventName description:eventDescription startTime:startTime endTime:endTime location:location completion:completion];
     
+    newEvent[@"image"] = [self getPFFileFromImage:image];
+    newEvent[@"eventName"] = eventName;
+    newEvent[@"eventDescription"] = eventDescription;
+    newEvent[@"startTime"] = startTime;
+    newEvent[@"endTime"] = endTime;
+    newEvent[@"locationName"] = location;
+    
     [newEvent saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error){
             [newEvent connectEventLocation:newEvent withLocation:location withCompletion:completion];
@@ -79,9 +86,16 @@
             [location saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){
                     [event saveInBackgroundWithBlock:completion];
+                    NSLog(@"Event success!");
+                } else{
+                    NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
+                    NSLog(@"%@", errorMessage);
                 }
             }];
             
+        } else{
+            NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
+            NSLog(@"%@", errorMessage);
         }
     }];
 }

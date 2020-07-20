@@ -15,25 +15,30 @@
 @synthesize longitude = _longitude;
 @synthesize locationName = _locationName;
 
-- (instancetype) initWithString:(NSString *)name latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
-    if (self = [super init]){
-        _locationName = name;
-        _latitude = latitude;
-        _longitude = longitude;
-        
-    }
-    return self;
-}
 
 + (nonnull NSString *)parseClassName {
     return @"Location";
 }
 
+- (instancetype) initWithString:(NSString *)name latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
+    if (self = [super init]){
+       _locationName = name;
+        _latitude = latitude;
+        _longitude = longitude;
+    }
+    return self;
+}
+
+
+
 + (void) createLocation:(NSString *)name latitude:(NSNumber *)latitude longitutde:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
     
     Location *newLocation = [[Location alloc] initWithString:name latitude:latitude longitude:longitude completion:completion];
-    [newLocation saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        NSLog(@"success!");
-    }];
+//    NSLog(@"%@, %@, %@", newLocation.locationName, newLocation.latitude, newLocation.longitude);
+    newLocation[@"locationName"] = name;
+    newLocation[@"latitude"] = latitude;
+    newLocation[@"longitude"] = longitude;
+    [newLocation saveInBackgroundWithBlock:completion];
+
 };
 @end

@@ -169,7 +169,7 @@
 - (IBAction)didTapAdd:(id)sender {
     self.view.backgroundColor = UIColor.systemGray2Color;
     [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded){
+        if (!error){
             NSLog(@"Location Successfully created!");
             
             NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
@@ -180,7 +180,7 @@
             NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
             
             [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionField.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (succeeded) {
+                if (!error) {
                     NSLog(@"Successfully Created Event");
                     
                     SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;

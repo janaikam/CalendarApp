@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface User : PFUser <PFSubclassing>
+@interface User : PFObject <PFSubclassing>
 
 @property (nonatomic, copy) NSString *username;
 
