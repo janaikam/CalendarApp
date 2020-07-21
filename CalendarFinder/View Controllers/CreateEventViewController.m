@@ -40,6 +40,14 @@
     self.startDatePickerView.alpha = 0;
     self.endDatePickerView.alpha = 0;
     
+    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm";
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
+    self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
+    
 }
 
 - (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude name:(NSString *) name{
