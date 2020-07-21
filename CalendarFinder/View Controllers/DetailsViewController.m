@@ -9,6 +9,12 @@
 #import "DetailsViewController.h"
 
 @interface DetailsViewController ()
+@property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+
 
 @end
 
@@ -17,6 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"%@", self.event.eventName);
+    
+    // Load information from the previous screen.
+    self.eventNameLabel.text = self.event.eventName;
+    self.descriptionLabel.text = self.event.description;
+    self.authorLabel.text = self.event.author.username;
+    
+    self.eventImageView.file = self.event.eventImage;
+    [self.eventImageView loadInBackground];
+    
+    
 }
 
 /*
