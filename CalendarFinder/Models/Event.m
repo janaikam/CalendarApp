@@ -10,16 +10,6 @@
 
 @implementation Event
 
-//@dynamic  eventID;
-//@dynamic userID;
-//@dynamic author;
-//@dynamic eventDescription;
-//@dynamic attendeesCount;
-//@dynamic startTime;
-//@dynamic endTime;
-//@dynamic eventImage;
-//@dynamic location;
-
 @synthesize eventName = _eventName;
 @synthesize eventID = _eventID;
 @synthesize userID = _userID;
