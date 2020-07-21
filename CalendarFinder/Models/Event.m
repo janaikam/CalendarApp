@@ -26,7 +26,7 @@
 @dynamic attendeesCount;
 @dynamic startTime;
 @dynamic endTime;
-@dynamic eventImage;
+@dynamic image;
 @dynamic location;
 
 - (instancetype) initWithImage:(UIImage *)image
@@ -40,7 +40,7 @@
         
         self.eventName = eventName;
         self.author = [PFUser currentUser];
-        self.eventImage = [self.class getPFFileFromImage:image];
+        self.image = [self.class getPFFileFromImage:image];
         self.eventDescription = eventDescription;
         self.startTime = startTime;
         self.endTime = endTime;
@@ -66,13 +66,13 @@
 
 - (void) connectEventLocation: ( Event * _Nullable)event withLocation: ( NSString * _Nullable) locationName withCompletion: (PFBooleanResultBlock)completion{
     PFQuery *locationQuery = [Location query];
-    [locationQuery whereKey:@"locationName" equalTo:locationName];
+    [locationQuery whereKey:@"location" equalTo:locationName];
     locationQuery.limit = 1;
     
     [locationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error){
             Location *location = objects[0];
-            PFRelation *relation = [location relationForKey:@"location"];
+            PFRelation *relation = [location relationForKey:@"locationRelation"];
             [relation addObject:event];
             [location saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){

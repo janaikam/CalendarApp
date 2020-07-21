@@ -27,10 +27,10 @@
     
     // Load information from the previous screen.
     self.eventNameLabel.text = self.event.eventName;
-    self.descriptionLabel.text = self.event.description;
+    self.descriptionLabel.text = self.event.eventDescription;
     self.authorLabel.text = self.event.author.username;
     
-    self.eventImageView.file = self.event.eventImage;
+    self.eventImageView.file = self.event.image;
     [self.eventImageView loadInBackground];
     
     

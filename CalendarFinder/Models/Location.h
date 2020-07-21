@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Location : PFObject <PFSubclassing>
 
 @property (nonatomic, copy, readonly) NSString *locationID;
-@property (nonatomic, copy, readonly) NSString *locationName;
+@property (nonatomic, copy, readonly) NSString *location;
 @property (nonatomic, strong, readonly) NSNumber *latitude;
 @property (nonatomic, strong, readonly) NSNumber *longitude;
 

@@ -42,6 +42,7 @@
 
 -(void)getFeed{
     PFQuery *query = [Event query];
+    [query includeKey:@"author"];
     query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {

@@ -11,7 +11,7 @@
 @interface Location()
 
 @property (nonatomic, copy, readwrite) NSString *locationID;
-@property (nonatomic, copy, readwrite) NSString *locationName;
+@property (nonatomic, copy, readwrite) NSString *location;
 @property (nonatomic, strong, readwrite) NSNumber *latitude;
 @property (nonatomic, strong, readwrite) NSNumber *longitude;
 
@@ -22,7 +22,7 @@
 @dynamic locationID;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic locationName;
+@dynamic location;
 
 
 + (nonnull NSString *)parseClassName {
@@ -31,7 +31,7 @@
 
 - (instancetype) initWithString:(NSString *)name latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
     if (self = [super init]){
-        self.locationName = name;
+        self.location = name;
         self.latitude = latitude;
         self.longitude = longitude;
     }
