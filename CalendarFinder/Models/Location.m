@@ -8,12 +8,21 @@
 
 #import "Location.h"
 
+@interface Location()
+
+@property (nonatomic, copy, readwrite) NSString *locationID;
+@property (nonatomic, copy, readwrite) NSString *locationName;
+@property (nonatomic, strong, readwrite) NSNumber *latitude;
+@property (nonatomic, strong, readwrite) NSNumber *longitude;
+
+@end
+
 @implementation Location
 
-@synthesize locationID = _locationID;
-@synthesize latitude = _latitude;
-@synthesize longitude = _longitude;
-@synthesize locationName = _locationName;
+@dynamic locationID;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic locationName;
 
 
 + (nonnull NSString *)parseClassName {
@@ -22,9 +31,9 @@
 
 - (instancetype) initWithString:(NSString *)name latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
     if (self = [super init]){
-       _locationName = name;
-        _latitude = latitude;
-        _longitude = longitude;
+        self.locationName = name;
+        self.latitude = latitude;
+        self.longitude = longitude;
     }
     return self;
 }
@@ -34,10 +43,7 @@
 + (void) createLocation:(NSString *)name latitude:(NSNumber *)latitude longitutde:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
     
     Location *newLocation = [[Location alloc] initWithString:name latitude:latitude longitude:longitude completion:completion];
-//    NSLog(@"%@, %@, %@", newLocation.locationName, newLocation.latitude, newLocation.longitude);
-    newLocation[@"locationName"] = name;
-    newLocation[@"latitude"] = latitude;
-    newLocation[@"longitude"] = longitude;
+
     [newLocation saveInBackgroundWithBlock:completion];
 
 };

@@ -26,13 +26,13 @@
     self.eventView.file = event[@"image"];
     [self.eventView loadInBackground];
     
-    self.nameLabel.text = event[@"eventName"];
-    self.descriptionLabel.text = event[@"eventDescription"];
+    self.nameLabel.text = event.eventName;
+    self.descriptionLabel.text = event.eventDescription;
     
     NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm";
     formatter.dateStyle = NSDateFormatterShortStyle;
-    self.timeLabel.text = [formatter stringFromDate:event[@"startTime"]];
+    self.timeLabel.text = [formatter stringFromDate:event.startTime];
 }
 
 @end

@@ -8,18 +8,26 @@
 
 #import "Event.h"
 
+@interface Event()
+
+@property (nonatomic, copy, readwrite) NSString *eventID;
+@property (nonatomic, copy, readwrite) NSString *userID;
+@property (nonatomic, strong ,readwrite) PFUser *author;
+
+@end
+
 @implementation Event
 
-@synthesize eventName = _eventName;
-@synthesize eventID = _eventID;
-@synthesize userID = _userID;
-@synthesize author = _author;
-@synthesize eventDescription = _eventDescription;
-@synthesize attendeesCount = _attendeesCount;
-@synthesize startTime = _startTime;
-@synthesize endTime = _endTime;
-@synthesize eventImage = _eventImage;
-@synthesize location = _location;
+@dynamic eventName;
+@dynamic eventID;
+@dynamic userID;
+@dynamic author;
+@dynamic eventDescription;
+@dynamic attendeesCount;
+@dynamic startTime;
+@dynamic endTime;
+@dynamic eventImage;
+@dynamic location;
 
 - (instancetype) initWithImage:(UIImage *)image
                  eventName:(NSString *)eventName
@@ -30,13 +38,13 @@
         completion:(PFBooleanResultBlock)completion{
     if (self = [super init]){
         
-        _eventName = eventName;
-        _author = [PFUser currentUser];
-        _eventImage = [self.class getPFFileFromImage:image];
-        _eventDescription = eventDescription;
-        _startTime = startTime;
-        _endTime = endTime;
-        _location = location;
+        self.eventName = eventName;
+        self.author = [PFUser currentUser];
+        self.eventImage = [self.class getPFFileFromImage:image];
+        self.eventDescription = eventDescription;
+        self.startTime = startTime;
+        self.endTime = endTime;
+        self.location = location;
     }
     return self;
 }
@@ -48,13 +56,6 @@
 + (void) postUserEvent:(UIImage *)image eventName:(NSString *)eventName description:(NSString *)eventDescription startTime:(NSDate *)startTime endTime:(NSDate *)endTime location:(NSString *)location completion:(PFBooleanResultBlock)completion{
     
     Event *newEvent= [[Event alloc] initWithImage:image eventName:eventName description:eventDescription startTime:startTime endTime:endTime location:location completion:completion];
-    
-    newEvent[@"image"] = [self getPFFileFromImage:image];
-    newEvent[@"eventName"] = eventName;
-    newEvent[@"eventDescription"] = eventDescription;
-    newEvent[@"startTime"] = startTime;
-    newEvent[@"endTime"] = endTime;
-    newEvent[@"locationName"] = location;
     
     [newEvent saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error){
