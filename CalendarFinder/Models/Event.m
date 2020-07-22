@@ -30,12 +30,12 @@
 @dynamic location;
 
 - (instancetype) initWithImage:(UIImage *)image
-                 eventName:(NSString *)eventName
-               description:(NSString *)eventDescription
-                 startTime:(NSDate *)startTime
-                   endTime:(NSDate *)endTime
-                  location:(NSString *)location
-        completion:(PFBooleanResultBlock)completion{
+                     eventName:(NSString *)eventName
+                   description:(NSString *)eventDescription
+                     startTime:(NSDate *)startTime
+                       endTime:(NSDate *)endTime
+                      location:(NSString *)location
+                    completion:(PFBooleanResultBlock)completion{
     if (self = [super init]){
         
         self.eventName = eventName;
@@ -72,8 +72,8 @@
     [locationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error){
             Location *location = objects[0];
-            PFRelation *relation = [location relationForKey:@"locationRelation"];
-            [relation addObject:event];
+            PFRelation *relation = [event relationForKey:@"locationRelation"];
+            [relation addObject:location];
             [location saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){
                     [event saveInBackgroundWithBlock:completion];
@@ -92,7 +92,7 @@
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
- 
+    
     // check if image is not nil
     if (!image) {
         return nil;
