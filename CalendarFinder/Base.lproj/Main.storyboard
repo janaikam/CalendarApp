@@ -269,8 +269,8 @@
                                 <rect key="frame" x="0.0" y="46" width="414" height="389"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date/Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHv-PM-hQA">
-                                <rect key="frame" x="18" y="492" width="378" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7/23/20 1:48 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHv-PM-hQA">
+                                <rect key="frame" x="18" y="492" width="122" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -318,6 +318,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7/23/20 1:48 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-cF-kMs">
+                                <rect key="frame" x="201" y="492" width="122" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJp-b9-VUT">
+                                <rect key="frame" x="148" y="492" width="54" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mUO-ny-a4T"/>
@@ -325,10 +339,11 @@
                     <navigationItem key="navigationItem" id="1Xi-tV-hbj"/>
                     <connections>
                         <outlet property="authorLabel" destination="HlH-Ow-VeK" id="r1j-Vb-k1b"/>
-                        <outlet property="dateLabel" destination="fHv-PM-hQA" id="96E-CT-jqL"/>
                         <outlet property="descriptionLabel" destination="sAq-UD-nmC" id="lcQ-eC-Cce"/>
+                        <outlet property="endDateLabel" destination="DUd-cF-kMs" id="8zt-2p-Gxv"/>
                         <outlet property="eventImageView" destination="zdq-ju-o6A" id="vqQ-Ox-uPn"/>
                         <outlet property="eventNameLabel" destination="yeW-6Y-VAZ" id="WaN-vf-3bK"/>
+                        <outlet property="startDateLabel" destination="fHv-PM-hQA" id="1IT-Hj-HmR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3h-dp-Luk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
