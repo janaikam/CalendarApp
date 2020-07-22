@@ -160,7 +160,7 @@
                                 <rect key="frame" x="0.0" y="-54" width="414" height="485"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="146" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-DG-QOo">
-                                <rect key="frame" x="0.0" y="427" width="414" height="415"/>
+                                <rect key="frame" x="0.0" y="431" width="414" height="411"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="146" id="7W0-gp-5ZD" customClass="EventCell">
@@ -228,10 +228,10 @@
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="top" secondItem="ixM-dH-fSU" secondAttribute="top" constant="-54" id="HWt-73-y3V"/>
                             <constraint firstItem="1Va-pd-w5m" firstAttribute="bottom" secondItem="ccD-eU-0pf" secondAttribute="bottom" constant="328" id="I6I-Px-jUx"/>
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="leading" secondItem="1Va-pd-w5m" secondAttribute="leading" id="OxE-eW-hbe"/>
+                            <constraint firstItem="qku-DG-QOo" firstAttribute="top" secondItem="ccD-eU-0pf" secondAttribute="bottom" id="SrO-oB-aEF"/>
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="trailing" secondItem="1Va-pd-w5m" secondAttribute="trailing" id="b3B-SR-N0c"/>
                             <constraint firstItem="qku-DG-QOo" firstAttribute="trailing" secondItem="1Va-pd-w5m" secondAttribute="trailing" id="pdO-Hj-KXi"/>
                             <constraint firstAttribute="bottom" secondItem="qku-DG-QOo" secondAttribute="bottom" id="vgN-eO-BLP"/>
-                            <constraint firstItem="qku-DG-QOo" firstAttribute="top" secondItem="1Va-pd-w5m" secondAttribute="top" constant="371" id="xVT-9D-XKt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Va-pd-w5m"/>
                     </view>

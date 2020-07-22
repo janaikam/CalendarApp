@@ -41,10 +41,24 @@
 
 
 + (void) createLocation:(NSString *)name latitude:(NSNumber *)latitude longitutde:(NSNumber *)longitude completion:(PFBooleanResultBlock)completion{
+    PFQuery *locationQuery = [Location query];
+    [locationQuery whereKey:@"location" containsString:name];
+    locationQuery.limit = 1;
     
-    Location *newLocation = [[Location alloc] initWithString:name latitude:latitude longitude:longitude completion:completion];
+    [locationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable objects, NSError * _Nullable error) {
+        if (objects){
+            NSLog(@"Location exsits");
+            Location *location = objects[0];
+            [location saveInBackgroundWithBlock:completion];
+            
+        }else{
+            Location *newLocation = [[Location alloc] initWithString:name latitude:latitude longitude:longitude completion:completion];
 
-    [newLocation saveInBackgroundWithBlock:completion];
+            [newLocation saveInBackgroundWithBlock:completion];
+        }
+    }];
+    
+    
 
 };
 @end

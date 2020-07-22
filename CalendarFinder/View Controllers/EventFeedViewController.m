@@ -54,7 +54,7 @@
             for (Event *event in objects) {
                 PFRelation *relation = [event relationForKey:@"locationRelation"];
                 PFQuery *relationQuery = [relation query];
-                [relationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable locations, NSError * _Nullable error) {
+                [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable locations, NSError * _Nullable error) {
                     Location *eventLocation = locations[0];
                     [self addPin:eventLocation];
                 }];

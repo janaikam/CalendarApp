@@ -177,6 +177,7 @@
 - (IBAction)didTapAdd:(id)sender {
     self.view.backgroundColor = UIColor.systemGray2Color;
     [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
+        NSLog(@"Are you here?");
         if (!error){
             NSLog(@"Location Successfully created!");
             
