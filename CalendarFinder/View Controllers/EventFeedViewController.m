@@ -40,21 +40,42 @@
     [self getFeed];
 }
 
+// Gets the events from Parse
 -(void)getFeed{
     PFQuery *query = [Event query];
     [query includeKey:@"author"];
     query.limit = 20;
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
         if (objects) {
             NSLog(@"Succesfully Loaded Feed!");
             self.eventArray = [objects mutableCopy];
+            
+            for (Event *event in objects) {
+                PFRelation *relation = [event relationForKey:@"locationRelation"];
+                PFQuery *relationQuery = [relation query];
+                [relationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable locations, NSError * _Nullable error) {
+                    Location *eventLocation = locations[0];
+                    [self addPin:eventLocation];
+                }];
+            }
             
             [self.tableView reloadData];
         } else{
             NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
+}
+
+//Takes in a Location and adds a pin to the map
+-(void)addPin:(Location *)location{
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(location.latitude.floatValue, location.longitude.floatValue);
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = coordinate;
+    annotation.title = @"Event!";
+    [self.mapView addAnnotation:annotation];
 }
 
 - (IBAction)didTapLogout:(id)sender {

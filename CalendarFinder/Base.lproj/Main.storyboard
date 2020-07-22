@@ -183,13 +183,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP5-KG-IiT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP5-KG-IiT">
                                                     <rect key="frame" x="148" y="17" width="98" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:00pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO8-Y2-qXc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="6:00pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO8-Y2-qXc">
                                                     <rect key="frame" x="284" y="17" width="59" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -200,7 +200,6 @@
                                                 <constraint firstItem="rO8-Y2-qXc" firstAttribute="top" secondItem="IP5-KG-IiT" secondAttribute="top" id="FRg-8u-ORD"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="rO8-Y2-qXc" secondAttribute="trailing" constant="3" id="LNb-nY-WDW"/>
                                                 <constraint firstItem="r7F-os-Q6l" firstAttribute="top" secondItem="IP5-KG-IiT" secondAttribute="bottom" constant="8" id="NPt-eT-rhm"/>
-                                                <constraint firstItem="rO8-Y2-qXc" firstAttribute="leading" secondItem="IP5-KG-IiT" secondAttribute="trailing" constant="38" id="TfY-gh-ar6"/>
                                                 <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="r7F-os-Q6l" secondAttribute="bottom" constant="69" id="XJX-BW-7a3"/>
                                                 <constraint firstItem="r7F-os-Q6l" firstAttribute="leading" secondItem="VNf-oA-a3I" secondAttribute="trailing" constant="8" id="YHx-Sc-wMi"/>
                                                 <constraint firstItem="VNf-oA-a3I" firstAttribute="leading" secondItem="47b-wp-mSF" secondAttribute="leading" constant="11" id="ZHD-SC-eIF"/>
@@ -209,6 +208,7 @@
                                                 <constraint firstItem="IP5-KG-IiT" firstAttribute="leading" secondItem="VNf-oA-a3I" secondAttribute="trailing" constant="8" id="inR-4G-I5F"/>
                                                 <constraint firstItem="IP5-KG-IiT" firstAttribute="top" secondItem="47b-wp-mSF" secondAttribute="topMargin" constant="6" id="jnI-gL-e8N"/>
                                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="VNf-oA-a3I" secondAttribute="bottom" constant="17" id="lvA-eK-d30"/>
+                                                <constraint firstItem="rO8-Y2-qXc" firstAttribute="leading" secondItem="IP5-KG-IiT" secondAttribute="trailing" constant="38" id="w6n-RP-7Ko"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
