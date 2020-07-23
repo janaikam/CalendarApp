@@ -28,7 +28,7 @@
 @dynamic endTime;
 @dynamic image;
 @dynamic location;
-@dynamic attendees;
+
 
 - (instancetype) initWithImage:(UIImage *)image
                      eventName:(NSString *)eventName
@@ -46,7 +46,6 @@
         self.startTime = startTime;
         self.endTime = endTime;
         self.location = location;
-        self.attendees = [NSMutableArray new];
     }
     return self;
 }
@@ -89,6 +88,21 @@
         } else{
             NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
             NSLog(@"%@", errorMessage);
+        }
+    }];
+}
+
+- (void) connectEventAttendees: (Event *) event user: (PFUser *) user withCompletion: (PFBooleanResultBlock)completion{
+    PFRelation *relation = [event relationForKey:@"attendees"];
+    [relation addObject:user];
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            int original = event.attendeesCount.intValue;
+            original += 1;
+            event.attendeesCount = [NSNumber numberWithInt:original];
+            [event saveInBackgroundWithBlock:completion];
+        }else{
+            NSLog(@"%@", error.localizedDescription);   
         }
     }];
 }

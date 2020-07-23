@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, copy) NSString *location;
-@property (nonatomic, strong) NSMutableArray *attendees;
+
 
 - (instancetype) initWithImage:(UIImage *)image
                      eventName:(NSString *)eventName
@@ -42,6 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
                endTime: ( NSDate * _Nullable ) endTime
               location: (NSString* _Nullable)location
             completion: (PFBooleanResultBlock  _Nullable)completion;
+
+- (void) connectEventAttendees: (Event *) event
+                          user: (PFUser *) user
+                withCompletion: (PFBooleanResultBlock)completion;
 
 @end
 

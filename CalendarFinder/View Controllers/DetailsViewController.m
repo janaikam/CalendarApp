@@ -48,12 +48,7 @@
 }
 
 - (IBAction)didTapAddCalendar:(id)sender {
-    [self.event.attendees addObject:[PFUser currentUser]];
-    int original = self.event.attendeesCount.intValue;
-    original += 1;
-    self.event.attendeesCount = [NSNumber numberWithInt:original];
-    
-    [self.event saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    [self.event connectEventAttendees:self.event user:[PFUser currentUser] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(!error){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -61,9 +56,9 @@
             myDelegate.window.rootViewController = calendarViewController;
         } else{
             NSLog(@"%@", error.localizedDescription);
+            
         }
     }];
-    
     
 }
 
