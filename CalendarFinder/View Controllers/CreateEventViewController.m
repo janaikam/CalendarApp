@@ -18,7 +18,7 @@
 @interface CreateEventViewController () <LocationsViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UITextField *eventNameField;
-@property (weak, nonatomic) IBOutlet UITextField *eventDescriptionField;
+@property (weak, nonatomic) IBOutlet UITextView *eventDescriptionView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePickerView;
@@ -188,7 +188,7 @@
             NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
             NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
             
-            [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionField.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
+            [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionView.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (!error) {
                     NSLog(@"Successfully Created Event");
                     
