@@ -28,6 +28,7 @@
 @dynamic endTime;
 @dynamic image;
 @dynamic location;
+@dynamic attendees;
 
 - (instancetype) initWithImage:(UIImage *)image
                      eventName:(NSString *)eventName
@@ -45,6 +46,7 @@
         self.startTime = startTime;
         self.endTime = endTime;
         self.location = location;
+        self.attendees = [NSMutableArray new];
     }
     return self;
 }

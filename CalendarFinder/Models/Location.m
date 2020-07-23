@@ -46,7 +46,7 @@
     locationQuery.limit = 1;
     
     [locationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable objects, NSError * _Nullable error) {
-        if (objects){
+        if (objects.count > 0){
             NSLog(@"Location exsits");
             Location *location = objects[0];
             [location saveInBackgroundWithBlock:completion];

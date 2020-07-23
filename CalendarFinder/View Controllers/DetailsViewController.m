@@ -7,6 +7,8 @@
 //
 
 #import "DetailsViewController.h"
+#import "SceneDelegate.h"
+#import "CalendarViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
@@ -15,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *attendeesCountLabel;
 
 
 @end
@@ -30,6 +33,7 @@
     self.eventNameLabel.text = self.event.eventName;
     self.descriptionLabel.text = self.event.eventDescription;
     self.authorLabel.text = self.event.author.username;
+    self.attendeesCountLabel.text = [NSString stringWithFormat:@"%d", self.event.attendeesCount.intValue];
     
     self.eventImageView.file = self.event.image;
     [self.eventImageView loadInBackground];
@@ -42,6 +46,27 @@
     self.endDateLabel.text = [formatter stringFromDate:self.event.endTime];
     
 }
+
+- (IBAction)didTapAddCalendar:(id)sender {
+    [self.event.attendees addObject:[PFUser currentUser]];
+    int original = self.event.attendeesCount.intValue;
+    original += 1;
+    self.event.attendeesCount = [NSNumber numberWithInt:original];
+    
+    [self.event saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(!error){
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            CalendarViewController *calendarViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
+            myDelegate.window.rootViewController = calendarViewController;
+        } else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    
+}
+
 
 /*
 #pragma mark - Navigation

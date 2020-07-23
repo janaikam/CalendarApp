@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *endTime;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, copy) NSString *location;
+@property (nonatomic, strong) NSMutableArray *attendees;
 
 - (instancetype) initWithImage:(UIImage *)image
                      eventName:(NSString *)eventName
