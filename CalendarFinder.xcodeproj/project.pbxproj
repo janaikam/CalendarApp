@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A4E0A5924CA2C5800DBB1B3 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */; };
+		1A4E0A5C24CB6B0000DBB1B3 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */; };
 		1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2032324BCEB59009171A6 /* AppDelegate.m */; };
 		1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2032624BCEB59009171A6 /* SceneDelegate.m */; };
 		1AB2032D24BCEB59009171A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2032B24BCEB59009171A6 /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		185FD5FD83DBCF4B9CC7006E /* Pods-CalendarFinder-CalendarFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarFinder-CalendarFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-CalendarFinder-CalendarFinderUITests/Pods-CalendarFinder-CalendarFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A4E0A5724CA2C5800DBB1B3 /* CalendarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
 		1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
+		1A4E0A5A24CB6B0000DBB1B3 /* DateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		1AB2031F24BCEB59009171A6 /* CalendarFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB2032224BCEB59009171A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AB2032324BCEB59009171A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				1AB5493B24BE3378006EDBCA /* Location.m */,
 				1AB5494024BF53F0006EDBCA /* User.h */,
 				1AB5494124BF53F0006EDBCA /* User.m */,
+				1A4E0A5A24CB6B0000DBB1B3 /* DateHelper.h */,
+				1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 				1AB5494824BF94F5006EDBCA /* LocationCell.m in Sources */,
 				1AB2035A24BCF731009171A6 /* LoginViewController.m in Sources */,
 				1AB5493824BE0EDF006EDBCA /* Event.m in Sources */,
+				1A4E0A5C24CB6B0000DBB1B3 /* DateHelper.m in Sources */,
 				1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */,
 				1AB5493F24BE3F59006EDBCA /* EventCell.m in Sources */,
 				1AB2033524BCEB5A009171A6 /* main.m in Sources */,

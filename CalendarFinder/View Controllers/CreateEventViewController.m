@@ -13,6 +13,7 @@
 #import "LocationsViewController.h"
 #import "Event.h"
 #import "Location.h"
+#import "DateHelper.h"
 
 
 @interface CreateEventViewController () <LocationsViewControllerDelegate>
@@ -40,10 +41,7 @@
     self.startDatePickerView.alpha = 0;
     self.endDatePickerView.alpha = 0;
     
-    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm";
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSDateFormatter *formatter = [DateHelper dateFormat];
     
     self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
     self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
@@ -144,10 +142,7 @@
 }
 
 - (IBAction)startValueChanged:(id)sender {
-    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm";
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSDateFormatter *formatter = [DateHelper dateFormat];
 
     
     self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
@@ -155,10 +150,7 @@
 }
 
 - (IBAction)endValueChanged:(id)sender {
-    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm";
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSDateFormatter *formatter = [DateHelper dateFormat];
     
     self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
 }
@@ -181,10 +173,7 @@
         if (!error){
             NSLog(@"Location Successfully created!");
             
-            NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-            formatter.dateFormat = @"E MMM d HH:mm";
-            formatter.dateStyle = NSDateFormatterShortStyle;
-            formatter.timeStyle = NSDateFormatterShortStyle;
+            NSDateFormatter *formatter = [DateHelper dateFormat];
             NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
             NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
             

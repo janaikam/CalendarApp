@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "SceneDelegate.h"
 #import "CalendarViewController.h"
+#import "DateHelper.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
@@ -39,9 +40,7 @@
     [self.eventImageView loadInBackground];
     
     
-    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm";
-    formatter.dateStyle = NSDateFormatterShortStyle;
+    NSDateFormatter *formatter = [DateHelper dateFormat];
     self.startDateLabel.text = [formatter stringFromDate:self.event.startTime];
     self.endDateLabel.text = [formatter stringFromDate:self.event.endTime];
     
