@@ -7,10 +7,15 @@
 //
 
 #import "CalendarViewController.h"
+#import "Event.h"
+#import "CalendarCell.h"
 #import <FSCalendar/FSCalendar.h>
+#import <Parse/Parse.h>
 
-@interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate>
-@property (weak, nonatomic) FSCalendar *calendar;
+@interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *calendarEventArray;
 
 @end
 
@@ -20,12 +25,66 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    FSCalendar *calendar = [[FSCalendar alloc] init];
-    calendar.dataSource = self;
-    calendar.delegate = self;
-    [self.view addSubview:calendar];
-    self.calendar = calendar;
-    self.calendar.scrollDirection = FSCalendarScrollDirectionVertical;
+    self.calendarView.dataSource = self;
+    self.calendarView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.calendarView.scrollDirection = FSCalendarScrollDirectionVertical;
+    
+    [self loadTableView:self.tableView withDate:self.calendarView.today];
+}
+
+// FSCalendarDataSource
+- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date{
+    return YES;
+}
+
+// FSCalendarDelegate
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
+    [self loadTableView:self.tableView withDate:date];
+}
+
+
+- (void) loadTableView:(UITableView *) tableView withDate: (NSDate *)date{
+    
+    
+    NSDate *nextDay = [date dateByAddingTimeInterval:84600];
+    
+    PFQuery *query = [Event query];
+    
+    //Checks if the date is between the beginning of the given date
+    //and the end of the next date
+    [query whereKey:@"startTime" greaterThan:date];
+    [query whereKey:@"startTime" lessThan:nextDay];
+    
+    [query includeKey:@"author"];
+    query.limit = 20;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable events, NSError * _Nullable error) {
+        if (events){
+            self.calendarEventArray = [events mutableCopy];
+            [self.tableView reloadData];
+            NSLog(@"Calendar Feed loaded");
+        }else if(error){
+            NSLog(@"%@", error.localizedDescription);
+        }else{
+            NSLog(@"There are no events to display");
+        }
+        
+    }];
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell"];
+    Event *event = self.calendarEventArray[indexPath.row];
+    
+    [cell setEvent:event];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.calendarEventArray.count;
 }
 
 /*
@@ -37,5 +96,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
 
 @end
