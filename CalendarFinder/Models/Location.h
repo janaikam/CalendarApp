@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//Adds a location for events to connect to, so they can be viewed on the map.
 @interface Location : PFObject <PFSubclassing>
 
 @property (nonatomic, copy, readonly) NSString *locationID;

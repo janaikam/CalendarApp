@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// Creates an event object and sends the information to Parse. Adds attendees to a relation in Parse.
 @interface Event : PFObject <PFSubclassing>
 
 @property (nonatomic, copy, readonly) NSString *eventID;
