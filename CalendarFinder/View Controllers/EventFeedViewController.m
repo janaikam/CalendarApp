@@ -42,8 +42,13 @@
 
 // Gets the events from Parse
 -(void)getFeed{
+    NSDate *today = [NSDate date];
     PFQuery *query = [Event query];
     [query includeKey:@"author"];
+    //loads events that haven't ended/past yet
+    [query whereKey:@"endTime" greaterThan:today];
+    //orders events by time
+    [query orderByAscending:@"startTime"];
     query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
