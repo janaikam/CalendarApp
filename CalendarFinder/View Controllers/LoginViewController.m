@@ -36,20 +36,8 @@
         if (error != nil) {
             NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
             NSLog(@"%@", errorMessage);
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:errorMessage
-                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            [self createUICancelAlert:@"Error" withAlertMessage:errorMessage];
             
-            // create a cancel action
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                                   style:UIAlertActionStyleCancel
-                                                                 handler:^(UIAlertAction * _Nonnull action) {
-                // handle cancel response here. Doing nothing will dismiss the view.
-            }];
-            
-            // add the cancel action to the alertController
-            [alert addAction:cancelAction];
-            [self presentViewController:alert animated:YES completion:^{}];
         } else {
             NSLog(@"User registered successfully");
             
@@ -60,14 +48,7 @@
     } else{
         NSLog(@"There is no username or password");
         NSString *message = @"Username/Password is empty. Please enter a value in the field.";
-        UIAlertController *signupAlert = [UIAlertController alertControllerWithTitle:@"Blank Username/Password"  message:message preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        UIAlertAction *clearAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        
-        [signupAlert addAction:clearAction];
-        [self presentViewController:signupAlert animated:YES completion:^{}];
+        [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
     }
 }
 
@@ -82,20 +63,8 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
             NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
             NSLog(@"%@", errorMessage);
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:errorMessage
-                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            [self createUICancelAlert:@"Error" withAlertMessage:errorMessage];
             
-            // create a cancel action
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                                   style:UIAlertActionStyleCancel
-                                                                 handler:^(UIAlertAction * _Nonnull action) {
-                // handle cancel response here. Doing nothing will dismiss the view.
-            }];
-            
-            // add the cancel action to the alertController
-            [alert addAction:cancelAction];
-            [self presentViewController:alert animated:YES completion:^{}];
         } else {
             NSLog(@"User logged in successfully");
             
@@ -106,18 +75,22 @@
     } else{
         NSLog(@"Empty Username or Password");
         NSString *message = @"Username/Password is empty. Please enter a value in the field.";
-        UIAlertController *loginAlert = [UIAlertController alertControllerWithTitle:@"Blank Username/Password"  message:message preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        UIAlertAction *clearAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        
-        [loginAlert addAction:clearAction];
-        [self presentViewController:loginAlert animated:YES completion:^{}];
+        [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
     }
 }
 
-
+-(void)createUICancelAlert:(NSString *)alertName withAlertMessage:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertName message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+}
 
 /*
 #pragma mark - Navigation
