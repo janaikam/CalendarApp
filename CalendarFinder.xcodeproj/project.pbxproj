@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A4E0A5924CA2C5800DBB1B3 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */; };
 		1A4E0A5C24CB6B0000DBB1B3 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */; };
+		1A4E0A5F24CB739500DBB1B3 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5E24CB739500DBB1B3 /* Venue.m */; };
 		1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2032324BCEB59009171A6 /* AppDelegate.m */; };
 		1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2032624BCEB59009171A6 /* SceneDelegate.m */; };
 		1AB2032D24BCEB59009171A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2032B24BCEB59009171A6 /* Main.storyboard */; };
@@ -59,6 +60,8 @@
 		1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		1A4E0A5A24CB6B0000DBB1B3 /* DateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
 		1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		1A4E0A5D24CB739500DBB1B3 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = CalendarFinder/Models/Venue.h; sourceTree = SOURCE_ROOT; };
+		1A4E0A5E24CB739500DBB1B3 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = CalendarFinder/Models/Venue.m; sourceTree = SOURCE_ROOT; };
 		1AB2031F24BCEB59009171A6 /* CalendarFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB2032224BCEB59009171A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AB2032324BCEB59009171A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -230,14 +233,16 @@
 		1AB5493524BE0EC2006EDBCA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A4E0A5A24CB6B0000DBB1B3 /* DateHelper.h */,
+				1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */,
 				1AB5493624BE0EDF006EDBCA /* Event.h */,
 				1AB5493724BE0EDF006EDBCA /* Event.m */,
 				1AB5493A24BE3378006EDBCA /* Location.h */,
 				1AB5493B24BE3378006EDBCA /* Location.m */,
 				1AB5494024BF53F0006EDBCA /* User.h */,
 				1AB5494124BF53F0006EDBCA /* User.m */,
-				1A4E0A5A24CB6B0000DBB1B3 /* DateHelper.h */,
-				1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */,
+				1A4E0A5D24CB739500DBB1B3 /* Venue.h */,
+				1A4E0A5E24CB739500DBB1B3 /* Venue.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				1AB5493C24BE3378006EDBCA /* Location.m in Sources */,
 				1A4E0A5924CA2C5800DBB1B3 /* CalendarCell.m in Sources */,
 				1AB5494224BF53F0006EDBCA /* User.m in Sources */,
+				1A4E0A5F24CB739500DBB1B3 /* Venue.m in Sources */,
 				1AB2036024BCFCBD009171A6 /* CalendarViewController.m in Sources */,
 				1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */,
 				1AB5494524BF94E0006EDBCA /* LocationsViewController.m in Sources */,
