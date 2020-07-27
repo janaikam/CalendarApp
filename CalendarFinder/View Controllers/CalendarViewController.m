@@ -48,6 +48,7 @@
 
 - (void) loadTableView:(UITableView *) tableView withDate: (NSDate *)date{
     
+    [self.calendarEventArray removeAllObjects];
     
     NSDate *nextDay = [date dateByAddingTimeInterval:84600];
     
@@ -55,7 +56,7 @@
     
     //Checks if the date is between the beginning of the given date
     //and the end of the next date
-    [query whereKey:@"startTime" greaterThan:date];
+    [query whereKey:@"endTime" greaterThan:date];
     [query whereKey:@"startTime" lessThan:nextDay];
     
     [query includeKey:@"author"];
@@ -67,12 +68,12 @@
             for (Event *event in objects) {
                 PFRelation *relation = [event relationForKey:@"attendees"];
                 PFQuery *relationQuery = [relation query];
+                relationQuery.limit = 1;
                 
                 [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<PFUser *> * _Nullable people, NSError * _Nullable error) {
                     if (people) {
                         //checks if the user accepted the calendar invitation
                         //only lets the event appear if the user added it
-                        NSLog(@"%@", people);
                         for (PFUser *user in people) {
                             NSLog(@"%@", [PFUser currentUser]);
                             
@@ -80,15 +81,16 @@
                                 NSLog(@"calendar test");
                                 [self.calendarEventArray addObject:event];
                                 [self.tableView reloadData];
+                                
                             }
                         }
                     }
                 }];
                 
             }
-            
-            
+            [self.tableView reloadData];
             NSLog(@"Calendar Feed loaded");
+            
         }else if(error){
             NSLog(@"%@", error.localizedDescription);
         }else{
