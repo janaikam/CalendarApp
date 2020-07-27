@@ -11,6 +11,7 @@
 #import "CalendarCell.h"
 #import <FSCalendar/FSCalendar.h>
 #import <Parse/Parse.h>
+#import "DetailsViewController.h"
 
 @interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
@@ -115,15 +116,23 @@
     return self.calendarEventArray.count;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Event *event = self.calendarEventArray[indexPath.row];
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        
+        detailsViewController.event = event;
+    }
 }
-*/
+
 
 
 
