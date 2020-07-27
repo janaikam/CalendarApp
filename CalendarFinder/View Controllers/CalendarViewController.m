@@ -30,6 +30,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.calendarView.scrollDirection = FSCalendarScrollDirectionVertical;
+    self.calendarEventArray = [[NSMutableArray alloc] init];
     
     [self loadTableView:self.tableView withDate:self.calendarView.today];
 }
@@ -60,10 +61,33 @@
     [query includeKey:@"author"];
     query.limit = 20;
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable events, NSError * _Nullable error) {
-        if (events){
-            self.calendarEventArray = [events mutableCopy];
-            [self.tableView reloadData];
+    [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
+        if (objects){
+            //iterate through all the events loaded
+            for (Event *event in objects) {
+                PFRelation *relation = [event relationForKey:@"attendees"];
+                PFQuery *relationQuery = [relation query];
+                
+                [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<PFUser *> * _Nullable people, NSError * _Nullable error) {
+                    if (people) {
+                        //checks if the user accepted the calendar invitation
+                        //only lets the event appear if the user added it
+                        NSLog(@"%@", people);
+                        for (PFUser *user in people) {
+                            NSLog(@"%@", [PFUser currentUser]);
+                            
+                            if ([user.objectId isEqual:[PFUser currentUser].objectId]){
+                                NSLog(@"calendar test");
+                                [self.calendarEventArray addObject:event];
+                                [self.tableView reloadData];
+                            }
+                        }
+                    }
+                }];
+                
+            }
+            
+            
             NSLog(@"Calendar Feed loaded");
         }else if(error){
             NSLog(@"%@", error.localizedDescription);
@@ -73,6 +97,8 @@
         
     }];
 }
+
+
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell"];
