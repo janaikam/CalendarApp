@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface User : PFObject <PFSubclassing>
 
 @property (nonatomic, copy) NSString *username;
+@property (nonatomic, readwrite) NSNumber *currentLatitude;
+@property (nonatomic, readwrite) NSNumber *currentLongitude;
 
 - (instancetype) initWithString: (NSString * _Nullable)userName
                      completion:(PFBooleanResultBlock _Nullable)completion;

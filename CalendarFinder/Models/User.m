@@ -10,11 +10,13 @@
 
 @implementation User
 
-@synthesize username = _username;
+@dynamic username;
+@dynamic currentLatitude;
+@dynamic currentLongitude;
 
 - (instancetype)initWithString:(NSString *)userName completion:(PFBooleanResultBlock)completion{
     if (self = [super init]){
-        _username = userName;
+        self.username = userName;
     }
     return self;
 }
