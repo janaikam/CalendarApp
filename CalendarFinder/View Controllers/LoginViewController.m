@@ -30,8 +30,14 @@
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     
-    if (![self.usernameField.text isEqualToString:@""] || ![self.passwordField.text isEqualToString:@""]) {
-    // call sign up function on the object
+    
+    if ([self.usernameField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]) {
+        NSLog(@"There is no username or password");
+        NSString *message = @"Username/Password is empty. Please enter a value in the field.";
+        [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
+        return;
+    }
+        // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
@@ -45,11 +51,7 @@
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
-    } else{
-        NSLog(@"There is no username or password");
-        NSString *message = @"Username/Password is empty. Please enter a value in the field.";
-        [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
-    }
+
 }
 
 - (IBAction)didTapLogIn:(id)sender {
@@ -57,6 +59,11 @@
     NSString *password = self.passwordField.text;
     
     if (![self.usernameField.text isEqualToString:@""] || ![self.passwordField.text isEqualToString:@""]) {
+        NSLog(@"Empty Username or Password");
+        NSString *message = @"Username/Password is empty. Please enter a value in the field.";
+        [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
+        return;
+    }
         
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
@@ -72,11 +79,6 @@
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
-    } else{
-        NSLog(@"Empty Username or Password");
-        NSString *message = @"Username/Password is empty. Please enter a value in the field.";
-        [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
-    }
 }
 
 -(void)createUICancelAlert:(NSString *)alertName withAlertMessage:(NSString *)message{
