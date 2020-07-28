@@ -16,10 +16,12 @@
 #import "Event.h"
 
 
+
 @interface EventFeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 
 @end
@@ -30,14 +32,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //get user's location when the screen loads
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager startUpdatingLocation];
+    }
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     // Change to users' current location
-    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
-    [self.mapView setRegion:sfRegion animated:false];
+//    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+//    [self.mapView setRegion:sfRegion animated:false];
     
     [self getFeed];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [self.locationManager stopUpdatingLocation];
+
+    MKCoordinateRegion currentLocation = MKCoordinateRegionMake(self.locationManager.location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    [self.mapView setRegion:currentLocation];
+
 }
 
 // Gets the events from Parse
