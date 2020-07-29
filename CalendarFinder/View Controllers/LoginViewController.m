@@ -58,7 +58,7 @@
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     
-    if (![self.usernameField.text isEqualToString:@""] || ![self.passwordField.text isEqualToString:@""]) {
+    if ([self.usernameField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]) {
         NSLog(@"Empty Username or Password");
         NSString *message = @"Username/Password is empty. Please enter a value in the field.";
         [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
