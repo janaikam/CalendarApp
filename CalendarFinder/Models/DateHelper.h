@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// Creates date formatters for the dates on events
 @interface DateHelper : NSObject
 
 +(NSDateFormatter *)dateFormat;

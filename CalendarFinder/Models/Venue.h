@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// Creates a venue object for the location view controller to pull from
 @interface Venue : NSObject
 
 @property(nonatomic, strong) NSDictionary *data;
