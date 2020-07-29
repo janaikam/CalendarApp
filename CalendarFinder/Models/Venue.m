@@ -19,11 +19,11 @@
 }
 
 -(NSNumber *)latitude {
-    return _data[@"location.lat"];
+    return _data[@"location"][@"lat"];
 }
 
 -(NSNumber *)longitude {
-    return _data[@"location.lon"];
+    return _data[@"location"][@"lng"];
 }
 
 -(NSString *)name {
