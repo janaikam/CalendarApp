@@ -17,7 +17,7 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
 @interface LocationsViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *results;
+@property (strong, nonatomic) NSMutableArray<Venue *> *results;
 
 @end
 
@@ -68,12 +68,14 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
     NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
     
     // Change later to user's current location
+    [self.results removeObjectsInArray:self.results];
     [self fetchLocationsWithQuery:newText nearCity:@"San Francisco"];
     return true;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     // Change to users current location
+    [self.results removeObjectsInArray:self.results];
     [self fetchLocationsWithQuery:searchBar.text nearCity:@"San Francisco"];
 }
 
