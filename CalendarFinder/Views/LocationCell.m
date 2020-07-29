@@ -21,9 +21,9 @@
     // Configure the view for the selected state
 }
 
-- (void)updateWithLocation:(NSDictionary *)location {
-    self.locationNameLabel.text = location[@"name"];
-    self.addressLabel.text = [location valueForKeyPath:@"location.address"];
+- (void)updateWithVenue:(Venue *)venue {
+    self.locationNameLabel.text = [venue name];
+    self.addressLabel.text = [venue address];
 }
 
 

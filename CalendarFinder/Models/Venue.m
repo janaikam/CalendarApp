@@ -10,10 +10,9 @@
 
 @implementation Venue
 
-NSDictionary *_data;
 
 -(instancetype)initWithData:(NSDictionary *)data{
-    if (self = [super init]) {
+    if (self == [super init]) {
         _data = data;
     }
     return self;
@@ -31,5 +30,8 @@ NSDictionary *_data;
     return _data[@"name"];
 }
 
+-(NSString *)address {
+    return [_data valueForKeyPath:@"location.address"];
+}
 
 @end

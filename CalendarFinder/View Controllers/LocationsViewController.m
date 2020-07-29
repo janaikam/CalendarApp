@@ -17,7 +17,7 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
 @interface LocationsViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *results;
+@property (strong, nonatomic) NSMutableArray *results;
 
 @end
 
@@ -29,34 +29,34 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
+    self.results = [[NSMutableArray alloc] init];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // This is the selected venue
-    Venue *venueObject = [[Venue alloc] initWithData:self.results[indexPath.row]];
-
+    Venue *venueObject = self.results[indexPath.row];
+    
     NSNumber *lat = [venueObject latitude];
     NSNumber *lng = [venueObject longitude];
     NSString *name = [venueObject name];
-     
+    
     [self.delegate locationsViewController:self didPickLocationWithLatitude:lat longitude:lng name:name];
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
-    
-    [cell updateWithLocation:self.results[indexPath.row]];
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
+    Venue *venue = self.results[indexPath.row];
+    [cell updateWithVenue:venue];
     return cell;
 }
 
@@ -89,12 +89,19 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"response: %@", responseDictionary);
-            self.results = [responseDictionary valueForKeyPath:@"response.venues"];
-            [self.tableView reloadData];
+            
+            NSArray *localArray = [responseDictionary valueForKeyPath:@"response.venues"];
+            
+            for (NSDictionary *venue in localArray) {
+                Venue *newVenue = [[Venue alloc] initWithData:venue];
+                [self.results addObject:newVenue];
+            }
+            
         }
+        [self.tableView reloadData];
     }];
     [task resume];
+    
 }
 
 

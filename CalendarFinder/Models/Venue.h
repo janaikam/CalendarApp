@@ -12,11 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Venue : NSObject
 
+@property(nonatomic, strong) NSDictionary *data;
+
 @property(nonatomic, strong, readonly) NSNumber *latitude;
 @property(nonatomic, strong, readonly) NSNumber *longitude;
 @property(nonatomic, copy, readonly) NSString *name;
+@property(nonatomic, copy, readonly) NSString *address;
 
 -(instancetype)initWithData:(NSDictionary *)data;
+
+
 
 @end
 
