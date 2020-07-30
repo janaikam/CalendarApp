@@ -10,19 +10,7 @@
 
 @implementation User
 
-@dynamic username;
-@dynamic currentLatitude;
-@dynamic currentLongitude;
 
-- (instancetype)initWithString:(NSString *)userName completion:(PFBooleanResultBlock)completion{
-    if (self = [super init]){
-        self.username = userName;
-    }
-    return self;
-}
 
-+ (nonnull NSString *)parseClassName {
-    return @"User";
-}
 
 @end

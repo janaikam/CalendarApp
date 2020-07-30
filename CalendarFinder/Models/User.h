@@ -12,14 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 //Stores the user and username from Parse
-@interface User : PFObject <PFSubclassing>
+@interface User : PFUser <PFSubclassing>
 
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, readwrite) NSNumber *currentLatitude;
-@property (nonatomic, readwrite) NSNumber *currentLongitude;
 
-- (instancetype) initWithString: (NSString * _Nullable)userName
-                     completion:(PFBooleanResultBlock _Nullable)completion;
 
 @end
 
