@@ -657,8 +657,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="913-Em-QOE"/>
                     <connections>
-                        <outlet property="searchBar" destination="ve9-bL-vcN" id="iqT-vd-nm0"/>
-                        <outlet property="tableView" destination="vRS-xl-GTw" id="k7J-Sd-Zic"/>
+                        <outlet property="searchBar" destination="ve9-bL-vcN" id="gB6-Vj-1xm"/>
+                        <outlet property="tableView" destination="vRS-xl-GTw" id="NaZ-Jy-vnw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRR-3O-JWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

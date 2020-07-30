@@ -28,7 +28,7 @@
 @dynamic endTime;
 @dynamic image;
 @dynamic location;
-
+@dynamic userLocDist;
 
 - (instancetype) initWithImage:(UIImage *)image
                      eventName:(NSString *)eventName
@@ -121,6 +121,22 @@
     }
     
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+}
+
+- (void) setEvent:(Event *)event withUserDistance:(NSNumber *)distance{
+    event.userLocDist = distance;
+    
+}
+
+- (NSComparisonResult)compareEvents:(Event *)eventCompare{
+    if(self.userLocDist == nil || eventCompare.userLocDist == nil){
+        return NSOrderedSame;
+    }
+    return [self.userLocDist compare:eventCompare.userLocDist];
+}
+
++ (NSMutableArray *)sortedEvent:(NSMutableArray *)eventArray{
+    return [[eventArray sortedArrayUsingSelector:@selector(compareEvents:)] mutableCopy];
 }
 
 @end

@@ -19,7 +19,7 @@
 
 @interface EventFeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) NSMutableArray *eventArray;
+@property (strong, nonatomic) NSMutableArray<Event *> *eventArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
@@ -46,19 +46,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    // Change to users' current location
-//    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
-//    [self.mapView setRegion:sfRegion animated:false];
-    
     [self getFeed];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [self.locationManager stopUpdatingLocation];
-
+    
     MKCoordinateRegion currentLocation = MKCoordinateRegionMake(self.locationManager.location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
     [self.mapView setRegion:currentLocation];
-
+    
 }
 
 // Gets the events from Parse
@@ -77,16 +73,26 @@
             NSLog(@"Succesfully Loaded Feed!");
             self.eventArray = [objects mutableCopy];
             
-            for (Event *event in objects) {
-                PFRelation *relation = [event relationForKey:@"locationRelation"];
-                PFQuery *relationQuery = [relation query];
-                [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable locations, NSError * _Nullable error) {
-                    Location *eventLocation = locations[0];
-                    [self addPin:eventLocation];
-                }];
-            }
+                for (Event *event in objects) {
+                    PFRelation *relation = [event relationForKey:@"locationRelation"];
+                    PFQuery *relationQuery = [relation query];
+                    [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable locations, NSError * _Nullable error) {
+                        Location *eventLocation = locations[0];
+                        [self addPin:eventLocation];
+                        
+                        double eventCompareLat = [eventLocation.latitude doubleValue];
+                        double eventCompareLon = [eventLocation.longitude doubleValue];
+                        CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];
+                        CLLocationDistance locationDistance = [self.locationManager.location distanceFromLocation:newLocation];
+                        //                    event.userLocDist = [NSNumber numberWithDouble:locationDistance];
+                        [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
+                        [Event sortedEvent:self.eventArray];
+                    }];
+                    
+                }
             
-            [self.tableView reloadData];
+                
+                [self.tableView reloadData];
         } else{
             NSLog(@"Error: %@", error.localizedDescription);
         }
@@ -109,10 +115,10 @@
         if (error){
             NSLog(@"There was an error logging out.");
         } else {
-         SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-        myDelegate.window.rootViewController = loginViewController;
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+            myDelegate.window.rootViewController = loginViewController;
         }
     }];
 }
