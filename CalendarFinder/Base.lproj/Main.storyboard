@@ -415,6 +415,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uuc-J0-N6v">
+                                        <rect key="frame" x="8" y="696" width="71" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKm-zE-QrO">
+                                        <rect key="frame" x="87" y="696" width="233" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="LVc-Vh-Vet"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="k2t-lB-fPo"/>
@@ -437,6 +451,7 @@
                         <outlet property="endDateLabel" destination="DUd-cF-kMs" id="8zt-2p-Gxv"/>
                         <outlet property="eventImageView" destination="zdq-ju-o6A" id="vqQ-Ox-uPn"/>
                         <outlet property="eventNameLabel" destination="yeW-6Y-VAZ" id="WaN-vf-3bK"/>
+                        <outlet property="locationNameLabel" destination="DKm-zE-QrO" id="IHq-r3-Fs0"/>
                         <outlet property="startDateLabel" destination="fHv-PM-hQA" id="1IT-Hj-HmR"/>
                     </connections>
                 </viewController>

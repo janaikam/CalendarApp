@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *attendeesCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
 
 
 @end
@@ -35,6 +36,7 @@
     self.descriptionLabel.text = self.event.eventDescription;
     self.authorLabel.text = self.event.author.username;
     self.attendeesCountLabel.text = [NSString stringWithFormat:@"%d", self.event.attendeesCount.intValue];
+    self.locationNameLabel.text = self.event.location;
     
     self.eventImageView.file = self.event.image;
     [self.eventImageView loadInBackground];
