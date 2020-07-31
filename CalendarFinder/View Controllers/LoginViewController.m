@@ -12,6 +12,11 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
+@property (weak, nonatomic) IBOutlet UIButton *backToLoginButton;
 
 @end
 
@@ -20,16 +25,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.signUpButton.alpha = 0;
+    self.confirmPasswordField.alpha = 0;
+    self.backToLoginButton.alpha = 0;
 }
 
 - (IBAction)didTapSignUp:(id)sender {
-    // initialize a user object
-    PFUser *newUser = [PFUser user];
     
-    // set user properties
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
-    
+    if (![self.passwordField.text isEqualToString:self.confirmPasswordField.text]) {
+        [self createUICancelAlert:@"Passwords don't match!" withAlertMessage:@"Please make sure that your password is the same in both fields."];
+        return;
+    }
     
     if ([self.usernameField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]) {
         NSLog(@"There is no username or password");
@@ -37,6 +43,13 @@
         [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
         return;
     }
+    
+    // initialize a user object
+    PFUser *newUser = [PFUser user];
+    
+    // set user properties
+    newUser.username = self.usernameField.text;
+    newUser.password = self.passwordField.text;
         // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
@@ -92,6 +105,28 @@
     [self presentViewController:alert animated:YES completion:^{
         
     }];
+}
+
+- (IBAction)didTapCreateNew:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.loginButton.alpha = 0;
+        self.createButton.alpha = 0;
+        self.confirmPasswordField.alpha = 1;
+        self.signUpButton.alpha = 1;
+        self.backToLoginButton.alpha = 1;
+    }];
+    
+}
+
+- (IBAction)didTapBack:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.confirmPasswordField.alpha = 0;
+        self.signUpButton.alpha = 0;
+        self.backToLoginButton.alpha = 0;
+        self.loginButton.alpha = 1;
+        self.createButton.alpha = 1;
+    }];
+    
 }
 
 /*
