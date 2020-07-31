@@ -353,10 +353,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sc-5Z-QFR">
-                                <rect key="frame" x="9" y="388" width="43" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2sc-5Z-QFR">
+                                <rect key="frame" x="0.0" y="387" width="53" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="table" catalog="system"/>
+                                <state key="normal" image="table.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="onTapTable:" destination="J2w-7r-jcB" eventType="touchUpInside" id="S4a-Uh-z4X"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -387,6 +390,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ccD-eU-0pf" id="ad1-oy-bn8"/>
+                        <outlet property="mapViewBottomConstraint" destination="I6I-Px-jUx" id="Mv9-AL-Q7b"/>
+                        <outlet property="tableButton" destination="2sc-5Z-QFR" id="oFe-xr-wP5"/>
                         <outlet property="tableView" destination="qku-DG-QOo" id="Cjx-QX-iCv"/>
                     </connections>
                 </viewController>
@@ -808,6 +813,6 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
-        <image name="table" catalog="system" width="128" height="93"/>
+        <image name="table.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>

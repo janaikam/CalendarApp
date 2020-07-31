@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSMutableArray<Event *> *eventArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *tableButton;
 
 
 @end
@@ -42,6 +44,8 @@
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [self.locationManager startUpdatingLocation];
     }
+    
+    self.tableButton.alpha = 0;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -87,7 +91,6 @@
                     double eventCompareLon = [eventLocation.longitude doubleValue];
                     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];
                     CLLocationDistance locationDistance = [self.locationManager.location distanceFromLocation:newLocation];
-                    //                    event.userLocDist = [NSNumber numberWithDouble:locationDistance];
                     [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
                     [self.eventArray addObject:event];
                     counter++;
@@ -152,6 +155,19 @@
 }
 
 - (IBAction)onTapMap:(id)sender {
+    self.mapViewBottomConstraint.constant = 0;
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.view layoutIfNeeded];
+        self.tableButton.alpha = 1;
+    }];
+}
+- (IBAction)onTapTable:(id)sender {
+    
+    self.mapViewBottomConstraint.constant = 328;
+    [UIView animateWithDuration:0.4 animations:^{
+        self.tableButton.alpha = 0;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 
