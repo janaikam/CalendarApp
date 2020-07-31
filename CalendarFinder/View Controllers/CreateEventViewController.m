@@ -78,13 +78,27 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Image Input" message:@"Choose where to get image" preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *chooseGallery = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
+    }];
+    
+    UIAlertAction *choosePhoto = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            [self createUICancelAlert:@"Camera Unavailable" withAlertMessage:@"Camera unavailable. Please use Gallery"];
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        } else{
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+    }];
+    
+    [alert addAction:choosePhoto];
+    [alert addAction:chooseGallery];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
@@ -92,9 +106,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-//    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
+    
     // Do something with the images (based on your use case)
     // Resizing for Parse
     [self resizeImage:editedImage withSize:CGSizeMake(960, 1440)];
@@ -125,10 +138,10 @@
         self.endTimeLabel.alpha = 1;
         self.locationButton.alpha = 1;
         self.locationNameLabel.alpha = 1;
-
+        
     }];
     [self.view endEditing:YES];
-
+    
 }
 
 - (IBAction)onTapEndTime:(id)sender {
@@ -138,12 +151,12 @@
         self.locationButton.alpha = 0;
         self.locationNameLabel.alpha = 0;
     }];
-
+    
 }
 
 - (IBAction)startValueChanged:(id)sender {
     NSDateFormatter *formatter = [DateHelper dateFormat];
-
+    
     
     self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
     
@@ -216,6 +229,7 @@
         
     }];
 }
+
 
 #pragma mark - Navigation
 
