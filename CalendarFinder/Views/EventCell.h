@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *eventView;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 
 @property (strong, nonatomic) Event *event;

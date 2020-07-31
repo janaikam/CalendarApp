@@ -132,7 +132,8 @@
     if(self.userLocDist == nil || eventCompare.userLocDist == nil){
         return NSOrderedSame;
     }
-    return [self.userLocDist compare:eventCompare.userLocDist];
+    NSComparisonResult result = [self.userLocDist compare:eventCompare.userLocDist];
+    return result;
 }
 
 + (NSMutableArray *)sortedEvent:(NSMutableArray *)eventArray{

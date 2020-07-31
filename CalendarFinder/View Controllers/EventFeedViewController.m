@@ -66,33 +66,41 @@
     [query whereKey:@"endTime" greaterThan:today];
     //orders events by time
     [query orderByAscending:@"startTime"];
-    query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
         if (objects) {
             NSLog(@"Succesfully Loaded Feed!");
-            self.eventArray = [objects mutableCopy];
+            self.eventArray = [NSMutableArray new];
+            __block int counter = 0;
             
-                for (Event *event in objects) {
-                    PFRelation *relation = [event relationForKey:@"locationRelation"];
-                    PFQuery *relationQuery = [relation query];
-                    [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable locations, NSError * _Nullable error) {
-                        Location *eventLocation = locations[0];
-                        [self addPin:eventLocation];
-                        
-                        double eventCompareLat = [eventLocation.latitude doubleValue];
-                        double eventCompareLon = [eventLocation.longitude doubleValue];
-                        CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];
-                        CLLocationDistance locationDistance = [self.locationManager.location distanceFromLocation:newLocation];
-                        //                    event.userLocDist = [NSNumber numberWithDouble:locationDistance];
-                        [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
-                        [Event sortedEvent:self.eventArray];
-                    }];
-                    
-                }
-            
+            for (int i = 0; i < objects.count; i++) {
+                Event *event = objects[i];
                 
-                [self.tableView reloadData];
+                
+                PFRelation *relation = [event relationForKey:@"locationRelation"];
+                PFQuery *relationQuery = [relation query];
+                [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable locations, NSError * _Nullable error) {
+                    Location *eventLocation = locations[0];
+                    [self addPin:eventLocation];
+                    
+                    double eventCompareLat = [eventLocation.latitude doubleValue];
+                    double eventCompareLon = [eventLocation.longitude doubleValue];
+                    CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];
+                    CLLocationDistance locationDistance = [self.locationManager.location distanceFromLocation:newLocation];
+                    //                    event.userLocDist = [NSNumber numberWithDouble:locationDistance];
+                    [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
+                    [self.eventArray addObject:event];
+                    counter++;
+                    if (counter == objects.count || counter == 19) {
+                        [Event sortedEvent:self.eventArray];
+                        [self.tableView reloadData];
+                    }
+                    
+                }];
+                
+            }
+            
+            [self.tableView reloadData];
         } else{
             NSLog(@"Error: %@", error.localizedDescription);
         }
@@ -106,7 +114,7 @@
     
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     annotation.coordinate = coordinate;
-    annotation.title = @"Event!";
+    annotation.title = location.location;
     [self.mapView addAnnotation:annotation];
 }
 
@@ -140,6 +148,7 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.eventArray.count;
 }
+
 
 #pragma mark - Navigation
 
