@@ -76,10 +76,8 @@
                         //checks if the user accepted the calendar invitation
                         //only lets the event appear if the user added it
                         for (PFUser *user in people) {
-                            NSLog(@"%@", [PFUser currentUser]);
                             
                             if ([user.objectId isEqual:[PFUser currentUser].objectId]){
-                                NSLog(@"calendar test");
                                 [self.calendarEventArray addObject:event];
                                 [self.tableView reloadData];
                                 
