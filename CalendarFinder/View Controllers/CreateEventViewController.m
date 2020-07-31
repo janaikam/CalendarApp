@@ -167,15 +167,25 @@
 }
 
 - (IBAction)didTapAdd:(id)sender {
+    
+    NSDateFormatter *formatter = [DateHelper dateFormat];
+    NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
+    NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
+    
+    if ([endTime earlierDate:startTime]) {
+        [self createUICancelAlert:@"End Before Start" withAlertMessage:@"The end time you chose is before the start time. Please make the end time after the start time."];
+        return;
+    }
+    
+    if ([self.locationNameLabel.text isEqual:@""]) {
+        self.locationNameLabel.text = @"Online";
+    }
+    
     self.view.backgroundColor = UIColor.systemGray2Color;
     [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
         NSLog(@"Are you here?");
         if (!error){
             NSLog(@"Location Successfully created!");
-            
-            NSDateFormatter *formatter = [DateHelper dateFormat];
-            NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
-            NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
             
             [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionView.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (!error) {
@@ -192,6 +202,19 @@
         }
     }];
     
+}
+
+-(void)createUICancelAlert:(NSString *)alertName withAlertMessage:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertName message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - Navigation
