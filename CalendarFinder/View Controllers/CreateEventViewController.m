@@ -82,6 +82,7 @@
     
     UIAlertAction *chooseGallery = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
     }];
     
     UIAlertAction *choosePhoto = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -91,6 +92,7 @@
         } else{
             imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
     }];
     
     [alert addAction:choosePhoto];
@@ -99,8 +101,6 @@
     [self presentViewController:alert animated:YES completion:nil];
     
     
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
