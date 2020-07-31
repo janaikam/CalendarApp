@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @property (strong, nonatomic) Event *event;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 @end
 

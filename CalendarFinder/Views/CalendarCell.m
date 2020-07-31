@@ -28,6 +28,7 @@
     
     self.eventNameLabel.text = event.eventName;
     self.descriptionLabel.text = event.eventDescription;
+    self.locationLabel.text = event.location;
     
     NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
     formatter.dateFormat = @"HH:mm";
