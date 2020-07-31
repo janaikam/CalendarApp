@@ -91,8 +91,10 @@
                     [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
                     [self.eventArray addObject:event];
                     counter++;
+                    //checks if the counter is the network request length or if 20 objects have been chosen
                     if (counter == objects.count || counter == 19) {
-                        [Event sortedEvent:self.eventArray];
+                        //only runs the event sort once everything has been added to the event load
+                        self.eventArray = [event sortedEvent:self.eventArray];
                         [self.tableView reloadData];
                     }
                     
@@ -147,6 +149,9 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.eventArray.count;
+}
+
+- (IBAction)onTapMap:(id)sender {
 }
 
 

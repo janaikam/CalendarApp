@@ -129,15 +129,14 @@
 }
 
 - (NSComparisonResult)compareEvents:(Event *)eventCompare{
-    if(self.userLocDist == nil || eventCompare.userLocDist == nil){
-        return NSOrderedSame;
-    }
     NSComparisonResult result = [self.userLocDist compare:eventCompare.userLocDist];
     return result;
 }
 
-+ (NSMutableArray *)sortedEvent:(NSMutableArray *)eventArray{
-    return [[eventArray sortedArrayUsingSelector:@selector(compareEvents:)] mutableCopy];
+- (NSMutableArray *)sortedEvent:(NSMutableArray *)eventArray{
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES selector:@selector(compareEvents:)];
+    NSArray *sortedArray = [eventArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+    return [sortedArray mutableCopy];
 }
 
 @end

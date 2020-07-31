@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSComparisonResult)compareEvents: (Event *)eventCompare;
 
-+ (NSMutableArray *) sortedEvent: (NSMutableArray *) eventArray;
+- (NSMutableArray *) sortedEvent: (NSMutableArray *) eventArray;
 
 - (void) setEvent: (Event *)event
  withUserDistance: (NSNumber *)distance;
