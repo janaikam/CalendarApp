@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" modalTransitionStyle="flipHorizontal" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="uYc-5e-VkZ">
             <objects>
-                <tabBarController storyboardIdentifier="tabViewController" modalPresentationStyle="fullScreen" id="S3v-py-OEJ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="S3v-py-OEJ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="I1a-Re-bkx"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bwb-S6-CKQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -86,7 +86,7 @@
         <!--Calendar-->
         <scene sceneID="TJ9-oe-xwb">
             <objects>
-                <viewController storyboardIdentifier="calendarViewController" modalPresentationStyle="fullScreen" id="4X7-AV-e6D" customClass="CalendarViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calendarViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="4X7-AV-e6D" customClass="CalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Far-tP-LGb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,7 +231,7 @@
         <!--Home-->
         <scene sceneID="25s-9H-Iyy">
             <objects>
-                <viewController storyboardIdentifier="EventFeedViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="J2w-7r-jcB" customClass="EventFeedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="J2w-7r-jcB" customClass="EventFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ixM-dH-fSU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +239,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccD-eU-0pf">
                                 <rect key="frame" x="0.0" y="-54" width="414" height="485"/>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="146" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-DG-QOo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-DG-QOo">
                                 <rect key="frame" x="0.0" y="431" width="414" height="411"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="146" id="7W0-gp-5ZD" customClass="EventCell">
@@ -274,12 +274,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWM-lq-XRK">
+                                                    <rect key="frame" x="148" y="99" width="65.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="tWM-lq-XRK" secondAttribute="trailing" constant="5" id="CIG-CP-3JX"/>
+                                                <constraint firstItem="tWM-lq-XRK" firstAttribute="leading" secondItem="r7F-os-Q6l" secondAttribute="leading" id="D4m-xs-pk8"/>
                                                 <constraint firstItem="duk-mC-hmP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IP5-KG-IiT" secondAttribute="trailing" constant="5" id="FAL-c9-K6L"/>
+                                                <constraint firstItem="tWM-lq-XRK" firstAttribute="top" secondItem="r7F-os-Q6l" secondAttribute="bottom" constant="33" id="KTU-X9-Q9y"/>
                                                 <constraint firstItem="r7F-os-Q6l" firstAttribute="top" secondItem="IP5-KG-IiT" secondAttribute="bottom" constant="8" id="NPt-eT-rhm"/>
                                                 <constraint firstItem="duk-mC-hmP" firstAttribute="top" secondItem="IP5-KG-IiT" secondAttribute="top" id="U5P-9k-5Nf"/>
-                                                <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="r7F-os-Q6l" secondAttribute="bottom" constant="69" id="XJX-BW-7a3"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="tWM-lq-XRK" secondAttribute="bottom" constant="5" id="V3v-Ox-xRk"/>
                                                 <constraint firstItem="r7F-os-Q6l" firstAttribute="leading" secondItem="VNf-oA-a3I" secondAttribute="trailing" constant="8" id="YHx-Sc-wMi"/>
                                                 <constraint firstItem="VNf-oA-a3I" firstAttribute="leading" secondItem="47b-wp-mSF" secondAttribute="leading" constant="11" id="ZHD-SC-eIF"/>
                                                 <constraint firstItem="VNf-oA-a3I" firstAttribute="top" secondItem="47b-wp-mSF" secondAttribute="top" constant="6" id="Zpd-sU-d3O"/>
@@ -293,6 +302,7 @@
                                         <connections>
                                             <outlet property="descriptionLabel" destination="r7F-os-Q6l" id="q3i-2z-fM7"/>
                                             <outlet property="eventView" destination="VNf-oA-a3I" id="gpH-zN-HNd"/>
+                                            <outlet property="locationLabel" destination="tWM-lq-XRK" id="hCL-n5-AdI"/>
                                             <outlet property="nameLabel" destination="IP5-KG-IiT" id="QFM-nM-vFi"/>
                                             <outlet property="timeLabel" destination="duk-mC-hmP" id="kmR-1O-XOx"/>
                                             <segue destination="e4X-G6-pRE" kind="show" identifier="detailSegue" id="JHO-ND-UEQ"/>
@@ -323,7 +333,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="ctm-iE-z3e">
                             <connections>
                                 <action selector="didTapCreate:" destination="J2w-7r-jcB" id="YiH-Of-46U"/>
-                                <segue destination="qwo-Er-aLr" kind="presentation" identifier="createSegue" modalTransitionStyle="coverVertical" id="Osb-Gi-onB"/>
+                                <segue destination="qwo-Er-aLr" kind="presentation" identifier="createSegue" modalTransitionStyle="crossDissolve" id="Osb-Gi-onB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -339,7 +349,7 @@
         <!--Details View Controller-->
         <scene sceneID="J4P-ja-hOc">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="e4X-G6-pRE" customClass="DetailsViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="e4X-G6-pRE" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FSi-Mk-kvV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,7 +391,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlH-Ow-VeK">
-                                        <rect key="frame" x="106" y="725" width="51.5" height="20.5"/>
+                                        <rect key="frame" x="106" y="725" width="106" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -528,7 +538,7 @@
                                     <action selector="endValueChanged:" destination="dIy-Ud-hzu" eventType="valueChanged" id="ZwU-9R-kiw"/>
                                 </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdq-36-nNT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdq-36-nNT">
                                 <rect key="frame" x="130" y="511" width="274" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
