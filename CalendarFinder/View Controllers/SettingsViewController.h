@@ -7,18 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalendarViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@class SettingsViewController;
-@protocol SettingsViewControllerDelegate
-
--(void)settingsViewController: (SettingsViewController *)controller didPickTypeCalendar: (NSString *)type;
-
-@end
 
 @interface SettingsViewController : UIViewController
 
-@property (weak, nonatomic) id<SettingsViewControllerDelegate> delegate;
+@property (strong, nonatomic) CalendarViewController *calendarViewController;
 
 @end
 

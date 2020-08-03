@@ -19,8 +19,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    if (self.calendarViewController.calendarScope){
+        if ([self.calendarViewController.calendarScope isEqualToString:@"Week"]) {
+            self.calendarSegmentControl.selectedSegmentIndex = 1;
+        }
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    NSString *segment = [self.calendarSegmentControl titleForSegmentAtIndex:self.calendarSegmentControl.selectedSegmentIndex];
+    self.calendarViewController.calendarScope = segment;
+}
 /*
 #pragma mark - Navigation
 

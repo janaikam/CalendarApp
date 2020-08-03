@@ -12,11 +12,15 @@
 #import <FSCalendar/FSCalendar.h>
 #import <Parse/Parse.h>
 #import "DetailsViewController.h"
+#import "SettingsViewController.h"
 
 @interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *calendarEventArray;
+@property (weak, nonatomic) NSString *defaultCalendarView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
+
 
 @end
 
@@ -34,6 +38,23 @@
     self.calendarEventArray = [[NSMutableArray alloc] init];
     
     [self loadTableView:self.tableView withDate:self.calendarView.today];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+
+    if (self.calendarScope) {
+        
+        if ([self.calendarScope isEqualToString:@"Month"]) {
+            _calendarView.scope = FSCalendarScopeMonth;
+            self.calendarHeightConstraint.constant = 408;
+        } else if ([self.calendarScope isEqualToString:@"Week"]){
+            _calendarView.scope = FSCalendarScopeWeek;
+            self.calendarHeightConstraint.constant = 138;
+        }
+    } else{
+        _calendarView.scope = FSCalendarScopeMonth;
+    }
+    [self.view layoutIfNeeded];
 }
 
 // FSCalendarDataSource
@@ -115,6 +136,7 @@
 }
 
 
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -128,11 +150,12 @@
         DetailsViewController *detailsViewController = [segue destinationViewController];
         
         detailsViewController.event = event;
+    } else if ([segue.identifier isEqualToString:@"settingsSegue"]){
+        SettingsViewController *settingsViewController = [segue destinationViewController];
+        
+        settingsViewController.calendarViewController = self;
     }
 }
-
-
-
 
 
 @end

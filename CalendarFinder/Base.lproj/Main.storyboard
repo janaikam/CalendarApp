@@ -123,6 +123,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-5K-5dO" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="56" width="414" height="408"/>
                                 <color key="backgroundColor" red="0.85943686482655646" green="1" blue="0.96956788272561978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="408" id="D15-F1-XaG"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
                                         <integer key="value" value="1"/>
@@ -147,9 +150,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="144" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VC7-bD-sr7">
                                 <rect key="frame" x="0.0" y="464" width="414" height="378"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="378" id="JZa-6z-BNV"/>
-                                </constraints>
                                 <color key="sectionIndexBackgroundColor" red="0.85943686480000003" green="1" blue="0.96956788270000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CalendarCell" rowHeight="144" id="fIv-PL-xXA" customClass="CalendarCell">
@@ -238,11 +238,12 @@
                     <navigationItem key="navigationItem" title="Calendar" id="NkD-OJ-mu3">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="BsR-3E-lG0">
                             <connections>
-                                <segue destination="aj8-ag-UjZ" kind="show" id="7fB-7m-feJ"/>
+                                <segue destination="aj8-ag-UjZ" kind="show" identifier="settingsSegue" id="7fB-7m-feJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarHeightConstraint" destination="D15-F1-XaG" id="nMH-rY-Dfu"/>
                         <outlet property="calendarView" destination="xjs-5K-5dO" id="0Cm-Y1-CTJ"/>
                         <outlet property="tableView" destination="VC7-bD-sr7" id="XgX-kO-zHU"/>
                     </connections>

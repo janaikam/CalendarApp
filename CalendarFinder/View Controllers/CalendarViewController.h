@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CalendarViewController : UIViewController
 
+@property (strong, nonatomic) NSString *calendarScope;
+
 @end
 
 NS_ASSUME_NONNULL_END
