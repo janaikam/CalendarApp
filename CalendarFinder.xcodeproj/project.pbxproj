@@ -52,6 +52,48 @@
 			remoteGlobalIDString = 1AB2031E24BCEB59009171A6;
 			remoteInfo = CalendarFinder;
 		};
+		1AB6013024D9ACE90015F876 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "ParseFacebookUtilsV4-iOS";
+		};
+		1AB6013224D9ACE90015F876 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 81FE7F8B1C17790400E6BD34;
+			remoteInfo = "ParseFacebookUtilsV4-tvOS";
+		};
+		1AB6013424D9ACE90015F876 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4AAEAA75200C020E00AA7479;
+			remoteInfo = "ParseFacebookUtilsV4-iOS-Dynamic";
+		};
+		1AB6013624D9ACE90015F876 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4AAEAA90200C022300AA7479;
+			remoteInfo = "ParseFacebookUtilsV4-tvOS-Dynamic";
+		};
+		1AB6013824D9ACE90015F876 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 81CB98C61AB7905D00136FA5;
+			remoteInfo = "ParseFacebookUtilsV4-UnitTests";
+		};
+		1AB6013A24D9ACE90015F876 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F535C73B1B54B4A800A7D81E;
+			remoteInfo = ParseFacebookTestApplicationV4;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +146,38 @@
 		1AB5494424BF94E0006EDBCA /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
 		1AB5494624BF94F5006EDBCA /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		1AB5494724BF94F5006EDBCA /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		1AB600F924D9ACE90015F876 /* ParseFacebookTestApplicationV4.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ParseFacebookTestApplicationV4.xcconfig; sourceTree = "<group>"; };
+		1AB600FA24D9ACE90015F876 /* ParseFacebookUtilsV4-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ParseFacebookUtilsV4-iOS.xcconfig"; sourceTree = "<group>"; };
+		1AB600FB24D9ACE90015F876 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = text; path = Shared; sourceTree = "<group>"; };
+		1AB600FC24D9ACE90015F876 /* ParseFacebookUtilsV4-tvOS-Dynamic.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ParseFacebookUtilsV4-tvOS-Dynamic.xcconfig"; sourceTree = "<group>"; };
+		1AB600FD24D9ACE90015F876 /* ParseFacebookUtilsV4-iOS-Dynamic.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ParseFacebookUtilsV4-iOS-Dynamic.xcconfig"; sourceTree = "<group>"; };
+		1AB600FE24D9ACE90015F876 /* ParseFacebookUtilsV4-tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ParseFacebookUtilsV4-tvOS.xcconfig"; sourceTree = "<group>"; };
+		1AB600FF24D9ACE90015F876 /* ParseFacebookUtilsV4-UnitTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ParseFacebookUtilsV4-UnitTests.xcconfig"; sourceTree = "<group>"; };
+		1AB6010124D9ACE90015F876 /* PFFacebookUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFFacebookUtils.m; sourceTree = "<group>"; };
+		1AB6010224D9ACE90015F876 /* ParseFacebookUtilsV4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseFacebookUtilsV4.h; sourceTree = "<group>"; };
+		1AB6010424D9ACE90015F876 /* PFFacebookUtils_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookUtils_Private.h; sourceTree = "<group>"; };
+		1AB6010624D9ACE90015F876 /* PFFacebookAuthenticationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFFacebookAuthenticationProvider.m; sourceTree = "<group>"; };
+		1AB6010824D9ACE90015F876 /* PFFacebookMobileAuthenticationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFFacebookMobileAuthenticationProvider.m; sourceTree = "<group>"; };
+		1AB6010924D9ACE90015F876 /* PFFacebookMobileAuthenticationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookMobileAuthenticationProvider.h; sourceTree = "<group>"; };
+		1AB6010A24D9ACE90015F876 /* PFFacebookMobileAuthenticationProvider_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookMobileAuthenticationProvider_Private.h; sourceTree = "<group>"; };
+		1AB6010C24D9ACE90015F876 /* PFFacebookDeviceAuthenticationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookDeviceAuthenticationProvider.h; sourceTree = "<group>"; };
+		1AB6010D24D9ACE90015F876 /* PFFacebookDeviceAuthenticationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFFacebookDeviceAuthenticationProvider.m; sourceTree = "<group>"; };
+		1AB6010E24D9ACE90015F876 /* PFFacebookAuthenticationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookAuthenticationProvider.h; sourceTree = "<group>"; };
+		1AB6010F24D9ACE90015F876 /* PFFacebookPrivateUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFFacebookPrivateUtilities.m; sourceTree = "<group>"; };
+		1AB6011024D9ACE90015F876 /* PFFacebookPrivateUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookPrivateUtilities.h; sourceTree = "<group>"; };
+		1AB6011124D9ACE90015F876 /* PFFacebookUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookUtils.h; sourceTree = "<group>"; };
+		1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ParseFacebookUtils.xcodeproj; sourceTree = "<group>"; };
+		1AB6011624D9ACE90015F876 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		1AB6011824D9ACE90015F876 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		1AB6011924D9ACE90015F876 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1AB6011A24D9ACE90015F876 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		1AB6011D24D9ACE90015F876 /* FacebookUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookUtilsTests.m; sourceTree = "<group>"; };
+		1AB6011E24D9ACE90015F876 /* FacebookAuthenticationProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookAuthenticationProviderTests.m; sourceTree = "<group>"; };
+		1AB6012024D9ACE90015F876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AB6012324D9ACE90015F876 /* PFFacebookTestCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFFacebookTestCase.m; sourceTree = "<group>"; };
+		1AB6012424D9ACE90015F876 /* PFFacebookTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFFacebookTestCase.h; sourceTree = "<group>"; };
+		1AB6012724D9ACE90015F876 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1AB6012924D9ACE90015F876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ACEEE7824D073620084C78C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1ACEEE7D24D4B2320084C78C /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		1ACEEE7E24D4B2320084C78C /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -202,6 +276,7 @@
 		1AB2033D24BCEB5A009171A6 /* CalendarFinderTests */ = {
 			isa = PBXGroup;
 			children = (
+				1AB600F724D9ACE90015F876 /* ParseFacebookUtils */,
 				1AB2033E24BCEB5A009171A6 /* CalendarFinderTests.m */,
 				1AB2034024BCEB5A009171A6 /* Info.plist */,
 			);
@@ -268,6 +343,178 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1AB600F724D9ACE90015F876 /* ParseFacebookUtils */ = {
+			isa = PBXGroup;
+			children = (
+				1AB600F824D9ACE90015F876 /* Configurations */,
+				1AB6010024D9ACE90015F876 /* ParseFacebookUtils */,
+				1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */,
+				1AB6011624D9ACE90015F876 /* CHANGELOG.md */,
+				1AB6011724D9ACE90015F876 /* Resources */,
+				1AB6011B24D9ACE90015F876 /* Tests */,
+			);
+			path = ParseFacebookUtils;
+			sourceTree = "<group>";
+		};
+		1AB600F824D9ACE90015F876 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				1AB600F924D9ACE90015F876 /* ParseFacebookTestApplicationV4.xcconfig */,
+				1AB600FA24D9ACE90015F876 /* ParseFacebookUtilsV4-iOS.xcconfig */,
+				1AB600FB24D9ACE90015F876 /* Shared */,
+				1AB600FC24D9ACE90015F876 /* ParseFacebookUtilsV4-tvOS-Dynamic.xcconfig */,
+				1AB600FD24D9ACE90015F876 /* ParseFacebookUtilsV4-iOS-Dynamic.xcconfig */,
+				1AB600FE24D9ACE90015F876 /* ParseFacebookUtilsV4-tvOS.xcconfig */,
+				1AB600FF24D9ACE90015F876 /* ParseFacebookUtilsV4-UnitTests.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		1AB6010024D9ACE90015F876 /* ParseFacebookUtils */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6010124D9ACE90015F876 /* PFFacebookUtils.m */,
+				1AB6010224D9ACE90015F876 /* ParseFacebookUtilsV4.h */,
+				1AB6010324D9ACE90015F876 /* Internal */,
+				1AB6011124D9ACE90015F876 /* PFFacebookUtils.h */,
+			);
+			path = ParseFacebookUtils;
+			sourceTree = "<group>";
+		};
+		1AB6010324D9ACE90015F876 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6010424D9ACE90015F876 /* PFFacebookUtils_Private.h */,
+				1AB6010524D9ACE90015F876 /* AuthenticationProvider */,
+				1AB6010F24D9ACE90015F876 /* PFFacebookPrivateUtilities.m */,
+				1AB6011024D9ACE90015F876 /* PFFacebookPrivateUtilities.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		1AB6010524D9ACE90015F876 /* AuthenticationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6010624D9ACE90015F876 /* PFFacebookAuthenticationProvider.m */,
+				1AB6010724D9ACE90015F876 /* iOS */,
+				1AB6010B24D9ACE90015F876 /* tvOS */,
+				1AB6010E24D9ACE90015F876 /* PFFacebookAuthenticationProvider.h */,
+			);
+			path = AuthenticationProvider;
+			sourceTree = "<group>";
+		};
+		1AB6010724D9ACE90015F876 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6010824D9ACE90015F876 /* PFFacebookMobileAuthenticationProvider.m */,
+				1AB6010924D9ACE90015F876 /* PFFacebookMobileAuthenticationProvider.h */,
+				1AB6010A24D9ACE90015F876 /* PFFacebookMobileAuthenticationProvider_Private.h */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		1AB6010B24D9ACE90015F876 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6010C24D9ACE90015F876 /* PFFacebookDeviceAuthenticationProvider.h */,
+				1AB6010D24D9ACE90015F876 /* PFFacebookDeviceAuthenticationProvider.m */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
+		1AB6011324D9ACE90015F876 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6013124D9ACE90015F876 /* ParseFacebookUtilsV4.framework */,
+				1AB6013324D9ACE90015F876 /* ParseFacebookUtilsV4.framework */,
+				1AB6013524D9ACE90015F876 /* ParseFacebookUtilsV4.framework */,
+				1AB6013724D9ACE90015F876 /* ParseFacebookUtilsV4.framework */,
+				1AB6013924D9ACE90015F876 /* ParseFacebookUtilsV4-UnitTests.xctest */,
+				1AB6013B24D9ACE90015F876 /* ParseFacebookTestApplicationV4.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1AB6011724D9ACE90015F876 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6011824D9ACE90015F876 /* Info-iOS.plist */,
+				1AB6011924D9ACE90015F876 /* Localizable.strings */,
+				1AB6011A24D9ACE90015F876 /* Info-tvOS.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1AB6011B24D9ACE90015F876 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6011C24D9ACE90015F876 /* Unit */,
+				1AB6011F24D9ACE90015F876 /* Resources */,
+				1AB6012124D9ACE90015F876 /* Other */,
+				1AB6012524D9ACE90015F876 /* TestApplication */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		1AB6011C24D9ACE90015F876 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6011D24D9ACE90015F876 /* FacebookUtilsTests.m */,
+				1AB6011E24D9ACE90015F876 /* FacebookAuthenticationProviderTests.m */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		1AB6011F24D9ACE90015F876 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6012024D9ACE90015F876 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1AB6012124D9ACE90015F876 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6012224D9ACE90015F876 /* TestCase */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		1AB6012224D9ACE90015F876 /* TestCase */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6012324D9ACE90015F876 /* PFFacebookTestCase.m */,
+				1AB6012424D9ACE90015F876 /* PFFacebookTestCase.h */,
+			);
+			path = TestCase;
+			sourceTree = "<group>";
+		};
+		1AB6012524D9ACE90015F876 /* TestApplication */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6012624D9ACE90015F876 /* Classes */,
+				1AB6012824D9ACE90015F876 /* Resources */,
+			);
+			path = TestApplication;
+			sourceTree = "<group>";
+		};
+		1AB6012624D9ACE90015F876 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6012724D9ACE90015F876 /* main.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1AB6012824D9ACE90015F876 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1AB6012924D9ACE90015F876 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		79F6D348270760A391DDA833 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +546,8 @@
 			dependencies = (
 			);
 			name = CalendarFinder;
+			packageProductDependencies = (
+			);
 			productName = CalendarFinder;
 			productReference = 1AB2031F24BCEB59009171A6 /* CalendarFinder.app */;
 			productType = "com.apple.product-type.application";
@@ -353,6 +602,7 @@
 				TargetAttributes = {
 					1AB2031E24BCEB59009171A6 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1160;
 					};
 					1AB2033924BCEB5A009171A6 = {
 						CreatedOnToolsVersion = 11.5;
@@ -373,8 +623,16 @@
 				Base,
 			);
 			mainGroup = 1AB2031624BCEB59009171A6;
+			packageReferences = (
+			);
 			productRefGroup = 1AB2032024BCEB59009171A6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1AB6011324D9ACE90015F876 /* Products */;
+					ProjectRef = 1AB6011224D9ACE90015F876 /* ParseFacebookUtils.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1AB2031E24BCEB59009171A6 /* CalendarFinder */,
@@ -383,6 +641,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1AB6013124D9ACE90015F876 /* ParseFacebookUtilsV4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParseFacebookUtilsV4.framework;
+			remoteRef = 1AB6013024D9ACE90015F876 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1AB6013324D9ACE90015F876 /* ParseFacebookUtilsV4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParseFacebookUtilsV4.framework;
+			remoteRef = 1AB6013224D9ACE90015F876 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1AB6013524D9ACE90015F876 /* ParseFacebookUtilsV4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParseFacebookUtilsV4.framework;
+			remoteRef = 1AB6013424D9ACE90015F876 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1AB6013724D9ACE90015F876 /* ParseFacebookUtilsV4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParseFacebookUtilsV4.framework;
+			remoteRef = 1AB6013624D9ACE90015F876 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1AB6013924D9ACE90015F876 /* ParseFacebookUtilsV4-UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ParseFacebookUtilsV4-UnitTests.xctest";
+			remoteRef = 1AB6013824D9ACE90015F876 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1AB6013B24D9ACE90015F876 /* ParseFacebookTestApplicationV4.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ParseFacebookTestApplicationV4.app;
+			remoteRef = 1AB6013A24D9ACE90015F876 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1AB2031D24BCEB59009171A6 /* Resources */ = {
@@ -706,6 +1009,7 @@
 			baseConfigurationReference = 13B51196FE59E93DB6843B92 /* Pods-CalendarFinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T3W9U3YYY6;
 				INFOPLIST_FILE = CalendarFinder/Info.plist;
@@ -715,6 +1019,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkameka.CalendarFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CalendarFinder/CalendarFinder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -724,6 +1031,7 @@
 			baseConfigurationReference = FFCA3FB535916682F1DD4A02 /* Pods-CalendarFinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T3W9U3YYY6;
 				INFOPLIST_FILE = CalendarFinder/Info.plist;
@@ -733,6 +1041,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkameka.CalendarFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CalendarFinder/CalendarFinder-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

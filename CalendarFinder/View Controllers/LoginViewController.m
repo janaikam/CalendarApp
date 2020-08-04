@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import <Parse/Parse.h>
+@import Parse;
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -50,7 +50,7 @@
     // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
-        // call sign up function on the object
+    // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
@@ -64,7 +64,7 @@
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
-
+    
 }
 
 - (IBAction)didTapLogIn:(id)sender {
@@ -77,7 +77,7 @@
         [self createUICancelAlert:@"Blank Username/Password" withAlertMessage:message];
         return;
     }
-        
+    
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
@@ -129,14 +129,28 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)didTapContinueFacebook:(id)sender {
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:nil block:^(PFUser *user, NSError *error) {
+        if (!error){
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        } else{
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+            NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
+            NSLog(@"%@", errorMessage);
+            [self createUICancelAlert:@"Error" withAlertMessage:errorMessage];
+        }
+    }];
 }
-*/
+
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
