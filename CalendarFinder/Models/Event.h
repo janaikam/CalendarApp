@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
 #import "Location.h"
+#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
