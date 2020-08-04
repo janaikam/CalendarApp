@@ -94,17 +94,25 @@
 
 - (void) connectEventAttendees: (Event *) event user: (PFUser *) user withCompletion: (PFBooleanResultBlock)completion{
     PFRelation *relation = [event relationForKey:@"attendees"];
-    [relation addObject:user];
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            int original = event.attendeesCount.intValue;
-            original += 1;
-            event.attendeesCount = [NSNumber numberWithInt:original];
-            [event saveInBackgroundWithBlock:completion];
-        }else{
-            NSLog(@"%@", error.localizedDescription);   
+    PFQuery *relationQuery = [relation query];
+    
+    [relationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if ([users containsObject:user]){
+            [relation addObject:user];
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if(succeeded){
+                    int original = event.attendeesCount.intValue;
+                    original += 1;
+                    event.attendeesCount = [NSNumber numberWithInt:original];
+                    [event saveInBackgroundWithBlock:completion];
+                }else{
+                    NSLog(@"%@", error.localizedDescription);
+                }
+            }];
         }
     }];
+    
+    
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
