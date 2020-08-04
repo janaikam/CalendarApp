@@ -179,13 +179,14 @@
     [self performSegueWithIdentifier:@"locationSegue" sender:nil];
 }
 
+// function adds the event to the user's calendar
 - (IBAction)didTapAdd:(id)sender {
     
     NSDateFormatter *formatter = [DateHelper dateFormat];
     NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
     NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
     
-    if ([endTime earlierDate:startTime]) {
+    if ([[endTime earlierDate:startTime] isEqualToDate:endTime]) {
         [self createUICancelAlert:@"End Before Start" withAlertMessage:@"The end time you chose is before the start time. Please make the end time after the start time."];
         return;
     }
@@ -217,6 +218,7 @@
     
 }
 
+// helper function for creating an alert when something is incorrect on the screen
 -(void)createUICancelAlert:(NSString *)alertName withAlertMessage:(NSString *)message{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertName message:message preferredStyle:(UIAlertControllerStyleAlert)];
     
