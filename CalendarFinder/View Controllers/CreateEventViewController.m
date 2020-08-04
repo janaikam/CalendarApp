@@ -14,6 +14,7 @@
 #import "Event.h"
 #import "Location.h"
 #import "DateHelper.h"
+@import DGActivityIndicatorView;
 
 
 @interface CreateEventViewController () <LocationsViewControllerDelegate>
@@ -27,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePickerView;
 @property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
-
+@property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
 
 
 @end
@@ -38,6 +39,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
+    
+    self.activityIndicatorView.alpha = 0;
     self.startDatePickerView.alpha = 0;
     self.endDatePickerView.alpha = 0;
     
@@ -181,6 +185,8 @@
 
 // function adds the event to the user's calendar
 - (IBAction)didTapAdd:(id)sender {
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
     
     NSDateFormatter *formatter = [DateHelper dateFormat];
     NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
@@ -204,7 +210,6 @@
             [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionView.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (!error) {
                     NSLog(@"Successfully Created Event");
-                    
                     SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     EventFeedViewController *eventViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
@@ -215,7 +220,8 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
-    
+    [self.activityIndicatorView stopAnimating];
+    self.activityIndicatorView.alpha = 0;
 }
 
 // helper function for creating an alert when something is incorrect on the screen

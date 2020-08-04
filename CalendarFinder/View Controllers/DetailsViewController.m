@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "CalendarViewController.h"
 #import "DateHelper.h"
+@import Parse;
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;

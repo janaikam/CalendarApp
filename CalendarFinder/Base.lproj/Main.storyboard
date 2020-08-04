@@ -178,7 +178,8 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="144" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VC7-bD-sr7">
                                 <rect key="frame" x="0.0" y="464" width="414" height="378"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.78702333859999996" green="0.91977007769999997" blue="0.88601895669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" red="0.78702333859999996" green="0.91977007769999997" blue="0.88601895669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CalendarCell" rowHeight="144" id="fIv-PL-xXA" customClass="CalendarCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="144"/>
@@ -237,6 +238,7 @@
                                                 <constraint firstItem="7Nu-Xg-Xan" firstAttribute="leading" secondItem="7Mb-8J-nJz" secondAttribute="leading" id="zpj-VT-iWr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.78702333859999996" green="0.91977007769999997" blue="0.88601895669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="7Nu-Xg-Xan" id="bx9-hp-JAv"/>
                                             <outlet property="eventNameLabel" destination="7Mb-8J-nJz" id="1K5-zU-N50"/>
@@ -248,12 +250,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJ4-ic-ynx" customClass="DGActivityIndicatorView">
+                                <rect key="frame" x="143" y="357" width="128" height="128"/>
+                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="EZm-mR-oVo"/>
+                                    <constraint firstAttribute="width" constant="128" id="FZR-5z-wtN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VC7-bD-sr7" firstAttribute="leading" secondItem="43I-LW-q5O" secondAttribute="leading" id="5K0-OY-DF1"/>
                             <constraint firstItem="VC7-bD-sr7" firstAttribute="top" secondItem="xjs-5K-5dO" secondAttribute="bottom" id="6xj-gx-DoJ"/>
                             <constraint firstItem="xjs-5K-5dO" firstAttribute="leading" secondItem="43I-LW-q5O" secondAttribute="leading" id="DpH-qS-tsN"/>
+                            <constraint firstItem="GJ4-ic-ynx" firstAttribute="centerY" secondItem="Far-tP-LGb" secondAttribute="centerY" id="Jq0-PI-rQB"/>
+                            <constraint firstItem="GJ4-ic-ynx" firstAttribute="centerX" secondItem="Far-tP-LGb" secondAttribute="centerX" id="Vdt-Q4-RsE"/>
                             <constraint firstItem="VC7-bD-sr7" firstAttribute="trailing" secondItem="43I-LW-q5O" secondAttribute="trailing" id="faK-lQ-0rF"/>
                             <constraint firstItem="43I-LW-q5O" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xjs-5K-5dO" secondAttribute="bottom" constant="295" id="gTM-AC-PhT"/>
                             <constraint firstAttribute="bottom" secondItem="VC7-bD-sr7" secondAttribute="bottom" id="hnt-Og-i66"/>
@@ -270,6 +282,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="GJ4-ic-ynx" id="Jqb-4o-0aS"/>
                         <outlet property="calendarHeightConstraint" destination="D15-F1-XaG" id="nMH-rY-Dfu"/>
                         <outlet property="calendarView" destination="xjs-5K-5dO" id="0Cm-Y1-CTJ"/>
                         <outlet property="tableView" destination="VC7-bD-sr7" id="XgX-kO-zHU"/>
@@ -435,13 +448,23 @@
                                     <action selector="onTapTable:" destination="J2w-7r-jcB" eventType="touchUpInside" id="S4a-Uh-z4X"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmQ-Aq-33b" customClass="DGActivityIndicatorView">
+                                <rect key="frame" x="143" y="357" width="128" height="128"/>
+                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="9NL-4T-6Mk"/>
+                                    <constraint firstAttribute="height" constant="128" id="lUt-mI-JtI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qku-DG-QOo" firstAttribute="leading" secondItem="1Va-pd-w5m" secondAttribute="leading" id="4I5-Rx-Sf7"/>
+                            <constraint firstItem="qmQ-Aq-33b" firstAttribute="centerX" secondItem="ixM-dH-fSU" secondAttribute="centerX" id="7uc-63-i8A"/>
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="top" secondItem="ixM-dH-fSU" secondAttribute="top" constant="-54" id="HWt-73-y3V"/>
                             <constraint firstItem="1Va-pd-w5m" firstAttribute="bottom" secondItem="ccD-eU-0pf" secondAttribute="bottom" constant="328" id="I6I-Px-jUx"/>
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="leading" secondItem="1Va-pd-w5m" secondAttribute="leading" id="OxE-eW-hbe"/>
+                            <constraint firstItem="qmQ-Aq-33b" firstAttribute="centerY" secondItem="ixM-dH-fSU" secondAttribute="centerY" id="Sl1-Es-nqM"/>
                             <constraint firstItem="qku-DG-QOo" firstAttribute="top" secondItem="ccD-eU-0pf" secondAttribute="bottom" id="SrO-oB-aEF"/>
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="trailing" secondItem="1Va-pd-w5m" secondAttribute="trailing" id="b3B-SR-N0c"/>
                             <constraint firstItem="qku-DG-QOo" firstAttribute="trailing" secondItem="1Va-pd-w5m" secondAttribute="trailing" id="pdO-Hj-KXi"/>
@@ -463,6 +486,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="qmQ-Aq-33b" id="UQc-b2-PKn"/>
                         <outlet property="mapView" destination="ccD-eU-0pf" id="ad1-oy-bn8"/>
                         <outlet property="mapViewBottomConstraint" destination="I6I-Px-jUx" id="Mv9-AL-Q7b"/>
                         <outlet property="tableButton" destination="2sc-5Z-QFR" id="oFe-xr-wP5"/>
@@ -609,6 +633,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Do-nKq">
+                                <rect key="frame" x="116" y="56" width="183" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ked-e1-tBi" appends="YES" id="yvt-Z9-9jq"/>
+                                </connections>
+                            </imageView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qWH-uo-Icz">
                                 <rect key="frame" x="0.0" y="427" width="414" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -699,16 +733,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Do-nKq">
-                                <rect key="frame" x="116" y="56" width="183" height="170"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXn-YX-9Uf" customClass="DGActivityIndicatorView">
+                                <rect key="frame" x="87" y="346" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ked-e1-tBi" appends="YES" id="yvt-Z9-9jq"/>
-                                </connections>
-                            </imageView>
+                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
@@ -730,6 +759,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="uXn-YX-9Uf" id="LuZ-Zr-y2W"/>
                         <outlet property="endDatePickerView" destination="fMS-Ge-AJ5" id="cXH-Oc-DdR"/>
                         <outlet property="endLabel" destination="pAY-p1-n9f" id="LRg-Gy-ind"/>
                         <outlet property="endTimeLabel" destination="3iW-EX-Pum" id="zHm-W7-dkg"/>

@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 #import "DetailsViewController.h"
 #import "SettingsViewController.h"
+@import DGActivityIndicatorView;
 
 @interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *calendarEventArray;
 @property (weak, nonatomic) NSString *defaultCalendarView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
+@property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
 
 
 @end
@@ -29,6 +31,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
+    
+    self.activityIndicatorView.alpha = 0;
     
     self.calendarView.dataSource = self;
     self.calendarView.delegate = self;
@@ -69,6 +74,8 @@
 
 
 - (void) loadTableView:(UITableView *) tableView withDate: (NSDate *)date{
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
     
     [self.calendarEventArray removeAllObjects];
     
@@ -101,6 +108,8 @@
                             if ([user.objectId isEqual:[PFUser currentUser].objectId]){
                                 [self.calendarEventArray addObject:event];
                                 [self.tableView reloadData];
+                                self.activityIndicatorView.alpha = 0;
+                                [self.activityIndicatorView stopAnimating];
                                 
                             }
                         }
@@ -108,7 +117,6 @@
                 }];
                 
             }
-            [self.tableView reloadData];
             NSLog(@"Calendar Feed loaded");
             
         }else if(error){
@@ -118,6 +126,7 @@
         }
         
     }];
+    
 }
 
 

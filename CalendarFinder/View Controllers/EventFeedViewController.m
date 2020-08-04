@@ -14,6 +14,7 @@
 #import "SceneDelegate.h"
 #import "EventCell.h"
 #import "Event.h"
+@import DGActivityIndicatorView;
 
 
 
@@ -24,7 +25,7 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *tableButton;
-
+@property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -33,6 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // Add Activity Indicator
+    self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
+    
     
     //get user's location when the screen loads
     self.locationManager = [[CLLocationManager alloc] init];
@@ -46,11 +50,13 @@
     }
     
     self.tableButton.alpha = 0;
+    self.activityIndicatorView.alpha = 0;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     [self getFeed];
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -63,6 +69,9 @@
 
 // Gets the events from Parse
 -(void)getFeed{
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
+    
     NSDate *today = [NSDate date];
     PFQuery *query = [Event query];
     [query includeKey:@"author"];
@@ -99,13 +108,14 @@
                         //only runs the event sort once everything has been added to the event load
                         self.eventArray = [event sortedEvent:self.eventArray];
                         [self.tableView reloadData];
+                        [self.activityIndicatorView stopAnimating];
+                        self.activityIndicatorView.alpha = 0;
                     }
                     
                 }];
                 
             }
             
-            [self.tableView reloadData];
         } else{
             NSLog(@"Error: %@", error.localizedDescription);
         }
