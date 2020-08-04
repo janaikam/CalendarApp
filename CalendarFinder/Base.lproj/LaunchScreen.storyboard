@@ -15,29 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLI-tA-bxj">
-                                <rect key="frame" x="131" y="402" width="152" height="53"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiH-ys-2R7">
-                                <rect key="frame" x="157" y="453" width="100" height="42"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-512" translatesAutoresizingMaskIntoConstraints="NO" id="jqt-2L-rn2">
+                                <rect key="frame" x="114.5" y="355.5" width="185" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="10x-W3-uvD"/>
+                                    <constraint firstAttribute="height" constant="185" id="eSU-9G-Ydc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eiH-ys-2R7" secondAttribute="bottom" constant="367" id="HS3-Gf-i6e"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eiH-ys-2R7" secondAttribute="trailing" constant="157" id="LnH-MA-COa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SLI-tA-bxj" secondAttribute="bottom" constant="407" id="QZz-uh-TyX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SLI-tA-bxj" secondAttribute="trailing" constant="131" id="ZEZ-l3-fjZ"/>
-                            <constraint firstItem="SLI-tA-bxj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="131" id="lIk-r4-XmW"/>
-                            <constraint firstItem="eiH-ys-2R7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="409" id="mwM-oE-Yys"/>
-                            <constraint firstItem="SLI-tA-bxj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="358" id="skJ-my-S4b"/>
-                            <constraint firstItem="eiH-ys-2R7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="the-ZF-gFR"/>
+                            <constraint firstItem="jqt-2L-rn2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8Zn-5p-Yic"/>
+                            <constraint firstItem="jqt-2L-rn2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PjA-h4-2aD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -47,4 +36,7 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-512" width="512" height="512"/>
+    </resources>
 </document>
