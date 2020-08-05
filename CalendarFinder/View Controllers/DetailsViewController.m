@@ -58,7 +58,6 @@
             myDelegate.window.rootViewController = calendarViewController;
         } else{
             NSLog(@"%@", error.localizedDescription);
-            
         }
     }];
     

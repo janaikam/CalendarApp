@@ -97,7 +97,7 @@
     PFQuery *relationQuery = [relation query];
     
     [relationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
-        if ([users containsObject:user]){
+        if (![users containsObject:user]){
             [relation addObject:user];
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if(succeeded){
@@ -105,7 +105,7 @@
                     original += 1;
                     event.attendeesCount = [NSNumber numberWithInt:original];
                     [event saveInBackgroundWithBlock:completion];
-                }else{
+                } else{
                     NSLog(@"%@", error.localizedDescription);
                 }
             }];
