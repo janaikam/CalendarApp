@@ -50,6 +50,15 @@
 }
 
 - (IBAction)didTapAddCalendar:(id)sender {
+    [self addEventtoCalendar];
+}
+
+- (IBAction)didDoubleTapEvent:(id)sender {
+    [self addEventtoCalendar];
+}
+
+
+-(void)addEventtoCalendar{
     [self.event connectEventAttendees:self.event user:[PFUser currentUser] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(!error){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -60,8 +69,8 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    
 }
+
 - (IBAction)didTapShare:(id)sender {
     NSArray *objectsToShare;
     NSString *shareText = @"Check out this fun event! I think it sounds fun!";
