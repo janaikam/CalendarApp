@@ -338,6 +338,8 @@
                             <constraint firstItem="SCU-nV-wH0" firstAttribute="centerY" secondItem="9Lf-vA-cnK" secondAttribute="centerY" id="KM3-1g-Jld"/>
                             <constraint firstItem="9Lf-vA-cnK" firstAttribute="top" secondItem="Z9M-v5-5ne" secondAttribute="bottom" constant="61" id="PSB-Mn-zlk"/>
                             <constraint firstItem="Z9M-v5-5ne" firstAttribute="leading" secondItem="rlW-ra-cc4" secondAttribute="leading" constant="20" id="dQN-Yu-aUd"/>
+                            <constraint firstItem="rlW-ra-cc4" firstAttribute="trailing" secondItem="SCU-nV-wH0" secondAttribute="trailing" constant="52" id="tsW-EB-BW8"/>
+                            <constraint firstItem="Z9M-v5-5ne" firstAttribute="leading" secondItem="rlW-ra-cc4" secondAttribute="leading" constant="20" id="uZD-Dl-tMA"/>
                             <constraint firstItem="1qZ-N7-Lxo" firstAttribute="centerY" secondItem="Z9M-v5-5ne" secondAttribute="centerY" id="v00-2L-jbi"/>
                             <constraint firstItem="rlW-ra-cc4" firstAttribute="trailing" secondItem="1qZ-N7-Lxo" secondAttribute="trailing" constant="5" id="v3f-Hm-5cA"/>
                             <constraint firstItem="SCU-nV-wH0" firstAttribute="leading" secondItem="9Lf-vA-cnK" secondAttribute="trailing" constant="200" id="zkg-jl-OrB"/>
@@ -604,11 +606,18 @@
                         <viewLayoutGuide key="safeArea" id="mUO-ny-a4T"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Xi-tV-hbj">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.square" catalog="system" id="bMk-ZC-aSo">
-                            <connections>
-                                <action selector="didTapAddCalendar:" destination="e4X-G6-pRE" id="A6H-lo-NCT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="plus.square" catalog="system" id="bMk-ZC-aSo">
+                                <connections>
+                                    <action selector="didTapAddCalendar:" destination="e4X-G6-pRE" id="A6H-lo-NCT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="square.and.arrow.up" catalog="system" id="Uka-CE-Mfg">
+                                <connections>
+                                    <action selector="didTapShare:" destination="e4X-G6-pRE" id="g0h-Pz-FGE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="attendeesCountLabel" destination="Cfz-qD-MuM" id="jCp-1M-eea"/>
@@ -925,6 +934,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="table.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>
