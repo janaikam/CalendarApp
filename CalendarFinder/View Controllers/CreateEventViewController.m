@@ -199,11 +199,9 @@
         self.locationNameLabel.text = @"Online";
     }
     
-    self.view.backgroundColor = UIColor.systemGray2Color;
-    self.activityIndicatorView.alpha = 1;
-    [self.activityIndicatorView startAnimating];
     [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
-        NSLog(@"Are you here?");
+        self.activityIndicatorView.alpha = 1;
+        [self.activityIndicatorView startAnimating];
         if (!error){
             NSLog(@"Location Successfully created!");
             
@@ -219,9 +217,10 @@
         } else{
             NSLog(@"Error: %@", error.localizedDescription);
         }
+        [self.activityIndicatorView stopAnimating];
+        self.activityIndicatorView.alpha = 0;
     }];
-    [self.activityIndicatorView stopAnimating];
-    self.activityIndicatorView.alpha = 0;
+    
 }
 
 // helper function for creating an alert when something is incorrect on the screen
