@@ -21,19 +21,30 @@
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     if (PFUser.currentUser) {
-             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-             
-             self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
-         }  
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
+    }
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(toggleDarkMode) name:@"didSwitchDark" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(toggleLightMode) name:@"didSwitchLight" object:nil];
+    
 }
 
+-(void)toggleDarkMode{
+    self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+}
+
+-(void)toggleLightMode{
+    self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+}
 
 - (void)sceneDidDisconnect:(UIScene *)scene {
     // Called as the scene is being released by the system.
     // This occurs shortly after the scene enters the background, or when its session is discarded.
     // Release any resources associated with this scene that can be re-created the next time the scene connects.
     // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
-
+    
 }
 
 

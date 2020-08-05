@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) CalendarViewController *calendarViewController;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *calendarSegmentControl;
+@property (weak, nonatomic) IBOutlet UISwitch *darkModeSwitch;
+
 @end
 
 NS_ASSUME_NONNULL_END
