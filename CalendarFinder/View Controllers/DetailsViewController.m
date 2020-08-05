@@ -11,6 +11,7 @@
 #import "CalendarViewController.h"
 #import "DateHelper.h"
 @import Parse;
+@import DGActivityIndicatorView;
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *attendeesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
+@property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
 
 
 @end
@@ -42,6 +44,8 @@
     self.eventImageView.file = self.event.image;
     [self.eventImageView loadInBackground];
     
+    self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
+    self.activityIndicatorView.alpha = 0;
     
     NSDateFormatter *formatter = [DateHelper dateFormat];
     self.startDateLabel.text = [formatter stringFromDate:self.event.startTime];
@@ -59,6 +63,8 @@
 
 
 -(void)addEventtoCalendar{
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
     [self.event connectEventAttendees:self.event user:[PFUser currentUser] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(!error){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -69,6 +75,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    [self.activityIndicatorView stopAnimating];
 }
 
 - (IBAction)didTapShare:(id)sender {
