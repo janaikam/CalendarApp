@@ -185,8 +185,6 @@
 
 // function adds the event to the user's calendar
 - (IBAction)didTapAdd:(id)sender {
-    self.activityIndicatorView.alpha = 1;
-    [self.activityIndicatorView startAnimating];
     
     NSDateFormatter *formatter = [DateHelper dateFormat];
     NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
@@ -202,6 +200,8 @@
     }
     
     self.view.backgroundColor = UIColor.systemGray2Color;
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
     [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
         NSLog(@"Are you here?");
         if (!error){
