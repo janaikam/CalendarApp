@@ -112,7 +112,7 @@
                     //checks if the counter is the network request length or if 20 objects have been chosen
                     if (counter == objects.count || counter == 19) {
                         //only runs the event sort once everything has been added to the event load
-                        self.eventArray = [event sortedEvent:self.eventArray];
+                        self.eventArray = [Event sortedEvent:self.eventArray];
                         [self.tableView reloadData];
                         [self.activityIndicatorView stopAnimating];
                         self.activityIndicatorView.alpha = 0;

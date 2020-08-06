@@ -328,9 +328,6 @@
                                     <segment title="Month"/>
                                     <segment title="Week"/>
                                 </segments>
-                                <connections>
-                                    <action selector="didChangeCalendarView:" destination="aj8-ag-UjZ" eventType="valueChanged" id="UOt-4J-3rt"/>
-                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar View:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9M-v5-5ne">
                                 <rect key="frame" x="20" y="80" width="115" height="21"/>

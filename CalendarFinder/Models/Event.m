@@ -142,7 +142,7 @@
     return result;
 }
 
-- (NSMutableArray *)sortedEvent:(NSMutableArray *)eventArray{
++ (NSMutableArray *)sortedEvent:(NSMutableArray *)eventArray{
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES selector:@selector(compareEvents:)];
     NSArray *sortedArray = [eventArray sortedArrayUsingDescriptors:@[sortDescriptor]];
     return [sortedArray mutableCopy];
