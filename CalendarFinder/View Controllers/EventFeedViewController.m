@@ -101,6 +101,7 @@
                     Location *eventLocation = locations[0];
                     [self addPin:eventLocation];
                     
+                    //complex algorithm with the network request
                     double eventCompareLat = [eventLocation.latitude doubleValue];
                     double eventCompareLon = [eventLocation.longitude doubleValue];
                     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];

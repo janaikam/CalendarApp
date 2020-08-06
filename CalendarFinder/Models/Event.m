@@ -136,6 +136,7 @@
     
 }
 
+// Functions to order how events are displayed for complex algorithm
 - (NSComparisonResult)compareEvents:(Event *)eventCompare{
     NSComparisonResult result = [self.userLocDist compare:eventCompare.userLocDist];
     return result;
