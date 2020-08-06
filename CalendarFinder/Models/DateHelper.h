@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DateHelper : NSObject
 
 +(NSDateFormatter *)dateFormat;
++(NSDateFormatter *)dateFormatWithDayMonthYear;
 
 @end
 

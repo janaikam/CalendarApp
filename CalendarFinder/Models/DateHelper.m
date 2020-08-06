@@ -19,4 +19,12 @@
     return formatter;
 }
 
++(NSDateFormatter *)dateFormatWithDayMonthYear{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d";
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    
+    return formatter;
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "EventCell.h"
+#import "DateHelper.h"
 
 @implementation EventCell
 
@@ -30,9 +31,7 @@
     self.descriptionLabel.text = event.eventDescription;
     self.locationLabel.text = event.location;
     
-    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm";
-    formatter.dateStyle = NSDateFormatterShortStyle;
+    NSDateFormatter *formatter = [DateHelper dateFormatWithDayMonthYear];
     self.timeLabel.text = [formatter stringFromDate:event.startTime];
 }
 
