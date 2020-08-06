@@ -35,10 +35,7 @@
     
     [self.darkModeSwitch setOn:darkBoolValue];
 }
-- (IBAction)didChangeCalendarView:(id)sender {
-    User *user = [User currentUser];
-    [user setUserSettings:user withCalendarView:[self.calendarSegmentControl titleForSegmentAtIndex:self.calendarSegmentControl.selectedSegmentIndex]];
-}
+
 
 - (IBAction)didSwitchDarkMode:(id)sender {
     if (self.darkModeSwitch.on) {
