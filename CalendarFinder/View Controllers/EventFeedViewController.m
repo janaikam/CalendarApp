@@ -192,7 +192,6 @@
 
 - (IBAction)didPanMap:(id)sender {
     if (self.mapPanRec.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"drag ended");
         self.mapViewBottomConstraint.constant = 0;
         [UIView animateWithDuration:0.4 animations:^{
             [self.view layoutIfNeeded];

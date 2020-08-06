@@ -1,0 +1,57 @@
+PODS:
+  - Bolts/Tasks (1.9.1)
+  - DGActivityIndicatorView (2.1.1)
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKCoreKit (5.15.1):
+    - FBSDKCoreKit/Basics (= 5.15.1)
+    - FBSDKCoreKit/Core (= 5.15.1)
+  - FBSDKCoreKit/Basics (5.15.1)
+  - FBSDKCoreKit/Core (5.15.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.15.1):
+    - FBSDKLoginKit/Login (= 5.15.1)
+  - FBSDKLoginKit/Login (5.15.1):
+    - FBSDKCoreKit (~> 5.0)
+  - FSCalendar (2.8.1)
+  - Parse (1.18.0):
+    - Parse/Core (= 1.18.0)
+  - Parse/Core (1.18.0):
+    - Bolts/Tasks (= 1.9.1)
+  - Parse/FacebookUtils (1.18.0):
+    - Bolts/Tasks (= 1.9.1)
+    - FBSDKLoginKit (~> 5.x)
+    - Parse/Core
+  - Parse/UI (1.18.0):
+    - Parse/Core
+
+DEPENDENCIES:
+  - DGActivityIndicatorView
+  - FacebookCore
+  - FSCalendar
+  - Parse
+  - Parse/FacebookUtils
+  - Parse/UI
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - DGActivityIndicatorView
+    - FacebookCore
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FSCalendar
+    - Parse
+
+SPEC CHECKSUMS:
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
+  FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+
+PODFILE CHECKSUM: 1883ccda423eba3e5211b87fc5120a83fb003c3b
+
+COCOAPODS: 1.9.3
