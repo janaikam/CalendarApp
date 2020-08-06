@@ -66,6 +66,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [self.locationManager stopUpdatingLocation];
+    self.userLocation = [[CLLocation alloc] initWithLatitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude];
     
     MKCoordinateRegion currentLocation = MKCoordinateRegionMake(self.locationManager.location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
     [self.mapView setRegion:currentLocation];
@@ -105,7 +106,7 @@
                     double eventCompareLat = [eventLocation.latitude doubleValue];
                     double eventCompareLon = [eventLocation.longitude doubleValue];
                     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];
-                    CLLocationDistance locationDistance = [self.locationManager.location distanceFromLocation:newLocation];
+                    CLLocationDistance locationDistance = [self.userLocation distanceFromLocation:newLocation];
                     [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
                     [self.eventArray addObject:event];
                     counter++;
@@ -178,6 +179,9 @@
         self.tableButton.alpha = 0;
         [self.view layoutIfNeeded];
     }];
+    
+    self.userLocation = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    [self getFeed];
     
 }
 
