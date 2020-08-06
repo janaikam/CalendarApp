@@ -384,7 +384,7 @@
                                 <rect key="frame" x="0.0" y="-54" width="414" height="485"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="g9j-mN-RbP" appends="YES" id="QFd-xg-HLb"/>
+                                    <outletCollection property="gestureRecognizers" destination="pwA-Zc-PVD" appends="YES" id="rHR-EP-HDq"/>
                                 </connections>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-DG-QOo">
@@ -505,6 +505,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="qmQ-Aq-33b" id="UQc-b2-PKn"/>
+                        <outlet property="mapPanRec" destination="pwA-Zc-PVD" id="QKC-6Y-yUd"/>
                         <outlet property="mapView" destination="ccD-eU-0pf" id="ad1-oy-bn8"/>
                         <outlet property="mapViewBottomConstraint" destination="I6I-Px-jUx" id="Mv9-AL-Q7b"/>
                         <outlet property="tableButton" destination="2sc-5Z-QFR" id="oFe-xr-wP5"/>
@@ -512,11 +513,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bw-z8-u9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="g9j-mN-RbP">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="pwA-Zc-PVD">
                     <connections>
-                        <action selector="onTapMap:" destination="J2w-7r-jcB" id="hjK-rp-DTa"/>
+                        <action selector="didPanMap:" destination="J2w-7r-jcB" id="lum-Yq-AkK"/>
                     </connections>
-                </tapGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2840.579710144928" y="-214.28571428571428"/>
         </scene>

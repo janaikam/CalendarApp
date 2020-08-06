@@ -8,7 +8,6 @@
 
 #import "EventFeedViewController.h"
 #import <Parse/Parse.h>
-#import <MapKit/MapKit.h>
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
 #import "SceneDelegate.h"
@@ -26,14 +25,19 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *tableButton;
 @property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
+@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *mapPanRec;
+@property (strong, nonatomic) CLLocation *userLocation;
+
 
 @end
 
-@implementation EventFeedViewController
+@implementation EventFeedViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
     // Add Activity Indicator
     self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
     
@@ -54,6 +58,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.mapPanRec.delegate = self;
     
     [self getFeed];
     
@@ -146,6 +151,7 @@
     }];
 }
 
+
 - (IBAction)didTapCreate:(id)sender {
     [self performSegueWithIdentifier:@"createSegue" sender:nil];
 }
@@ -164,13 +170,6 @@
     return self.eventArray.count;
 }
 
-- (IBAction)onTapMap:(id)sender {
-    self.mapViewBottomConstraint.constant = 0;
-    [UIView animateWithDuration:0.4 animations:^{
-        [self.view layoutIfNeeded];
-        self.tableButton.alpha = 1;
-    }];
-}
 - (IBAction)onTapTable:(id)sender {
     
     self.mapViewBottomConstraint.constant = 328;
@@ -178,6 +177,23 @@
         self.tableButton.alpha = 0;
         [self.view layoutIfNeeded];
     }];
+    
+}
+
+//connects the pan gesture recognizer to the map gestre recognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (IBAction)didPanMap:(id)sender {
+    if (self.mapPanRec.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"drag ended");
+        self.mapViewBottomConstraint.constant = 0;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+            self.tableButton.alpha = 1;
+        }];
+    }
 }
 
 
