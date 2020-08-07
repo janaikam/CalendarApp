@@ -33,18 +33,16 @@ This app is designed to find events occuring around the user with data on locati
 - [X] User is able to create an account to log in
 - [X] User can access their calendar in month form
 - [X] User can see/scroll through events
-- [ ] User can add events to their calendar
+- [X] User can add events to their calendar
 - [X] User can click on an event to see a detailed page with location, number of confirmed attendees, a picture, and a map
 - [X] User can create events
 
 **Optional Nice-to-have Stories**
 
-- [ ] User can see indicator where there is an activity for the day
-- [ ] User can get their feed from Facebook
-- [ ] User can change how the calendar looks
+- [X] User can change how the calendar looks
 - [X] User can see events that are near their current location
 - [X] User can respond saying they are going to an event
-- [ ] User can share events with friends
+- [X] User can share events with friends
 - [ ] User can search for events in specific locations
 - [X] User can click on the map to expand it
 
@@ -170,6 +168,9 @@ FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
 | start_time | string | time when the event starts |
 
 
+### App Demo
 
-
+<img src='http://g.recordit.co/sH7IEL7n8r.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/cPFRvmclA6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/gqCuOlAkWO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
