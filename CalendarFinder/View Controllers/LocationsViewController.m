@@ -73,8 +73,7 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
     return true;
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    // Change to users current location
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.results removeObjectsInArray:self.results];
     [self fetchLocationsWithQuery:searchBar.text nearCity:@"San Francisco"];
 }
