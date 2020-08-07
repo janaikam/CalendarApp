@@ -82,7 +82,7 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Image Input" message:@"Choose where to get image" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Image Input" message:@"Choose where to get image" preferredStyle:(UIAlertControllerStyleActionSheet)];
     
     UIAlertAction *chooseGallery = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
