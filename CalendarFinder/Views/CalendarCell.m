@@ -7,6 +7,7 @@
 //
 
 #import "CalendarCell.h"
+#import "DateHelper.h"
 
 @implementation CalendarCell
 
@@ -30,9 +31,7 @@
     self.descriptionLabel.text = event.eventDescription;
     self.locationLabel.text = event.location;
     
-    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
-    formatter.dateFormat = @"HH:mm";
-    formatter.dateStyle = NSDateFormatterShortStyle;
+    NSDateFormatter *formatter = [DateHelper dateFormatHourSeconds];
     self.timeLabel.text = [formatter stringFromDate:event.startTime];
 }
 

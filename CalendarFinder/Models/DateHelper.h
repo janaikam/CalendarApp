@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(NSDateFormatter *)dateFormat;
 +(NSDateFormatter *)dateFormatWithDayMonthYear;
++(NSDateFormatter *)dateFormatHourSeconds;
 
 @end
 

@@ -27,4 +27,12 @@
     return formatter;
 }
 
++(NSDateFormatter *)dateFormatHourSeconds{
+    NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
+    formatter.dateFormat = @"HH:mm";
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return formatter;
+}
+
 @end
