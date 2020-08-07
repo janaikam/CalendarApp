@@ -662,7 +662,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" name="Calendar"/>
                                         <constraints>
                                             <constraint firstItem="DUd-cF-kMs" firstAttribute="leading" secondItem="fHv-PM-hQA" secondAttribute="leading" id="0wG-K2-001"/>
                                             <constraint firstItem="Ktx-iZ-2Wi" firstAttribute="leading" secondItem="yeW-6Y-VAZ" secondAttribute="leading" id="2Hd-oP-VJ7"/>
@@ -759,6 +759,7 @@
                         <outlet property="endDateLabel" destination="DUd-cF-kMs" id="8zt-2p-Gxv"/>
                         <outlet property="eventImageView" destination="zdq-ju-o6A" id="vqQ-Ox-uPn"/>
                         <outlet property="eventNameLabel" destination="yeW-6Y-VAZ" id="WaN-vf-3bK"/>
+                        <outlet property="locationAddress" destination="TZI-Bc-bmg" id="6QI-tm-cr8"/>
                         <outlet property="locationNameLabel" destination="DKm-zE-QrO" id="IHq-r3-Fs0"/>
                         <outlet property="startDateLabel" destination="fHv-PM-hQA" id="1IT-Hj-HmR"/>
                     </connections>

@@ -10,6 +10,8 @@
 #import "SceneDelegate.h"
 #import "CalendarViewController.h"
 #import "DateHelper.h"
+#import "Location.h"
+#import <MapKit/MapKit.h>
 @import Parse;
 @import DGActivityIndicatorView;
 
@@ -23,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *attendeesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
 @property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UILabel *locationAddress;
 
 
 @end
@@ -50,6 +53,7 @@
     NSDateFormatter *formatter = [DateHelper dateFormat];
     self.startDateLabel.text = [formatter stringFromDate:self.event.startTime];
     self.endDateLabel.text = [formatter stringFromDate:self.event.endTime];
+    [self getAddressFromLocation:self.event.location];
     
 }
 
@@ -61,6 +65,35 @@
     [self addEventtoCalendar];
 }
 
+
+-(void)getAddressFromLocation: (NSString *) locationName{
+    if (![locationName isEqualToString:@"Online"]) {
+        PFQuery *query = [Location query];
+        [query whereKey:@"location" equalTo:locationName];
+        query.limit = 1;
+        [query includeKeys:@[@"latitude", @"longitude"]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable objects, NSError * _Nullable error) {
+            if (!error) {
+                Location *currentLocation  = objects[0];
+                CLLocation *locationCoordinates = [[CLLocation alloc] initWithLatitude:currentLocation.latitude.doubleValue longitude:currentLocation.longitude.doubleValue];
+                CLGeocoder *reverseGeocoder = [CLGeocoder new];
+                [reverseGeocoder reverseGeocodeLocation:locationCoordinates completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+                    NSLog(@"%@", placemarks);
+                    CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                    NSString *streetName = [placemark name];
+                    NSString *state = [placemark administrativeArea];
+                    NSString *city = [placemark locality];
+                    
+                    NSString *addressText = [NSString stringWithFormat:@"%@ ,%@, %@", streetName, city, state];
+                    self.locationAddress.text = addressText;
+                }];
+            }
+            
+        }];
+    } else{
+        self.locationAddress.text = @"";
+    }
+}
 
 -(void)addEventtoCalendar{
     self.activityIndicatorView.alpha = 1;
