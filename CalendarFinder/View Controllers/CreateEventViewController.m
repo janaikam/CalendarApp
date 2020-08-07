@@ -50,6 +50,13 @@
     self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
     self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
     
+    UIColor *borderColor = [UIColor systemGray3Color];
+
+    self.eventDescriptionView.layer.borderColor = borderColor.CGColor;
+    self.eventNameField.layer.borderColor = borderColor.CGColor;
+    self.eventDescriptionView.layer.borderWidth = 1.0;
+    self.eventDescriptionView.layer.cornerRadius = 5.0;
+    
 }
 
 - (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude name:(NSString *) name{
