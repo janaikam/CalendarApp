@@ -132,7 +132,10 @@
 - (IBAction)didTapContinueFacebook:(id)sender {
     [PFFacebookUtils logInInBackgroundWithReadPermissions:nil block:^(PFUser *user, NSError *error) {
         if (!error && user){
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            }];
+            
         } else if (error){
             NSLog(@"User log in failed: %@", error.localizedDescription);
             NSString *errorMessage = [@"Error: " stringByAppendingFormat:@"%@", error.localizedDescription];
