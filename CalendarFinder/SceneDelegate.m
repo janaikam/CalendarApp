@@ -26,6 +26,11 @@
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
     }
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults doubleForKey:@"darkMode"]) {
+        [self toggleDarkMode];
+    }
+    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(toggleDarkMode) name:@"didSwitchDark" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(toggleLightMode) name:@"didSwitchLight" object:nil];
     
@@ -37,6 +42,7 @@
 
 -(void)toggleLightMode{
     self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    [self.window updateConstraintsIfNeeded];
 }
 
 - (void)sceneDidDisconnect:(UIScene *)scene {
