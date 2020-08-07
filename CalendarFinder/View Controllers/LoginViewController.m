@@ -28,6 +28,9 @@
     self.signUpButton.alpha = 0;
     self.confirmPasswordField.alpha = 0;
     self.backToLoginButton.alpha = 0;
+    self.createButton.layer.cornerRadius = 10.0;
+    self.backToLoginButton.layer.cornerRadius = 10.0;
+
 }
 
 - (IBAction)didTapSignUp:(id)sender {
