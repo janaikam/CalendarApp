@@ -59,6 +59,8 @@
     } else{
         _calendarView.scope = FSCalendarScopeMonth;
     }
+    
+    self.calendarView.appearance.todayColor = [UIColor colorNamed:@"Today"];
     [self.view layoutIfNeeded];
 }
 

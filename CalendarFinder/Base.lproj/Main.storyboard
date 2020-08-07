@@ -196,6 +196,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
                                         <color key="value" name="Selected"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="144" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VC7-bD-sr7">
@@ -397,6 +398,7 @@
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-DG-QOo">
                                 <rect key="frame" x="0.0" y="431" width="414" height="411"/>
+                                <color key="backgroundColor" name="TableView"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="146" id="7W0-gp-5ZD" customClass="EventCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="146"/>
@@ -455,6 +457,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="duk-mC-hmP" secondAttribute="trailing" constant="3" id="z2n-gl-oZg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="TableView"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="r7F-os-Q6l" id="q3i-2z-fM7"/>
                                             <outlet property="eventView" destination="VNf-oA-a3I" id="gpH-zN-HNd"/>
@@ -968,7 +971,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JHO-ND-UEQ"/>
+        <segue reference="cTd-EU-OqA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon-64" width="64" height="64"/>
