@@ -10,6 +10,8 @@
 		1A4E0A5924CA2C5800DBB1B3 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */; };
 		1A4E0A5C24CB6B0000DBB1B3 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */; };
 		1A4E0A5F24CB739500DBB1B3 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5E24CB739500DBB1B3 /* Venue.m */; };
+		1A7D40AB24DDAF820021959C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D40AA24DDAF820021959C /* SearchViewController.m */; };
+		1A7D40B424DDB41B0021959C /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D40B324DDB41B0021959C /* SearchCell.m */; };
 		1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2032324BCEB59009171A6 /* AppDelegate.m */; };
 		1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2032624BCEB59009171A6 /* SceneDelegate.m */; };
 		1AB2032D24BCEB59009171A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2032B24BCEB59009171A6 /* Main.storyboard */; };
@@ -106,6 +108,10 @@
 		1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		1A4E0A5D24CB739500DBB1B3 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = CalendarFinder/Models/Venue.h; sourceTree = SOURCE_ROOT; };
 		1A4E0A5E24CB739500DBB1B3 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = CalendarFinder/Models/Venue.m; sourceTree = SOURCE_ROOT; };
+		1A7D40A924DDAF820021959C /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		1A7D40AA24DDAF820021959C /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		1A7D40B224DDB41B0021959C /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		1A7D40B324DDB41B0021959C /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		1AB2031F24BCEB59009171A6 /* CalendarFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB2032224BCEB59009171A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AB2032324BCEB59009171A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -309,6 +315,8 @@
 				1AB5494424BF94E0006EDBCA /* LocationsViewController.m */,
 				1ACEEE7D24D4B2320084C78C /* SettingsViewController.h */,
 				1ACEEE7E24D4B2320084C78C /* SettingsViewController.m */,
+				1A7D40A924DDAF820021959C /* SearchViewController.h */,
+				1A7D40AA24DDAF820021959C /* SearchViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -339,6 +347,8 @@
 				1AB5494724BF94F5006EDBCA /* LocationCell.m */,
 				1A4E0A5724CA2C5800DBB1B3 /* CalendarCell.h */,
 				1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */,
+				1A7D40B224DDB41B0021959C /* SearchCell.h */,
+				1A7D40B324DDB41B0021959C /* SearchCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -828,6 +838,7 @@
 				1ACEEE7F24D4B2320084C78C /* SettingsViewController.m in Sources */,
 				1AB2035A24BCF731009171A6 /* LoginViewController.m in Sources */,
 				1AB5493824BE0EDF006EDBCA /* Event.m in Sources */,
+				1A7D40AB24DDAF820021959C /* SearchViewController.m in Sources */,
 				1A4E0A5C24CB6B0000DBB1B3 /* DateHelper.m in Sources */,
 				1AB2032424BCEB59009171A6 /* AppDelegate.m in Sources */,
 				1AB5493F24BE3F59006EDBCA /* EventCell.m in Sources */,
@@ -838,6 +849,7 @@
 				1A4E0A5F24CB739500DBB1B3 /* Venue.m in Sources */,
 				1AB2036024BCFCBD009171A6 /* CalendarViewController.m in Sources */,
 				1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */,
+				1A7D40B424DDB41B0021959C /* SearchCell.m in Sources */,
 				1AB5494524BF94E0006EDBCA /* LocationsViewController.m in Sources */,
 				1AB2036624BE00CC009171A6 /* DetailsViewController.m in Sources */,
 			);
