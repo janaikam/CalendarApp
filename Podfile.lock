@@ -24,6 +24,7 @@ PODS:
     - Parse/Core
   - Parse/UI (1.18.0):
     - Parse/Core
+  - TORoundedButton (1.1.2)
 
 DEPENDENCIES:
   - DGActivityIndicatorView
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Parse
   - Parse/FacebookUtils
   - Parse/UI
+  - TORoundedButton
 
 SPEC REPOS:
   trunk:
@@ -42,6 +44,7 @@ SPEC REPOS:
     - FBSDKLoginKit
     - FSCalendar
     - Parse
+    - TORoundedButton
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
@@ -51,7 +54,8 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+  TORoundedButton: d40dbf6f830dbe7a784a592d9f7933a3a49fd31e
 
-PODFILE CHECKSUM: 1883ccda423eba3e5211b87fc5120a83fb003c3b
+PODFILE CHECKSUM: f2a4cb7a914f0f3f2a815ff94862fc13b4260cf0
 
 COCOAPODS: 1.9.3

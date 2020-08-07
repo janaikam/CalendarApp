@@ -12,6 +12,7 @@ target 'CalendarFinder' do
     pod 'DGActivityIndicatorView'
     pod 'Parse/FacebookUtils'
     pod 'FacebookCore'
+    pod 'TORoundedButton'
     
 
   target 'CalendarFinderTests' do
