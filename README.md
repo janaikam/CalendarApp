@@ -170,5 +170,7 @@ FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
 
 ### App Demo
 
-<img src='http://g.recordit.co/YOWQAFUP6w.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/lH777g3bAm.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/x4RriwDbmz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/sCset6dYy5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
