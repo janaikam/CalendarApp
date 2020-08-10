@@ -53,6 +53,8 @@
         [self.locationManager startUpdatingLocation];
     }
     
+    self.tableView.layer.cornerRadius = 15;
+    
     self.tableButton.alpha = 0;
     self.activityIndicatorView.alpha = 0;
     

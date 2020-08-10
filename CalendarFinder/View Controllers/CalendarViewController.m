@@ -33,6 +33,8 @@
     // Do any additional setup after loading the view.
     self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
     
+    self.tableView.layer.cornerRadius = 5;
+    
     self.activityIndicatorView.alpha = 0;
     
     self.calendarView.dataSource = self;

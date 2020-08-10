@@ -400,7 +400,7 @@
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-DG-QOo">
                                 <rect key="frame" x="0.0" y="431" width="414" height="411"/>
-                                <color key="backgroundColor" name="TableView"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="146" id="7W0-gp-5ZD" customClass="EventCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="146"/>
@@ -1251,7 +1251,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JHO-ND-UEQ"/>
+        <segue reference="cTd-EU-OqA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="25pixelSettings" width="64" height="64"/>
