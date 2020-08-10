@@ -43,7 +43,6 @@ This app is designed to find events occuring around the user with data on locati
 - [X] User can see events that are near their current location
 - [X] User can respond saying they are going to an event
 - [X] User can share events with friends
-- [ ] User can search for events in specific locations
 - [X] User can click on the map to expand it
 
 ### 2. Screen Archetypes
