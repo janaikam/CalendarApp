@@ -12,7 +12,7 @@
 #import <FSCalendar/FSCalendar.h>
 #import <Parse/Parse.h>
 #import "DetailsViewController.h"
-#import "SettingsViewController.h"
+
 @import DGActivityIndicatorView;
 
 @interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -33,6 +33,9 @@
     // Do any additional setup after loading the view.
     self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleWeekMode) name:@"didSwitchWeek" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMonthMode) name:@"didSwitchMonth" object:nil];
+    
     self.tableView.layer.cornerRadius = 5;
     
     self.activityIndicatorView.alpha = 0;
@@ -49,15 +52,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 
-    if (self.calendarScope) {
-        
-        if ([self.calendarScope isEqualToString:@"Month"]) {
-            _calendarView.scope = FSCalendarScopeMonth;
-            self.calendarHeightConstraint.constant = 408;
-        } else if ([self.calendarScope isEqualToString:@"Week"]){
-            _calendarView.scope = FSCalendarScopeWeek;
-            self.calendarHeightConstraint.constant = 138;
-        }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults doubleForKey:@"weekMode"]) {
+        [self toggleWeekMode];
     } else{
         _calendarView.scope = FSCalendarScopeMonth;
     }
@@ -66,10 +63,6 @@
     [self.view layoutIfNeeded];
 }
 
-// FSCalendarDataSource
-- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date{
-    return YES;
-}
 
 // FSCalendarDelegate
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
@@ -148,7 +141,15 @@
     return self.calendarEventArray.count;
 }
 
+-(void)toggleWeekMode{
+    _calendarView.scope = FSCalendarScopeWeek;
+    self.calendarHeightConstraint.constant = 138;
+}
 
+-(void)toggleMonthMode{
+    _calendarView.scope = FSCalendarScopeMonth;
+    self.calendarHeightConstraint.constant = 408;
+}
 
 #pragma mark - Navigation
 
@@ -163,10 +164,6 @@
         DetailsViewController *detailsViewController = [segue destinationViewController];
         
         detailsViewController.event = event;
-    } else if ([segue.identifier isEqualToString:@"settingsSegue"]){
-        SettingsViewController *settingsViewController = [segue destinationViewController];
-        
-        settingsViewController.calendarViewController = self;
     }
 }
 

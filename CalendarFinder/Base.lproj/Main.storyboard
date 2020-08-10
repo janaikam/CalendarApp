@@ -286,16 +286,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er6-T2-XTP" customClass="DGActivityIndicatorView">
+                                <rect key="frame" x="143" y="357" width="128" height="128"/>
+                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="CJv-ln-TN4"/>
+                                    <constraint firstAttribute="height" constant="128" id="CXu-S8-8kh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VC7-bD-sr7" firstAttribute="leading" secondItem="43I-LW-q5O" secondAttribute="leading" id="5K0-OY-DF1"/>
                             <constraint firstItem="VC7-bD-sr7" firstAttribute="top" secondItem="xjs-5K-5dO" secondAttribute="bottom" id="6xj-gx-DoJ"/>
                             <constraint firstItem="xjs-5K-5dO" firstAttribute="leading" secondItem="43I-LW-q5O" secondAttribute="leading" id="DpH-qS-tsN"/>
+                            <constraint firstItem="er6-T2-XTP" firstAttribute="centerY" secondItem="Far-tP-LGb" secondAttribute="centerY" id="Hsd-1z-YKa"/>
                             <constraint firstItem="VC7-bD-sr7" firstAttribute="trailing" secondItem="43I-LW-q5O" secondAttribute="trailing" id="faK-lQ-0rF"/>
                             <constraint firstItem="43I-LW-q5O" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xjs-5K-5dO" secondAttribute="bottom" constant="295" id="gTM-AC-PhT"/>
                             <constraint firstAttribute="bottom" secondItem="VC7-bD-sr7" secondAttribute="bottom" id="hnt-Og-i66"/>
                             <constraint firstItem="xjs-5K-5dO" firstAttribute="trailing" secondItem="43I-LW-q5O" secondAttribute="trailing" id="kTb-F1-zcj"/>
+                            <constraint firstItem="er6-T2-XTP" firstAttribute="centerX" secondItem="Far-tP-LGb" secondAttribute="centerX" id="sKj-Ky-kif"/>
                             <constraint firstItem="xjs-5K-5dO" firstAttribute="top" secondItem="43I-LW-q5O" secondAttribute="top" id="zsC-xl-SF0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="43I-LW-q5O"/>
@@ -308,6 +318,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="er6-T2-XTP" id="Qrz-Va-R3x"/>
                         <outlet property="calendarHeightConstraint" destination="D15-F1-XaG" id="nMH-rY-Dfu"/>
                         <outlet property="calendarView" destination="xjs-5K-5dO" id="0Cm-Y1-CTJ"/>
                         <outlet property="tableView" destination="VC7-bD-sr7" id="XgX-kO-zHU"/>
@@ -343,6 +354,9 @@
                                     <segment title="Month"/>
                                     <segment title="Week"/>
                                 </segments>
+                                <connections>
+                                    <action selector="didChangeCalendarView:" destination="aj8-ag-UjZ" eventType="valueChanged" id="mi8-eb-7Lu"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lf-vA-cnK">
                                 <rect key="frame" x="20" y="162" width="93" height="20.5"/>

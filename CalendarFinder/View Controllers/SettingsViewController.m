@@ -32,8 +32,12 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     Boolean darkBoolValue = [defaults doubleForKey:@"darkMode"];
+    Boolean weekCalendarView = [defaults doubleForKey:@"weekMode"];
     
     [self.darkModeSwitch setOn:darkBoolValue];
+    if (weekCalendarView) {
+        [self.calendarSegmentControl setSelectedSegmentIndex:1];
+    }
 }
 
 
@@ -51,10 +55,20 @@
     }
 }
 
-
--(void)viewWillDisappear:(BOOL)animated{
+- (IBAction)didChangeCalendarView:(id)sender {
     NSString *segment = [self.calendarSegmentControl titleForSegmentAtIndex:self.calendarSegmentControl.selectedSegmentIndex];
-    self.calendarViewController.calendarScope = segment;
+    
+    if ([segment isEqualToString:@"Week"]) {
+        [NSNotificationCenter.defaultCenter postNotificationName:@"didSwitchWeek" object:nil];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:@"weekMode"];
+        [defaults synchronize];
+    } else{
+        [NSNotificationCenter.defaultCenter postNotificationName:@"didSwitchMonth" object:nil];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:NO forKey:@"weekMode"];
+        [defaults synchronize];
+    }
 }
 /*
 #pragma mark - Navigation
