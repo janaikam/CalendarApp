@@ -176,7 +176,7 @@
 
 - (IBAction)onTapTable:(id)sender {
     
-    self.mapViewBottomConstraint.constant = 328;
+    self.mapViewBottomConstraint.constant = CGRectGetHeight(self.view.frame)/2;
     [UIView animateWithDuration:0.4 animations:^{
         self.tableButton.alpha = 0;
         [self.view layoutIfNeeded];
