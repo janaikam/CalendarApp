@@ -23,11 +23,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if (self.calendarViewController.calendarScope){
-        if ([self.calendarViewController.calendarScope isEqualToString:@"Week"]) {
-            self.calendarSegmentControl.selectedSegmentIndex = 1;
-        }
-    }
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

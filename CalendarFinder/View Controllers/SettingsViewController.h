@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CalendarViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingsViewController : UIViewController
 
-@property (strong, nonatomic) CalendarViewController *calendarViewController;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *calendarSegmentControl;
 @property (weak, nonatomic) IBOutlet UISwitch *darkModeSwitch;

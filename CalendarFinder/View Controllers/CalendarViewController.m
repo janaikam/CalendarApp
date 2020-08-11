@@ -56,7 +56,7 @@
     if ([defaults doubleForKey:@"weekMode"]) {
         [self toggleWeekMode];
     } else{
-        _calendarView.scope = FSCalendarScopeMonth;
+        [self toggleMonthMode];
     }
     
     self.calendarView.appearance.todayColor = [UIColor colorNamed:@"Today"];
@@ -89,7 +89,8 @@
     query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
-        if (objects){
+        [self.calendarEventArray removeAllObjects];
+        if (objects.count != 0){
             //iterate through all the events loaded
             for (Event *event in objects) {
                 PFRelation *relation = [event relationForKey:@"attendees"];
@@ -118,8 +119,13 @@
             
         }else if(error){
             NSLog(@"%@", error.localizedDescription);
+            self.activityIndicatorView.alpha = 0;
+            [self.activityIndicatorView stopAnimating];
         }else{
             NSLog(@"There are no events to display");
+            [self.tableView reloadData];
+            self.activityIndicatorView.alpha = 0;
+            [self.activityIndicatorView stopAnimating];
         }
         
     }];
