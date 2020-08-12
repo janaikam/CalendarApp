@@ -13,6 +13,7 @@
 #import "SceneDelegate.h"
 #import "EventCell.h"
 #import "Event.h"
+#import "ConstantHelper.h"
 @import DGActivityIndicatorView;
 
 
@@ -113,7 +114,8 @@
                     [self.eventArray addObject:event];
                     counter++;
                     //checks if the counter is the network request length or if 20 objects have been chosen
-                    if (counter == objects.count || counter == 19) {
+                    int max = [ConstantHelper tableViewMax];
+                    if (counter == objects.count || counter == (max - 1)) {
                         //only runs the event sort once everything has been added to the event load
                         self.eventArray = [Event sortedEvent:self.eventArray];
                         [self.tableView reloadData];

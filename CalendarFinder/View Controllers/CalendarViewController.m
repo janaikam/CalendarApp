@@ -12,7 +12,7 @@
 #import <FSCalendar/FSCalendar.h>
 #import <Parse/Parse.h>
 #import "DetailsViewController.h"
-
+#import "ConstantHelper.h"
 @import DGActivityIndicatorView;
 
 @interface CalendarViewController () <FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -86,7 +86,7 @@
     [query whereKey:@"startTime" lessThan:nextDay];
     
     [query includeKey:@"author"];
-    query.limit = 20;
+    query.limit = [ConstantHelper tableViewMax];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
         [self.calendarEventArray removeAllObjects];
