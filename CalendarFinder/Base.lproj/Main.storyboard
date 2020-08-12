@@ -159,8 +159,10 @@
                         <outlet property="confirmPasswordField" destination="SLl-0k-537" id="1g8-W1-Mhv"/>
                         <outlet property="createButton" destination="5zI-Ix-UjN" id="TXh-IF-NeZ"/>
                         <outlet property="loginButton" destination="5Q7-70-liP" id="fcz-FM-TLg"/>
+                        <outlet property="loginLabel" destination="eaV-bL-fCg" id="wfo-Lc-2hb"/>
                         <outlet property="passwordField" destination="VNq-cf-buz" id="Eex-NT-8gH"/>
                         <outlet property="signUpButton" destination="wm0-EG-qmu" id="FeU-31-jU9"/>
+                        <outlet property="signUpLabel" destination="Y1z-aW-6Lz" id="tOd-Ia-Lf1"/>
                         <outlet property="usernameField" destination="qZT-Fz-I1t" id="BCD-G7-yQY"/>
                         <segue destination="S3v-py-OEJ" kind="show" identifier="loginSegue" id="apG-g3-phl"/>
                     </connections>
@@ -1281,7 +1283,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cTd-EU-OqA"/>
+        <segue reference="JHO-ND-UEQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="25pixelSettings" width="64" height="64"/>

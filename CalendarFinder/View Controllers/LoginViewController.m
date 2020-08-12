@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (weak, nonatomic) IBOutlet UIButton *backToLoginButton;
+@property (weak, nonatomic) IBOutlet UILabel *loginLabel;
+@property (weak, nonatomic) IBOutlet UILabel *signUpLabel;
 
 @end
 
@@ -28,6 +30,7 @@
     self.signUpButton.alpha = 0;
     self.confirmPasswordField.alpha = 0;
     self.backToLoginButton.alpha = 0;
+    self.signUpLabel.alpha = 0;
     self.createButton.layer.cornerRadius = 10.0;
     self.backToLoginButton.layer.cornerRadius = 10.0;
 
@@ -114,9 +117,11 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.loginButton.alpha = 0;
         self.createButton.alpha = 0;
+        self.loginLabel.alpha = 0;
         self.confirmPasswordField.alpha = 1;
         self.signUpButton.alpha = 1;
         self.backToLoginButton.alpha = 1;
+        self.signUpLabel.alpha = 1;
     }];
     
 }
@@ -126,8 +131,10 @@
         self.confirmPasswordField.alpha = 0;
         self.signUpButton.alpha = 0;
         self.backToLoginButton.alpha = 0;
+        self.signUpLabel.alpha = 0;
         self.loginButton.alpha = 1;
         self.createButton.alpha = 1;
+        self.loginLabel.alpha = 1;
     }];
     
 }
