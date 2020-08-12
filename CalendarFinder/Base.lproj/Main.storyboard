@@ -492,6 +492,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="TableView"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="r7F-os-Q6l" id="q3i-2z-fM7"/>
                                             <outlet property="eventView" destination="VNf-oA-a3I" id="gpH-zN-HNd"/>
@@ -558,6 +559,7 @@
                         <outlet property="mapViewBottomConstraint" destination="I6I-Px-jUx" id="Mv9-AL-Q7b"/>
                         <outlet property="tableButton" destination="2sc-5Z-QFR" id="oFe-xr-wP5"/>
                         <outlet property="tableView" destination="qku-DG-QOo" id="Cjx-QX-iCv"/>
+                        <segue destination="qwo-Er-aLr" kind="presentation" identifier="editSegue" id="lgO-J3-MHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bw-z8-u9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -797,7 +799,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3h-dp-Luk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="S0d-fm-gCk">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="S0d-fm-gCk">
                     <connections>
                         <action selector="didDoubleTapEvent:" destination="e4X-G6-pRE" id="yJt-iH-fRt"/>
                     </connections>
@@ -915,7 +917,7 @@
                                     <constraint firstAttribute="width" constant="240" id="hjD-lG-GHw"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Do-nKq">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-Do-nKq" customClass="PFImageView">
                                 <rect key="frame" x="115.5" y="56.5" width="183" height="170"/>
                                 <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -1283,6 +1285,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="lgO-J3-MHO"/>
         <segue reference="JHO-ND-UEQ"/>
     </inferredMetricsTieBreakers>
     <resources>

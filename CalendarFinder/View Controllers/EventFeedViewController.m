@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
+#import "CreateEventViewController.h"
 #import "SceneDelegate.h"
 #import "EventCell.h"
 #import "Event.h"
@@ -18,7 +19,7 @@
 
 
 
-@interface EventFeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface EventFeedViewController () <UITableViewDelegate, UITableViewDataSource, EventCellDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSMutableArray<Event *> *eventArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *mapPanRec;
 @property (strong, nonatomic) CLLocation *userLocation;
+@property (strong, nonatomic) Event *event;
 
 
 @end
@@ -160,6 +162,7 @@
 
 - (IBAction)didTapCreate:(id)sender {
     [self performSegueWithIdentifier:@"createSegue" sender:nil];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"create" object:nil];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -167,7 +170,7 @@
     Event *event = self.eventArray[indexPath.row];
     
     [cell setEvent:event];
-    
+    cell.delegate = self;
     
     return cell;
 }
@@ -218,11 +221,23 @@
         DetailsViewController *detailsViewController = [segue destinationViewController];
         
         detailsViewController.event = event;
+    } else if ([segue.identifier isEqualToString:@"editSegue"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        Event *event = self.event;
+        CreateEventViewController *createEventViewController = (CreateEventViewController *)navigationController.topViewController;
+        createEventViewController.event = event;
+        [NSNotificationCenter.defaultCenter postNotificationName:@"edit" object:nil];
     }
 }
 
 
 
+
+
+- (void)eventCell:(nonnull EventCell *)eventCell didTapEvent:(nonnull Event *)event {
+    self.event = event;
+    [self performSegueWithIdentifier:@"editSegue" sender:nil];
+}
 
 
 @end

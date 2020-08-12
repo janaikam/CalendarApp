@@ -15,10 +15,11 @@
 #import "Location.h"
 #import "DateHelper.h"
 @import DGActivityIndicatorView;
+@import Parse;
 
 
 @interface CreateEventViewController () <LocationsViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UITextField *eventNameField;
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
@@ -38,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editScreen) name:@"edit" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createScreen) name:@"create" object:nil];
     
     self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
     
@@ -45,10 +48,6 @@
     self.startDatePickerView.alpha = 0;
     self.endDatePickerView.alpha = 0;
     
-    NSDateFormatter *formatter = [DateHelper dateFormat];
-    
-    self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
-    self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
     
     UIColor *borderColor = [UIColor systemGray3Color];
 
@@ -152,7 +151,6 @@
         
     }];
     [self.view endEditing:YES];
-    
 }
 
 - (IBAction)onTapEndTime:(id)sender {
@@ -187,12 +185,15 @@
 }
 
 - (IBAction)didTapLocation:(id)sender {
+    if ([self.navigationItem.title isEqualToString:@"Edit Event"]) {
+        [self createUICancelAlert:@"Can't update Location" withAlertMessage:@"Sorry! Updating the location of the event is not yet supported!"];
+        return;
+    }
     [self performSegueWithIdentifier:@"locationSegue" sender:nil];
 }
 
 // function adds the event to the user's calendar
 - (IBAction)didTapAdd:(id)sender {
-    
     NSDateFormatter *formatter = [DateHelper dateFormat];
     NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
     NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
@@ -206,28 +207,11 @@
         self.locationNameLabel.text = @"Online";
     }
     
-    [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
-        self.activityIndicatorView.alpha = 1;
-        [self.activityIndicatorView startAnimating];
-        if (!error){
-            NSLog(@"Location Successfully created!");
-            
-            [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionView.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (!error) {
-                    NSLog(@"Successfully Created Event");
-                    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    EventFeedViewController *eventViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
-                    myDelegate.window.rootViewController = eventViewController;
-                }
-            }];
-        } else{
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-        [self.activityIndicatorView stopAnimating];
-        self.activityIndicatorView.alpha = 0;
-    }];
-    
+    if ([self.navigationItem.title isEqualToString:@"Create Event"]) {
+        [self create];
+    } else if ([self.navigationItem.title isEqualToString:@"Edit Event"]){
+        [self update];
+    }
 }
 
 // helper function for creating an alert when something is incorrect on the screen
@@ -244,6 +228,77 @@
     }];
 }
 
+-(void)create{
+    NSDateFormatter *formatter = [DateHelper dateFormat];
+    NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
+    NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
+    [Location createLocation: self.locationNameLabel.text latitude:self.lat longitutde:self.lon completion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error){
+            NSLog(@"Location Successfully created!");
+            
+            [Event postUserEvent:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionView.text startTime:startTime endTime:endTime location:self.locationNameLabel.text completion:^(BOOL succeeded, NSError * _Nullable error) {
+                if (!error) {
+                    NSLog(@"Successfully Created Event");
+                    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    EventFeedViewController *eventViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
+                    myDelegate.window.rootViewController = eventViewController;
+                    [self.activityIndicatorView stopAnimating];
+                    self.activityIndicatorView.alpha = 0;
+                }
+            }];
+        } else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
+-(void)update{
+    NSDateFormatter *formatter = [DateHelper dateFormat];
+    NSDate *startTime = [formatter dateFromString:self.startTimeLabel.text];
+    NSDate *endTime = [formatter dateFromString:self.endTimeLabel.text];
+    
+    self.activityIndicatorView.alpha = 1;
+    [self.activityIndicatorView startAnimating];
+    
+    [Event updateEvent:self.event withImage:self.eventImageView.image eventName:self.eventNameField.text description:self.eventDescriptionView.text startTime:startTime endTime:endTime completion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"Successfully Updated Event!");
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            EventFeedViewController *eventViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabViewController"];
+            myDelegate.window.rootViewController = eventViewController;
+            [self.activityIndicatorView stopAnimating];
+            self.activityIndicatorView.alpha = 0;
+        } else{
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
+-(void)editScreen{
+    self.navigationItem.title = @"Edit Event";
+    
+    NSDateFormatter *formatter = [DateHelper dateFormat];
+    self.startTimeLabel.text = [formatter stringFromDate:self.event.startTime];
+    self.endTimeLabel.text = [formatter stringFromDate:self.event.endTime];
+    
+    self.eventNameField.text = self.event.eventName;
+    self.eventDescriptionView.text = self.event.eventDescription;
+    self.locationNameLabel.text = self.event.location;
+    self.eventImageView.file = self.event.image;
+    [self.eventImageView loadInBackground];
+}
+
+-(void)createScreen{
+    NSDateFormatter *formatter = [DateHelper dateFormat];
+    self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
+    self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
+    
+    self.navigationItem.title = @"Create Event";
+}
 
 #pragma mark - Navigation
 

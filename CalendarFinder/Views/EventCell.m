@@ -14,6 +14,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToEdit:)];
+    [self addGestureRecognizer:longPress];
+    [self setUserInteractionEnabled:YES];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -35,4 +39,7 @@
     self.timeLabel.text = [formatter stringFromDate:event.startTime];
 }
 
+-(void)goToEdit: (UILongPressGestureRecognizer *)sender{
+    [self.delegate eventCell:self didTapEvent:self.event];
+}
 @end

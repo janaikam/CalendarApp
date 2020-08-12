@@ -54,8 +54,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSMutableArray *) sortedEvent: (NSMutableArray *) eventArray;
 
+
 - (void) setEvent: (Event *)event
  withUserDistance: (NSNumber *)distance;
+
++ (void) updateEvent: (Event * )event
+           withImage:(UIImage *)image
+           eventName: (NSString * _Nullable)eventName
+         description: (NSString * _Nullable)description
+           startTime: (NSDate * _Nullable)startTime
+             endTime: (NSDate * _Nullable)endTime
+          completion: (PFBooleanResultBlock _Nullable)completion;
 
 @end
 

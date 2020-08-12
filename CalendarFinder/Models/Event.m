@@ -96,7 +96,7 @@
     PFRelation *relation = [event relationForKey:@"attendees"];
     PFQuery *relationQuery = [relation query];
     
-    [relationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+    [relationQuery findObjectsInBackgroundWithBlock:^(NSArray   <PFUser *> * _Nullable users, NSError * _Nullable error) {
         if (![users containsObject:user]){
             [relation addObject:user];
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -146,6 +146,16 @@
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES selector:@selector(compareEvents:)];
     NSArray *sortedArray = [eventArray sortedArrayUsingDescriptors:@[sortDescriptor]];
     return [sortedArray mutableCopy];
+}
+
++ (void)updateEvent: (Event * )event withImage:(UIImage *)image eventName:(NSString *)eventName description:(NSString *)description startTime:(NSDate *)startTime endTime:(NSDate *)endTime completion:(PFBooleanResultBlock)completion{
+    event.image = [self.class getPFFileFromImage:image];
+    event.eventName = eventName;
+    event.eventDescription = description;
+    event.startTime = startTime;
+    event.endTime = endTime;
+    
+    [event saveInBackgroundWithBlock:completion];
 }
 
 @end
