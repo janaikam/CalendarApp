@@ -15,11 +15,12 @@
 #import "EventCell.h"
 #import "Event.h"
 #import "ConstantHelper.h"
+#import "LocationSearchViewController.h"
 @import DGActivityIndicatorView;
 
 
 
-@interface EventFeedViewController () <UITableViewDelegate, UITableViewDataSource, EventCellDelegate>
+@interface EventFeedViewController () <UITableViewDelegate, UITableViewDataSource, EventCellDelegate, LocationSearchViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSMutableArray<Event *> *eventArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -30,11 +31,12 @@
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *mapPanRec;
 @property (strong, nonatomic) CLLocation *userLocation;
 @property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) MKPointAnnotation *currentAnnotation;
 
 
 @end
 
-@implementation EventFeedViewController 
+@implementation EventFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -180,6 +182,9 @@
 }
 
 - (IBAction)onTapTable:(id)sender {
+    if (self.currentAnnotation) {
+        [self.mapView removeAnnotation:self.currentAnnotation];
+    }
     
     self.mapViewBottomConstraint.constant = CGRectGetHeight(self.view.frame)/2.75;
     [UIView animateWithDuration:0.4 animations:^{
@@ -188,6 +193,13 @@
     }];
     
     self.userLocation = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = self.userLocation.coordinate;
+    annotation.title = @"Current Center";
+    self.currentAnnotation = annotation;
+    [self.mapView addAnnotation:annotation];
+    
     [self getFeed];
     
 }
@@ -227,6 +239,9 @@
         CreateEventViewController *createEventViewController = (CreateEventViewController *)navigationController.topViewController;
         createEventViewController.event = event;
         [NSNotificationCenter.defaultCenter postNotificationName:@"edit" object:nil];
+    } else if([segue.identifier isEqualToString:@"locationSearchSegue"]){
+        LocationSearchViewController *locationSearch = [segue destinationViewController];
+        locationSearch.delegate = self;
     }
 }
 
@@ -238,6 +253,30 @@
     self.event = event;
     [self performSegueWithIdentifier:@"editSegue" sender:nil];
 }
+
+
+- (void)locationSearchViewController:(nonnull LocationSearchViewController *)controller didPickLocationWithLatitude:(nonnull NSNumber *)latitude longitude:(nonnull NSNumber *)longitude {
+    
+    if (self.currentAnnotation) {
+        [self.mapView removeAnnotation:self.currentAnnotation];
+    }
+    
+    //update the location to the location picked on the search screen
+    self.userLocation = [[CLLocation alloc] initWithLatitude:latitude.doubleValue longitude:longitude.doubleValue];
+    [self.mapView setCenterCoordinate:self.userLocation.coordinate];
+    
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = self.userLocation.coordinate;
+    annotation.title = @"Current Center";
+    self.currentAnnotation = annotation;
+    [self.mapView addAnnotation:annotation];
+    
+    [self getFeed];
+    
+    //go back to home screen
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 
 @end

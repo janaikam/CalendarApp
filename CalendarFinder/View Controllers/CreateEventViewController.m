@@ -59,7 +59,6 @@
 }
 
 - (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude name:(NSString *) name{
-    NSLog(@"%@", name);
     self.locationNameLabel.text = name;
     self.lat = latitude;
     self.lon = longitude;
