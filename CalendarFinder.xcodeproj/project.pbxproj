@@ -561,8 +561,6 @@
 			dependencies = (
 			);
 			name = CalendarFinder;
-			packageProductDependencies = (
-			);
 			productName = CalendarFinder;
 			productReference = 1AB2031F24BCEB59009171A6 /* CalendarFinder.app */;
 			productType = "com.apple.product-type.application";
@@ -638,8 +636,6 @@
 				Base,
 			);
 			mainGroup = 1AB2031624BCEB59009171A6;
-			packageReferences = (
-			);
 			productRefGroup = 1AB2032024BCEB59009171A6 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
