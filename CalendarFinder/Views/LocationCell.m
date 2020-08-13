@@ -21,9 +21,9 @@
     // Configure the view for the selected state
 }
 
-- (void)updateWithVenue:(Venue *)venue {
+- (void)updateWithVenue:(SearchItems *)venue {
     self.locationNameLabel.text = [venue name];
-    self.addressLabel.text = [venue address];
+    self.addressLabel.text = [NSString stringWithFormat:@"%@", [venue placemark]];
 }
 
 

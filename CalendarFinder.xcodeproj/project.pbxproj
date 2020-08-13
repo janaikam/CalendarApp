@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A4E0A5924CA2C5800DBB1B3 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */; };
 		1A4E0A5C24CB6B0000DBB1B3 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */; };
-		1A4E0A5F24CB739500DBB1B3 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E0A5E24CB739500DBB1B3 /* Venue.m */; };
 		1A7D40AB24DDAF820021959C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D40AA24DDAF820021959C /* SearchViewController.m */; };
 		1A7D40B424DDB41B0021959C /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D40B324DDB41B0021959C /* SearchCell.m */; };
 		1A85C65C24E422D7002CD11D /* ConstantHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A85C65B24E422D7002CD11D /* ConstantHelper.m */; };
@@ -110,8 +109,6 @@
 		1A4E0A5824CA2C5800DBB1B3 /* CalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		1A4E0A5A24CB6B0000DBB1B3 /* DateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
 		1A4E0A5B24CB6B0000DBB1B3 /* DateHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
-		1A4E0A5D24CB739500DBB1B3 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = CalendarFinder/Models/Venue.h; sourceTree = SOURCE_ROOT; };
-		1A4E0A5E24CB739500DBB1B3 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = CalendarFinder/Models/Venue.m; sourceTree = SOURCE_ROOT; };
 		1A7D40A924DDAF820021959C /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		1A7D40AA24DDAF820021959C /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		1A7D40B224DDB41B0021959C /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
@@ -346,8 +343,6 @@
 				1AB5493B24BE3378006EDBCA /* Location.m */,
 				1AB5494024BF53F0006EDBCA /* User.h */,
 				1AB5494124BF53F0006EDBCA /* User.m */,
-				1A4E0A5D24CB739500DBB1B3 /* Venue.h */,
-				1A4E0A5E24CB739500DBB1B3 /* Venue.m */,
 				1A85C65A24E422D7002CD11D /* ConstantHelper.h */,
 				1A85C65B24E422D7002CD11D /* ConstantHelper.m */,
 				1A85C67624E59811002CD11D /* SearchItems.h */,
@@ -865,7 +860,6 @@
 				1AB5493C24BE3378006EDBCA /* Location.m in Sources */,
 				1A4E0A5924CA2C5800DBB1B3 /* CalendarCell.m in Sources */,
 				1AB5494224BF53F0006EDBCA /* User.m in Sources */,
-				1A4E0A5F24CB739500DBB1B3 /* Venue.m in Sources */,
 				1AB2036024BCFCBD009171A6 /* CalendarViewController.m in Sources */,
 				1AB2032724BCEB59009171A6 /* SceneDelegate.m in Sources */,
 				1A7D40B424DDB41B0021959C /* SearchCell.m in Sources */,

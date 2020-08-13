@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Venue.h"
+#import "SearchItems.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) NSDictionary *venue;
 
-- (void)updateWithVenue:(Venue *)venue;
+- (void)updateWithVenue:(SearchItems *)venue;
 
 @end
 

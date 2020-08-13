@@ -9,7 +9,8 @@
 #import "LocationsViewController.h"
 #import "LocationCell.h"
 #import "CreateEventViewController.h"
-#import "Venue.h"
+#import "SearchItems.h"
+#import <MapKit/MapKit.h>
 
 static NSString * const clientID = @"UVKZOMUZQJTQWA5UYH5LDOQ5UPL0GNDXBUEMVHQJNDPYENV3";
 static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13UIJS3EUV3V";
@@ -17,7 +18,7 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
 @interface LocationsViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray<Venue *> *results;
+@property (strong, nonatomic) NSMutableArray<SearchItems *> *results;
 
 @end
 
@@ -34,7 +35,7 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // This is the selected venue
-    Venue *venueObject = self.results[indexPath.row];
+    SearchItems *venueObject = self.results[indexPath.row];
     
     NSNumber *lat = [venueObject latitude];
     NSNumber *lng = [venueObject longitude];
@@ -55,7 +56,7 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
-    Venue *venue = self.results[indexPath.row];
+    SearchItems *venue = self.results[indexPath.row];
     [cell updateWithVenue:venue];
     return cell;
 }
@@ -69,39 +70,31 @@ static NSString * const clientSecret = @"4ABXB0QRBIQBEG4WX5JAU4PK2AF1CVVP30LD13U
     
     // Change later to user's current location
     [self.results removeObjectsInArray:self.results];
-    [self fetchLocationsWithQuery:newText nearCity:@"San Francisco"];
+    [self fetchLocationsWithQuery:newText];
     return true;
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.results removeObjectsInArray:self.results];
-    [self fetchLocationsWithQuery:searchBar.text nearCity:@"San Francisco"];
+    [self fetchLocationsWithQuery:searchBar.text];
 }
 
-- (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
-    NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
-    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
-    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (data) {
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
-            NSArray *localArray = [responseDictionary valueForKeyPath:@"response.venues"];
-            
-            for (NSDictionary *venue in localArray) {
-                Venue *newVenue = [[Venue alloc] initWithData:venue];
-                [self.results addObject:newVenue];
-            }
-            
-        }
-        [self.tableView reloadData];
-    }];
-    [task resume];
+- (void)fetchLocationsWithQuery:(NSString *)query {
+     MKLocalSearchRequest *searchRequest = [[MKLocalSearchRequest alloc] init];
+       [searchRequest setNaturalLanguageQuery:query];
+       
+       MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:searchRequest];
+       [localSearch startWithCompletionHandler:^(MKLocalSearchResponse * _Nullable response, NSError * _Nullable error) {
+           if (!error) {
+               for (MKMapItem *mapItem in [response mapItems]) {
+                   SearchItems *newItem = [[SearchItems alloc] initWithMKMapItem:mapItem];
+                   [self.results addObject:newItem];
+               }
+               [self.tableView reloadData];
+           } else {
+               NSLog(@"Search Request Error: %@", [error localizedDescription]);
+           }
+       }];
     
 }
 
