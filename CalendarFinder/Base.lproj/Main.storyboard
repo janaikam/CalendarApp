@@ -536,6 +536,19 @@
                                     <segue destination="uPA-5h-oR4" kind="show" identifier="locationSearchSegue" id="Hru-Rb-11M"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEh-xN-Fpj">
+                                <rect key="frame" x="14" y="119" width="26" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="LqF-Ei-Frn"/>
+                                    <constraint firstAttribute="height" constant="24" id="TgN-1z-6b3"/>
+                                </constraints>
+                                <state key="normal" image="location.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapLocation:" destination="J2w-7r-jcB" eventType="touchUpInside" id="lAg-QJ-k6p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -548,7 +561,9 @@
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="leading" secondItem="1Va-pd-w5m" secondAttribute="leading" id="OxE-eW-hbe"/>
                             <constraint firstItem="qmQ-Aq-33b" firstAttribute="centerY" secondItem="ixM-dH-fSU" secondAttribute="centerY" id="Sl1-Es-nqM"/>
                             <constraint firstItem="qku-DG-QOo" firstAttribute="top" secondItem="ccD-eU-0pf" secondAttribute="bottom" id="SrO-oB-aEF"/>
+                            <constraint firstItem="gEh-xN-Fpj" firstAttribute="leading" secondItem="czf-Bk-U26" secondAttribute="leading" id="Tw3-Gr-OD8"/>
                             <constraint firstItem="ccD-eU-0pf" firstAttribute="trailing" secondItem="1Va-pd-w5m" secondAttribute="trailing" id="b3B-SR-N0c"/>
+                            <constraint firstItem="gEh-xN-Fpj" firstAttribute="top" secondItem="czf-Bk-U26" secondAttribute="bottom" constant="21" id="beO-K6-XmT"/>
                             <constraint firstItem="czf-Bk-U26" firstAttribute="top" secondItem="1Va-pd-w5m" secondAttribute="top" constant="19" id="ihY-FM-GnX"/>
                             <constraint firstItem="qku-DG-QOo" firstAttribute="trailing" secondItem="1Va-pd-w5m" secondAttribute="trailing" id="pdO-Hj-KXi"/>
                             <constraint firstItem="1Va-pd-w5m" firstAttribute="trailing" secondItem="czf-Bk-U26" secondAttribute="trailing" constant="375" id="qvN-na-oR3"/>
@@ -1391,6 +1406,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="icons8-login-64" width="64" height="64"/>
         <image name="icons8-sign-up-64" width="64" height="64"/>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
