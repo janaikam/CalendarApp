@@ -286,6 +286,8 @@
     NSDateFormatter *formatter = [DateHelper dateFormat];
     self.startTimeLabel.text = [formatter stringFromDate:self.event.startTime];
     self.endTimeLabel.text = [formatter stringFromDate:self.event.endTime];
+    self.startDatePickerView.date = self.event.startTime;
+    self.endDatePickerView.date = self.event.endTime;
     
     self.eventNameField.text = self.event.eventName;
     self.eventDescriptionView.text = self.event.eventDescription;
