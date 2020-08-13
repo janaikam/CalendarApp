@@ -224,8 +224,11 @@
 }
 
 - (IBAction)didTapLocation:(id)sender {
-    MKCoordinateRegion currentLocation = MKCoordinateRegionMake(self.locationManager.location.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    self.userLocation = self.locationManager.location;
+    MKCoordinateRegion currentLocation = MKCoordinateRegionMake(self.userLocation.coordinate, MKCoordinateSpanMake(0.1, 0.1));
     [self.mapView setRegion:currentLocation];
+    
+    [self getFeed];
 }
 
 #pragma mark - Navigation
