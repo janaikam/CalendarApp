@@ -15,7 +15,7 @@
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
-@property (strong, nonatomic) NSArray <Event *> *tableViewArray;
+@property (strong, nonatomic) NSMutableArray <Event *> *tableViewArray;
 
 @end
 
@@ -30,14 +30,24 @@
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    if ([searchBar.text isEqualToString:@""]) {
+        [self.tableViewArray removeAllObjects];
+        [self.searchTableView reloadData];
+        return;
+    }
+    
     [self getEventFromEventSearchWithString:searchBar.text];
 }
 
-- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
-    [self getEventFromEventSearchWithString:newText];
-    return true;
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if ([searchBar.text isEqualToString:@""]) {
+        [self.tableViewArray removeAllObjects];
+        [self.searchTableView reloadData];
+        return;
+    }
+    [self getEventFromEventSearchWithString:searchText];
 }
+
 
 -(void)getEventFromEventSearchWithString: (NSString *)searchQuery{
     NSDate *today = [NSDate date];
