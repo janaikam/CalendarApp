@@ -115,11 +115,16 @@
                     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:eventCompareLat longitude:eventCompareLon];
                     CLLocationDistance locationDistance = [self.userLocation distanceFromLocation:newLocation];
                     [event setEvent:event withUserDistance:[NSNumber numberWithDouble:locationDistance]];
-                    [self.eventArray addObject:event];
+                    
+                    //Checks if the location is within 50 miles of the current location
+                    if (locationDistance < 80467.2 || [eventLocation.location isEqualToString:@"Online"]) {
+                        [self.eventArray addObject:event];
+                    }
+                    
                     counter++;
                     //checks if the counter is the network request length or if 20 objects have been chosen
                     int max = [ConstantHelper tableViewMax];
-                    if (counter == objects.count || counter == (max - 1)) {
+                    if (counter == objects.count || self.eventArray.count == (max - 1)) {
                         //only runs the event sort once everything has been added to the event load
                         self.eventArray = [Event sortedEvent:self.eventArray];
                         [self.tableView reloadData];
