@@ -169,7 +169,6 @@
 
 - (IBAction)didTapCreate:(id)sender {
     [self performSegueWithIdentifier:@"createSegue" sender:nil];
-    [NSNotificationCenter.defaultCenter postNotificationName:@"create" object:nil];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -240,7 +239,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Event *event = self.eventArray[indexPath.row];
         DetailsViewController *detailsViewController = [segue destinationViewController];
-        
         detailsViewController.event = event;
     } else if ([segue.identifier isEqualToString:@"editSegue"]){
         UINavigationController *navigationController = [segue destinationViewController];

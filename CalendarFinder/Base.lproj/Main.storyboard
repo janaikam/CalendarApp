@@ -581,7 +581,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="ctm-iE-z3e">
                             <connections>
                                 <action selector="didTapCreate:" destination="J2w-7r-jcB" id="YiH-Of-46U"/>
-                                <segue destination="qwo-Er-aLr" kind="presentation" identifier="createSegue" modalTransitionStyle="crossDissolve" id="Osb-Gi-onB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -593,6 +592,7 @@
                         <outlet property="tableButton" destination="2sc-5Z-QFR" id="oFe-xr-wP5"/>
                         <outlet property="tableView" destination="qku-DG-QOo" id="Cjx-QX-iCv"/>
                         <segue destination="qwo-Er-aLr" kind="presentation" identifier="editSegue" id="lgO-J3-MHO"/>
+                        <segue destination="qwo-Er-aLr" kind="presentation" identifier="createSegue" id="Gdj-rP-CAF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bw-z8-u9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -753,7 +753,7 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DKm-zE-QrO" secondAttribute="trailing" constant="5" id="Uag-bv-1Yq"/>
                                             <constraint firstAttribute="trailing" secondItem="OaE-qj-I2e" secondAttribute="trailing" id="VvS-Y6-G4F"/>
                                             <constraint firstItem="fHv-PM-hQA" firstAttribute="leading" secondItem="1mY-nx-ChI" secondAttribute="trailing" constant="8" id="cNO-kj-cpL"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yeW-6Y-VAZ" secondAttribute="trailing" constant="5" id="dAi-79-28d"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yeW-6Y-VAZ" secondAttribute="trailing" constant="3" id="dAi-79-28d"/>
                                             <constraint firstItem="yeW-6Y-VAZ" firstAttribute="top" secondItem="Yq3-fc-xyl" secondAttribute="top" constant="30" id="duy-iV-lVr"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Cfz-qD-MuM" secondAttribute="trailing" constant="5" id="fNf-6R-oWH"/>
                                             <constraint firstItem="DKm-zE-QrO" firstAttribute="top" secondItem="yeW-6Y-VAZ" secondAttribute="bottom" constant="8" id="fcW-3Q-0xd"/>
@@ -1289,7 +1289,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-zy-jgH">
                                 <rect key="frame" x="0.0" y="112" width="414" height="730"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="TableView"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LocationSearchCell" rowHeight="77" id="iMU-49-XKj" customClass="LocationSearchCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="77"/>
@@ -1395,7 +1395,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lgO-J3-MHO"/>
+        <segue reference="Gdj-rP-CAF"/>
         <segue reference="JHO-ND-UEQ"/>
     </inferredMetricsTieBreakers>
     <resources>

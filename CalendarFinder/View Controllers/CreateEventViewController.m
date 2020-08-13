@@ -40,7 +40,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editScreen) name:@"edit" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createScreen) name:@"create" object:nil];
     
     self.activityIndicatorView.type = DGActivityIndicatorAnimationTypeCookieTerminator;
     
@@ -48,6 +47,10 @@
     self.startDatePickerView.alpha = 0;
     self.endDatePickerView.alpha = 0;
     
+    NSDateFormatter *formatter = [DateHelper dateFormat];
+    NSDate *today = [NSDate date];
+    self.startTimeLabel.text = [formatter stringFromDate:today];
+    self.endTimeLabel.text = [formatter stringFromDate:today];
     
     UIColor *borderColor = [UIColor systemGray3Color];
 
@@ -291,13 +294,7 @@
     [self.eventImageView loadInBackground];
 }
 
--(void)createScreen{
-    NSDateFormatter *formatter = [DateHelper dateFormat];
-    self.startTimeLabel.text = [formatter stringFromDate:self.startDatePickerView.date];
-    self.endTimeLabel.text = [formatter stringFromDate:self.endDatePickerView.date];
-    
-    self.navigationItem.title = @"Create Event";
-}
+
 
 #pragma mark - Navigation
 
