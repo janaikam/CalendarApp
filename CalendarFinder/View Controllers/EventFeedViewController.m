@@ -32,6 +32,7 @@
 @property (strong, nonatomic) CLLocation *userLocation;
 @property (strong, nonatomic) Event *event;
 @property (strong, nonatomic) MKPointAnnotation *currentAnnotation;
+@property (strong, nonatomic) MKAnnotationView *annotationView;
 
 
 @end
@@ -93,6 +94,7 @@
     //orders events by time
     [query orderByAscending:@"startTime"];
     
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray<Event *> * _Nullable objects, NSError * _Nullable error) {
         if (objects) {
             NSLog(@"Succesfully Loaded Feed!");
@@ -107,7 +109,7 @@
                 PFQuery *relationQuery = [relation query];
                 [relationQuery findObjectsInBackgroundWithBlock:^(NSArray<Location *> * _Nullable locations, NSError * _Nullable error) {
                     Location *eventLocation = locations[0];
-                    [self addPin:eventLocation];
+                    
                     
                     //complex algorithm with the network request
                     double eventCompareLat = [eventLocation.latitude doubleValue];
@@ -119,6 +121,7 @@
                     //Checks if the location is within 50 miles of the current location
                     if (locationDistance < 80467.2 || [eventLocation.location isEqualToString:@"Online"]) {
                         [self.eventArray addObject:event];
+                        [self addPin:eventLocation];
                     }
                     
                     counter++;
@@ -130,6 +133,7 @@
                         [self.tableView reloadData];
                         [self.activityIndicatorView stopAnimating];
                         self.activityIndicatorView.alpha = 0;
+                        
                     }
                     
                 }];
@@ -219,6 +223,8 @@
         [UIView animateWithDuration:0.4 animations:^{
             [self.view layoutIfNeeded];
             self.tableButton.alpha = 1;
+            [self.mapView reloadInputViews];
+            
         }];
     }
 }
@@ -281,10 +287,11 @@
     self.currentAnnotation = annotation;
     [self.mapView addAnnotation:annotation];
     
-    [self getFeed];
     
     //go back to home screen
+    [self getFeed];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 
